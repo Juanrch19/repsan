@@ -1,0 +1,28 @@
+{% load django_bootstrap5 %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+
+<div class="page-container">
+  <div class="image-container">
+    <img src="{% static 'img/logo_unisanpablo.png' %}" alt="Logo" class="img-fluid">
+  </div>
+  <form action="" method="POST" class="custom-form needs-validation">
+    {% csrf_token %}
+    {{ error }}
+    <h2 class="form-title">Inicia Sesión</h2> <!-- Agregar el título "Inicia Sesión" -->
+    <div class="form-group">
+      <label for="{{ form.username.id_for_label }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Usuario</label>
+      {{ form.username }}
+    </div>
+    <div class="form-group">
+       <label for="{{ form.password.id_for_label }}">Contraseña</label>
+      {{ form.password }}
+    </div>
+    <button class="btn btn-primary btn-block custom-button">Ingresar</button>
+    <div class="form-group">
+      &nbsp;&nbsp;&nbsp;<a href="{% url 'reset_password' %}">¿Olvidaste tu contraseña?</a>
+    </div>
+  </form>
+</div>
+
+

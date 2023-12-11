@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block blockname %} Procesos {% endblock blockname %}
+
+{% block contenido %}
+ <div class="card">
+    <div class="card-header">
+      
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Edita los Procesos</h4>
+        {% include 'procesos/form.html' %}
+    </div>
+    <div class="card-footer text-muted">
+    
+    </div>
+ </div>
+{% endblock %}

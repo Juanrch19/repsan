@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block titulo %} Lista maestra de documentos {% endblock titulo %}
+
+{% block contenido %}
+<div class="container mt-5">
+
+    <div class="mb-3 text-center">
+        <a class="btn btn-primary" href="{% url 'crearproceso' %}" role="button">Agregar proceso</a>
+    </div>
+
+    <div class="card mx-auto" style="max-width: 800px;">
+        <div class="card-body">
+            <h4 class="card-title text-center">Procesos</h4>
+            
+            <div class="table-responsive">
+                <table class="table table-hover mx-auto">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 10%;">Código</th>
+                            <th scope="col" style="width: 30%;">Proceso</th>
+                            <th scope="col" style="width: 15%;">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for proceso in procesos %}
+                        <tr>
+                            <td>{{ proceso.id_proceso }}</td>
+                            <td>{{ proceso.nombre_proceso }}</td>
+                            <td > 
+                               
+                                    <a class="btn btn-success btn-sm" href="{% url 'editarproceso' proceso.id_proceso %}" role="button"><i class="bi bi-pencil-square"></i></a>
+                                    <a class="btn btn-danger btn-sm" href="{% url 'eliminarproceso' proceso.id_proceso %}" role="button"><i class="bi bi-trash"></i></a>
+                                    
+                                
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}

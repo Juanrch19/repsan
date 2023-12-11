@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %} Gestión de Infraestructura {% endblock %}
+
+{% block contenido %} 
+
+<main>
+    <section class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center"> </h1>
+          </div>
+          
+      </section>
+      <div class="text-center">
+        <img src="{% static 'img/infraestructura.png' %}" usemap="#mapa" style="max-width: 100%; max-height: 50%; height: auto; width: auto; margin: 0 auto;" class="mx-auto">
+      </div>
+    <map name="mapa">
+
+        <!-- PROCESOS MISIONALES-->
+
+        <area shape="poly" coords="551,23,624,25,626,201,486,197,488,23" href="{% url 'gestionsistemas' %}" alt="gestionsistemas">
+        <area shape="poly" coords="822,23,895,20,899,202,758,200,758,22" href="{% url 'infraestructurafisica' %}" alt="infraestructurafisica">
+        <area shape="poly" coords="692,233,762,231,765,410,626,407,627,232" href="{% url 'informacionbibliografica' %}" alt="informacionbibliografica">
+       
+</main>
+{% endblock %}

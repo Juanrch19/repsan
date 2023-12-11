@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %} Relaciones Interinstitucionales {% endblock %}
+
+{% block contenido %} 
+
+<main>
+    <section class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center"> </h1>
+          </div>
+          
+      </section>
+      <div class="text-center">
+        <img src="{% static 'img/relacionesinter.png' %}" usemap="#mapa" style="max-width: 100%; max-height: 50%; height: auto; width: auto; margin: 0 auto;" class="mx-auto">
+      </div>
+    <map name="mapa">
+
+        <!-- PROCESOS MISIONALES-->
+
+        <area shape="poly" coords="606,20,538,19,678,20,679,160,539,160" href="{% url 'internacionalizacion' %}" alt="internacionalizacion">
+        <area shape="poly" coords="935,28,1007,31,1006,68,868,169,868,32" href="{% url 'comunicacion' %}" alt="comunicacion">
+       
+        
+</main>
+{% endblock %}

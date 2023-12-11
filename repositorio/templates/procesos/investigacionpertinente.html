@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %} Investigacion Pertinente {% endblock %}
+
+{% block contenido %} 
+
+<main>
+    <section class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center"> </h1>
+          </div>
+          
+      </section>
+      <div class="text-center">
+        <img src="{% static 'img/gestioninvestigacion.png' %}" usemap="#mapa" style="max-width: 100%; max-height: 50%; height: auto; width: auto; margin: 0 auto;" class="mx-auto">
+      </div>
+    <map name="mapa">
+
+        <!-- PROCESOS MISIONALES-->
+
+        <area shape="poly" coords="495,42,557,38,557,181,429,192,430,31" href="{% url 'gestioninvestigacion' %}" alt="Planeacion Estrategica">
+        
+       
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+<form action="{% url 'crearcategoria' %}" method="POST" enctype="multipart/form-data">
+
+    {% csrf_token %}
+  
+    {% for campo in formulario %}
+      {% if campo.name == 'file' %}
+        <div class="mb-3">
+          <label for="{{ campo.id_for_label }}" class="form-label">{{ campo.label }}</label>
+          {{ campo }}
+        </div>
+      {% else %}
+          <div class="mb-3">
+            <label for="{{ campo.id_for_label }}" class="form-label">Nombre</label>
+            {{ campo }}
+          </div>
+      {% endif %}
+      <div class="col-12 help-text">{{ campo.errors }}</div>
+    {% endfor %}
+  
+    <input class="btn btn-success" type="submit" value="Enviar Información">
+  
+  </form>

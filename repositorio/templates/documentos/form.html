@@ -1,0 +1,24 @@
+
+<!-- formulario.html -->
+
+<form action="{% url 'crear' %}" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  {% for field in formulario.visible_fields %}
+      <div class="mb-3">
+          <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+          {% if field.name == 'categoria' %}
+              {{ field }}
+          {% elif field.name == 'proceso' %}
+              {{ field }}
+          {% elif field.name == 'file' %}
+              <input class="form-control" type="file" name="{{ field.name }}" id="{{ field.id_for_label }}" aria-describedby="helpId">
+          {% else %}
+              <input class="form-control" type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="{{ field.id_for_label }}" aria-describedby="helpId" placeholder='{{ field.field.label }}' value="{{ field.value | default:'' }}">
+          {% endif %}
+      </div>
+      <div class="col-12 help-text">{{ field.errors }}</div>
+  {% endfor %}
+
+  <input class="btn btn-success" type="submit" value="Enviar Información">
+</form>

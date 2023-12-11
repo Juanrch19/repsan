@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %} Planeación Estrategica {% endblock %}
+
+{% block contenido %} 
+
+<main>
+    <section class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center"> </h1>
+          </div>
+          
+      </section>
+      <div class="text-center">
+        <img src="{% static 'img/planeacionestra.png' %}" usemap="#mapa" style="max-width: 100%; max-height: 50%; height: auto; width: auto; margin: 0 auto;" class="mx-auto">
+      </div>
+    <map name="mapa">
+
+        <!-- PROCESOS MISIONALES-->
+
+        <area shape="poly" coords="577,93,653,94,653,243,505,244,504,94" href="{% url 'internacionalizacion' %}" alt="Planeacion Estrategica">
+        
+       
+
+</main>
+
+{% endblock %}

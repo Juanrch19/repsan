@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %} Calidad Integral {% endblock %}
+
+{% block contenido %} 
+
+<main>
+    <section class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center"> </h1>
+          </div>
+          
+      </section>
+      <div class="text-center">
+        <img src="{% static 'img/calidadintegral.png' %}" usemap="#mapa" style="max-width: 100%; max-height: 50%; height: auto; width: auto; margin: 0 auto;" class="mx-auto">
+      </div>
+    <map name="mapa">
+
+        <!-- PROCESOS MISIONALES-->
+
+        <area shape="poly" coords="590,21,661,20,660,159,522,160,522,21" href="{% url 'evaluacionycontrol' %}" alt="internacionalizacion">
+        <area shape="poly" coords="935,28,1007,31,1006,68,868,169,868,32" href="{% url 'gestionintegrada' %}" alt="comunicacion">
+        <area shape="poly" coords="590,224,660,225,659,362,522,364,522,226" href="{% url 'servicioalpublico' %}" alt="internacionalizacion">
+        <area shape="poly" coords="913,205,984,204,983,343,845,344,846,205" href="{% url 'autoevaluacionyacreditacion' %}" alt="comunicacion">
+        
+        
+
+</main>
+
+{% endblock %}

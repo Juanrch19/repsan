@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block blockname %} Crear documento {% endblock blockname %}
+
+{% block contenido %}
+ <div class="card">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos del Documento</h4>
+        {% include 'documentos/form.html' %}
+    </div>
+    <div class="card-footer text-muted">
+        Footer
+    </div>
+ </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block titulo %} Lista maestra de documentos {% endblock titulo %}
+
+{% block contenido %}
+<div class="container mt-5">
+
+    <div class="mb-3 text-center">
+        <a class="btn btn-primary" href="{% url 'crearcategoria' %}" role="button">Agregar categoría</a>
+    </div>
+
+    <div class="card mx-auto" style="max-width: 800px;">
+        <div class="card-body">
+            <h4 class="card-title text-center">Categorías</h4>
+            
+            <div class="table-responsive">
+                <table class="table table-hover mx-auto">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 10%;">Código</th>
+                            <th scope="col" style="width: 30%;">Categoría</th>
+                            <th scope="col" style="width: 15%;">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for categoria in categorias %}
+                        <tr>
+                            <td>{{ categoria.id_categoria }}</td>
+                            <td>{{ categoria.nombre_categoria }}</td>
+                            <td > 
+                               
+                                    <a class="btn btn-success btn-sm" href="{% url 'editarcategoria' categoria.id_categoria %}" role="button"><i class="bi bi-pencil-square"></i></a>
+                                    <a class="btn btn-danger btn-sm" href="{% url 'eliminarcategoria' categoria.id_categoria %}" role="button"><i class="bi bi-trash"></i></a>
+                                    
+                                
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}

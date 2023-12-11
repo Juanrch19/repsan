@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block blockname %} Categorias {% endblock blockname %}
+
+{% block contenido %}
+ <div class="card">
+    <div class="card-header">
+      
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Ingresa una nueva categoria</h4>
+        {% include 'categorias/form.html' %}
+    </div>
+    <div class="card-footer text-muted">
+    
+    </div>
+ </div>
+{% endblock %}

@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Lista maestra de documentos {% endblock %}
+
+{% block contenido %}
+
+<form method="get" action="{% url 'documentos' %}">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Buscar documentos" name="q" value="{{ request.GET.q }}">
+        <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+    </div>
+</form>
+
+<div class="container mt-5">
+    {% if user.is_authenticated and user.is_superuser %}
+    <div class="mb-3">
+        <a class="btn btn-primary" href="{% url 'crear' %}" role="button">Agregar Documento</a>
+    </div>
+    {% endif %}
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Documentos</h4>
+
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 15%;">Proceso</th>
+                            <th scope="col" style="width: 5%;">Id</th>
+                            <th scope="col" style="width: 15%;">Título</th>
+                            <th scope="col" style="width: 10%;">Categoria</th>
+                            <th scope="col" style="width: 10%;">Fecha de Creación</th>
+                            <th scope="col" style="width: 5%;">Visualizar</th>
+                            <th scope="col" style="width: 5%;">Descargar</th>
+                            {% if user.is_authenticated and user.is_superuser %}
+                            <th scope="col" style="width: 10%;">Acciones</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for document in documentos %}
+                        <tr>
+                            <td>{{ document.proceso.nombre_proceso }}</td>
+                            <td>{{ document.id_archivo }}</td>
+                            <td>{{ document.titulo }}</td>
+                            <td>{{ document.categoria.nombre_categoria }}</td>
+                            <td>{{ document.fecha_creacion }}</td>
+                            <td>
+                                <a href="{% url 'ver_pdf' document.id_archivo %}" class="btn btn-success btn-sm rounded-pill"
+                                   class="text-decoration-none text-info">
+                                    <i class="bi bi-eye-fill"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-success btn-sm rounded-pill"
+                                   href="{% url 'download' document.id_archivo %}"
+                                   download="{{ document.file.name }}"
+                                   class="text-decoration-none text-info">
+                                    <i class="bi bi-download"></i>
+                                </a>
+                            </td>
+                            {% if user.is_authenticated and user.is_superuser %}
+                            <td>
+                                <a class="btn btn-info btn-sm rounded-pill"
+                                   href="{% url 'editardocumento' document.id_archivo %}"
+                                   role="button">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <a class="btn btn-danger btn-sm rounded-pill"
+                                   href="{% url 'eliminardocumento' document.id_archivo %}"
+                                   role="button">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                            {% endif %}
+                        </tr>
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Mostrar la paginación -->
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    {% if documentos.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1" aria-label="Primera">
+                            <span aria-hidden="true">&laquo;&laquo; Primero</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ documentos.previous_page_number }}" aria-label="Anterior">
+                            <span aria-hidden="true">Anterior</span>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    <li class="page-item disabled">
+                        <span class="page-link">Página {{ documentos.number }} de {{ documentos.paginator.num_pages }}.</span>
+                    </li>
+
+                    {% if documentos.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ documentos.next_page_number }}" aria-label="Siguiente">
+                            <span aria-hidden="true">Siguiente</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ documentos.paginator.num_pages }}" aria-label="Última">
+                            <span aria-hidden="true">Ultimo &raquo;&raquo;</span>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+    
+</div>
+
+{% endblock contenido %}
+

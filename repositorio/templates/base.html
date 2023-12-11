@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script src="{% static 'js/pdfjs/build/pdf.js' %}"></script>
+    <script src="{% static 'js/pdfjs/build/pdf.viewer.js' %}"></script>
+    <!-- Agrega esto en la sección <head> -->
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+
+    <title>{% block titulo %} {% endblock %}</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      /* Estilos personalizados para el navbar */
+      .navbar {
+        background-color: #f8f9fa; /* Cambiar al tono más claro que desees */
+      }
+
+      .navbar-dark .navbar-nav .nav-link {
+        color: #fff; /* Color del texto en estado normal */
+      }
+
+      .navbar-dark .navbar-nav .nav-link:hover {
+        color: #ff6666; /* Cambiar al tono rojo más intenso al pasar el cursor */
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="{% static 'img/logoBN.png' %}" alt="..." height="40" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="#"
+                >Inicio</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'cadenavalor' %}"
+                >Mapa de Procesos</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Documentación
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="navbarDropdown"
+              >
+              {% if user.is_authenticated and user.is_superuser %}
+              <li>
+                <a class="dropdown-item" href="{% url 'procesos' %}" 
+                  >Procesos</a
+                > 
+              </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'categorias' %}" 
+                    >Categorias</a
+                  > 
+                </li>
+                {% endif %}
+                <li>
+                  <a class="dropdown-item" href="{% url 'documentos' %}" 
+                    >Listado maestro de documentos</a
+                  > 
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'manuales' %}" 
+                    >Manuales</a
+                  > 
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {{ user.first_name }} {{ user.last_name }}
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="navbarDropdown"
+              >
+                {% if user.is_authenticated %}
+
+                <li>
+                  <a class="dropdown-item" href="{% url 'signout' %}"
+                    >Cerrar sesión</a
+                  >
+                </li>
+                {% else %}
+                <li>
+                  <a class="dropdown-item" href="{% url 'signin' %}"
+                    >Iniciar sesion</a
+                  >
+                </li>
+                {% endif %}
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header>
+      <!-- Resto del código del header como está -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <br />
+            <br />
+            {% block contenido %} {% endblock %}
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+      crossorigin="anonymous"
+    ></script>
+    <!-- En el encabezado de tu base.html o directamente en la plantilla -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/dist/js/bootstrap-icons.js"></script>
+
+  </body>
+</html>
+

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %} Gestion administrativa y financiera {% endblock %}
+
+{% block contenido %} 
+
+<main>
+    <section class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center"> </h1>
+          </div>
+          
+      </section>
+      <div class="text-center">
+        <img src="{% static 'img/gestionadminfinan.png' %}" usemap="#mapa" style="max-width: 100%; max-height: 50%; height: auto; width: auto; margin: 0 auto;" class="mx-auto">
+      </div>
+    <map name="mapa">
+
+        <!-- PROCESOS MISIONALES-->
+
+        <area shape="poly" coords="625,39,682,39,682,192,546,186,544,39" href="{% url 'gestioncartera' %}" alt="gestioncartera">
+        <area shape="poly" coords="946,39,1009,42,1010,196,874,191,875,39" href="{% url 'gestionrefinanciero' %}" alt="gestionrefinanciero">
+       
+
+</main>
+{% endblock %}
