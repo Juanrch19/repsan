@@ -27,7 +27,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
@@ -90,7 +91,6 @@ DATABASES = {
     )    
 }  
 
-
 #'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #        'NAME': 'repsan',
 #        'USER': 'postgres',
@@ -141,7 +141,7 @@ if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
     # Turn on WhiteNoise storage backend that takes care of compressing static files
     # and creating unique names for each version so they can safely be cached forever.
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-    
+
 X_FRAME_OPTIONS = 'ALLOWALL'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'repositorio', 'static'),
@@ -149,7 +149,10 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000",  # Agrega la URL de tu aplicación
+    "https://django-repsan.onrender.com",  # Agrega la URL de tu aplicación
+]
+CORS_ALLOWED_ORIGINS = [
+    "https://django-repsan.onrender.com",
 ]
 
 # Default primary key field type

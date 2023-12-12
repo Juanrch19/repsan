@@ -1,7 +1,7 @@
 
 <!-- formulario.html -->
 
-<form action="{% url 'crear' %}" method="POST" enctype="multipart/form-data">
+<form  method="POST" enctype="multipart/form-data">
   {% csrf_token %}
 
   {% for field in formulario.visible_fields %}
@@ -12,7 +12,8 @@
           {% elif field.name == 'proceso' %}
               {{ field }}
           {% elif field.name == 'file' %}
-              <input class="form-control" type="file" name="{{ field.name }}" id="{{ field.id_for_label }}" aria-describedby="helpId">
+              <input class="form-control" type="file" name="file" id="{{ field.id_for_label }}" aria-describedby="helpId">
+
           {% else %}
               <input class="form-control" type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="{{ field.id_for_label }}" aria-describedby="helpId" placeholder='{{ field.field.label }}' value="{{ field.value | default:'' }}">
           {% endif %}
@@ -22,3 +23,6 @@
 
   <input class="btn btn-success" type="submit" value="Enviar Información">
 </form>
+
+  
+  

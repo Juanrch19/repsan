@@ -205,10 +205,16 @@ def crearproceso(request):
     return render(request,'procesos/crearproceso.html',{'formulario': formulario})
 
 @login_required(login_url='signin')
+
 def editarproceso(request, id):
-    proceso = Proceso.objects.get(id_proceso=id)
+    proceso = get_object_or_404(Proceso, id_proceso=id)
     formulario = ProcesoForm(request.POST or None, request.FILES or None, instance=proceso)
-    return render(request,'procesos/editarproceso.html', {'formulario': formulario})
+    
+    if request.method == 'POST' and formulario.is_valid():
+        formulario.save()
+        return redirect('procesos', id=id)  # Redirige a la vista de detalle del proceso
+    
+    return render(request, 'procesos/editarproceso.html', {'formulario': formulario})
 
 @login_required(login_url='signin')
 def eliminarproceso(request, id):
@@ -344,3 +350,9 @@ def informacionbibliografica(request):
 @login_required(login_url='signin')
 def gestionjuridica(request):
     return render(request, 'procesos/gestionjuridica.html')
+@login_required(login_url="sigin")
+def gestioncontractual(request):
+    return render(request,'procesos/gestionjuridica/gestioncontractual.html')
+@login_required(login_url="sigin")
+def gestjuridica(request):
+    return render(request,'procesos/gestionjuridica/gestionjuridica.html')

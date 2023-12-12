@@ -118,8 +118,14 @@ urlpatterns = [
          views.adminregiscontrol, name='adminregiscontrol'),
 
     #Gestión Juridica y contractual
-    path('cadenavalor/gestiónjuridica',
+    path('cadenavalor/gestiónjuridicaycontractual',
          views.gestionjuridica, name='gestionjuridica'), 
+    path('cadenavalor/gestiónjuridicaycontractual/gestioncontractual',
+          views.gestioncontractual, name='gestioncontractual'),
+    path('cadenavalor/gestiónjuridicaycontractual/gestionjuridica',
+          views.gestjuridica, name='gesjuridica'),
+
+
     #CRUD Categorias
     path('categorias', views.categorias, name='categorias'),
     path('crearcategoria', views.crearcategoria, name='crearcategoria'),
