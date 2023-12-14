@@ -21,7 +21,7 @@ class ProcesoForm(forms.ModelForm):
 class DocumentForm(forms.ModelForm):
     class Meta:
         model = Document
-        fields = ['proceso', 'categoria', 'titulo', 'file']
+        fields = ['proceso','codigo','categoria', 'titulo', 'file']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

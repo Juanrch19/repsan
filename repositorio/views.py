@@ -134,23 +134,27 @@ def documentos(request):
 
     return render(request, 'documentos/documentos.html', {'documentos': documentos, 'query': query})
 
-@login_required(login_url='signin')
+
+
 def crear(request):
     formulario = DocumentForm(request.POST or None, request.FILES or None)
 
     if formulario.is_valid():
         # Crea un nuevo documento
         documento = Document(
-            proceso = formulario.cleaned_data['proceso'],
+            proceso=formulario.cleaned_data['proceso'],
+            codigo = formulario.cleaned_data['codigo'],
             categoria=formulario.cleaned_data['categoria'],
             titulo=formulario.cleaned_data['titulo'],
             file=formulario.cleaned_data['file'],
+           
         )
 
         # Guarda el documento en la base de datos
         documento.save()
 
         return redirect('documentos')
+    
     return render(request, 'documentos/creardocumento.html', {'formulario': formulario})
 
 @login_required(login_url='signin')
@@ -237,15 +241,23 @@ def docenciac(request):
     return render(request, 'procesos/docenciac.html')
 @login_required(login_url='signin')
 def docenciacalidad(request):
-    return render(request, 'procesos/docenciacalidad/docenciacalidad.html')
+    documentos = Document.objects.filter(titulo__iexact='Gestión de docencia')
+    
+
+    context = {'documentos': documentos}
+    return render(request, 'procesos/docenciacalidad/docenciacalidad.html', context)
 
 #Investigacion Pertinente
 @login_required(login_url='signin')
 def investigacionp(request):
     return render(request, 'procesos/investigacionpertinente.html')
+
 @login_required(login_url='signin')
 def gestioninvestigacion(request):
-    return render(request, 'procesos/investigacionpertinente/gestiondeinvestigacion.html')
+    documentos  = Document.objects.filter(titulo__iexact='Gestión de investigación')
+
+    context = {'documentos': documentos}
+    return render(request, 'procesos/investigacionpertinente/gestiondeinvestigacion.html', context)
 
 #Proyeccion Social
 @login_required(login_url='signin')
@@ -253,7 +265,9 @@ def extensioyp(request):
     return render(request, 'procesos/extensionproyeccion.html')
 @login_required(login_url='signin')
 def extensionyproyeccion(request):
-    return render(request, 'procesos/proyeccionsocial/extensionproyeccion.html')
+    documentos = Document.objects.filter(titulo__iexact='Extensión y Proyección social')
+    context ={'documentos': documentos}
+    return render(request, 'procesos/proyeccionsocial/extensionproyeccion.html',context)
 
 #Procesos Estrategicos
 #Planeación Estrategicas
@@ -262,7 +276,8 @@ def planeacionestra(request):
     return render(request, 'procesos/planeacionestra.html')
 @login_required(login_url='signin')
 def planeacionestrategica(request):
-    return render(request, 'procesos/planeacionestra/planeacionestrategica.html')
+   
+    return render(request, 'procesos/planeacionestrategica/planeacionestrategica.html')
 
 #Relaciones Interinstitucionales
 @login_required(login_url='signin')

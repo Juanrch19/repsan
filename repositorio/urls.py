@@ -55,7 +55,7 @@ urlpatterns = [
     #Procesos estrategicos
     path('cadenavalor/planeacionestra',
          views.planeacionestra, name='planeacionestra'),
-    path('cadenavalor/planeacionestra/planeacionestrategica',
+    path('cadenavalor/planeacionestrategica/planeacionestrategicainstitucional',
          views.planeacionestrategica, name='planeacionestrategica'),
 
     #Relaciones Interinstitucionales
