@@ -60,48 +60,4 @@ class Document(models.Model):
         super().delete(using, keep_parents)
 
 
-
-''' 
-class TipoCodigo(models.Model):
-    CATEGORIAS = [
-        ('CR', 'Caracterización'),
-        ('PR', 'Procedimiento'),
-        ('MA', 'Manual'),
-        ('FR', 'Formato'),
-    ]
-
-    categoria = models.CharField(max_length=2, choices=CATEGORIAS)
-    prefijo = models.CharField(max_length=10)
-    
-    def __str__(self):
-        return f"{self.get_categoria_display()}-{self.prefijo}"
-
-class Codigo(models.Model):
-    tipo_codigo = models.ForeignKey(TipoCodigo, on_delete=models.CASCADE)
-    numero = models.IntegerField(default=1)
-    
-    def __str__(self):
-        return f"{self.tipo_codigo.prefijo}-{self.numero:03d}"
-
-class Proceso(models.Model):
- 
-    descripcion = models.CharField(max_length=255)
-    codigo = models.OneToOneField(Codigo, on_delete=models.CASCADE, primary_key=True)
-
-@receiver(pre_save, sender=Proceso)
-def generar_codigo_alfanumerico(sender, instance, **kwargs):
-    if not instance.codigo:
-        tipo_codigo_prefijo = instance.descripcion.upper()  # Obtener las letras proporcionadas por el usuario y convertirlas a mayúsculas
-        tipo_codigo, created = TipoCodigo.objects.get_or_create(prefijo=tipo_codigo_prefijo)
-        
-        if not tipo_codigo.prefijo.startswith('CR'):
-            raise ValueError("El prefijo del tipo de código debe comenzar con 'CR'")
-        
-        ultimo_codigo = tipo_codigo.codigo_set.last()
-        nuevo_numero = 1 if not ultimo_codigo else ultimo_codigo.numero + 1
-        nuevo_codigo = Codigo.objects.create(tipo_codigo=tipo_codigo, numero=nuevo_numero)
-        instance.codigo = nuevo_codigo
-
-'''
-
    

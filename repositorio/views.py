@@ -11,7 +11,49 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q 
+import matplotlib
+matplotlib.use('agg')
+import matplotlib.pyplot as plt
+import base64
+from io import BytesIO
 
+def estadisticas(request):
+    # Obtener el número exacto de documentos por categoría
+    caracterizaciones_count = Document.objects.filter(categoria__nombre_categoria='Caracterización').count()
+    formatos_count = Document.objects.filter(categoria__nombre_categoria='Formato').count()
+    diagramas_count = Document.objects.filter(categoria__nombre_categoria='Diagrama').count()
+    procedimientos_count = Document.objects.filter(categoria__nombre_categoria='Procedimiento').count()
+    manuales_count = Document.objects.filter(categoria__nombre_categoria='Manuales').count()
+    
+    # Crear un gráfico con matplotlib
+    labels = ['Caracterizaciones', 'Formatos', 'Diagramas', 'Procedimientos','Manuales']
+    values = [caracterizaciones_count, formatos_count, diagramas_count, procedimientos_count,manuales_count]
+
+    plt.bar(labels, values)
+    plt.title('Cantidad de Documentos por Categoría')
+    plt.xlabel('Categorías')
+    plt.ylabel('Cantidad')
+
+    # Guardar el gráfico en memoria
+    buffer = BytesIO()
+    plt.savefig(buffer, format='png')
+    buffer.seek(0)
+    plt.close('all') 
+
+    # Convertir la imagen a base64 para mostrarla en la plantilla
+    image_base64 = base64.b64encode(buffer.read()).decode('utf-8')
+
+    # Pasar los conteos a la plantilla
+    context = {
+        'image_base64': image_base64,
+        'caracterizaciones_count': caracterizaciones_count,
+        'formatos_count': formatos_count,
+        'diagramas_count': diagramas_count,
+        'procedimientos_count': procedimientos_count,
+        'manuales': manuales_count,
+    }
+
+    return render(request, 'estadisticas/estadisticas.html', context)
 
 @login_required(login_url='signin')
 def cadenavalor(request):
@@ -74,7 +116,7 @@ def signin(request):
             })
         else:
             login(request, user)
-            return redirect('cadenavalor')
+            return redirect('estadisticas')
         
 #CRUD CATEGORIAS
 @login_required(login_url='signin')
@@ -276,8 +318,9 @@ def planeacionestra(request):
     return render(request, 'procesos/planeacionestra.html')
 @login_required(login_url='signin')
 def planeacionestrategica(request):
-   
-    return render(request, 'procesos/planeacionestrategica/planeacionestrategica.html')
+    documentos = Document.objects.filter(titulo__iexact='Planeación estratégica institucional')
+    context = {'documentos': documentos}
+    return render(request, 'procesos/planeacionestrategica/planeacionestrategica.html', context)
 
 #Relaciones Interinstitucionales
 @login_required(login_url='signin')
