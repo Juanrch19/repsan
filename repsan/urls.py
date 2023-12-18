@@ -24,4 +24,5 @@ urlpatterns = [
     path('', views.signin, name='signin'),
     
     path('repositorio/', include('repositorio.urls'),),
+    path('estadisticas', views.estadisticas, name='estadisticas'),
 ]
