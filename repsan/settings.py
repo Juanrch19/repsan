@@ -72,7 +72,7 @@ WSGI_APPLICATION = 'repsan.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://postgres:1234@localhost:5433/repsan',
+        default='postgresql://postgres:1234@localhost:5432/repsan',
         conn_max_age=600
     ),
 }
