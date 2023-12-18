@@ -17,6 +17,8 @@ import matplotlib.pyplot as plt
 import base64
 from io import BytesIO
 
+
+@login_required(login_url='signin')
 def estadisticas(request):
    
         # Obtener el número exacto de documentos por categoría
@@ -59,6 +61,7 @@ def estadisticas(request):
 
 @login_required(login_url='signin')
 def cadenavalor(request):
+    print(f"Usuario autenticado: {request.user}")
     return render(request, 'cadenavalor.html')
 
 @login_required(login_url='signin')

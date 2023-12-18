@@ -21,8 +21,7 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.signin, name='signin'),
-    
+    path('', views.signin, name='signin'),  
     path('repositorio/', include('repositorio.urls'),),
-    path('estadisticas', views.estadisticas, name='estadisticas'),
+  
 ]
