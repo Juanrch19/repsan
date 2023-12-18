@@ -18,7 +18,7 @@ import base64
 from io import BytesIO
 
 def estadisticas(request):
-    try:
+   
         # Obtener el número exacto de documentos por categoría
         caracterizaciones_count = Document.objects.filter(categoria__nombre_categoria='Caracterización').count()
         formatos_count = Document.objects.filter(categoria__nombre_categoria='Formato').count()
@@ -55,10 +55,7 @@ def estadisticas(request):
         }
 
         return render(request, 'estadisticas/estadisticas.html', context)
-    except Exception as e:
-        # Registra la excepción para su análisis
-        import logging
-        logging.exception("Error en la vista /repositorio/cadenavalor: %s", str(e))
+   
 
 @login_required(login_url='signin')
 def cadenavalor(request):
