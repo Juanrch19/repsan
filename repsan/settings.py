@@ -92,6 +92,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# En settings.py
+LOGIN_REDIRECT_URL = 'dashboard'  # Cambia 'dashboard' por la URL a la que deseas redirigir después de iniciar sesión
+
+
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
