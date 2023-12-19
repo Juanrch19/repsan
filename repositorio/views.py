@@ -65,8 +65,6 @@ def estadisticas(request):
         # Puedes personalizar el mensaje de error que se mostrará al usuario
         error_message = "Ocurrió un error al cargar las estadísticas. Por favor, inténtalo de nuevo más tarde."
         return HttpResponseServerError(error_message)
-   
-                                  
 
 @login_required(login_url='signin')
 def cadenavalor(request):
