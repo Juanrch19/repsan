@@ -16,11 +16,12 @@ matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import base64
 from io import BytesIO
-
+from django.http import HttpResponseServerError
+import logging
 
 @login_required(login_url='signin')
 def estadisticas(request):
-   
+   try:
         # Obtener el número exacto de documentos por categoría
         caracterizaciones_count = Document.objects.filter(categoria__nombre_categoria='Caracterización').count()
         formatos_count = Document.objects.filter(categoria__nombre_categoria='Formato').count()
@@ -57,7 +58,15 @@ def estadisticas(request):
         }
 
         return render(request, 'estadisticas/estadisticas.html', context)
+   except Exception as e:
+        # Capturar cualquier excepción y registrarla
+        logging.Logger.error(f"Error en la vista estadisticas: {str(e)}")
+        
+        # Puedes personalizar el mensaje de error que se mostrará al usuario
+        error_message = "Ocurrió un error al cargar las estadísticas. Por favor, inténtalo de nuevo más tarde."
+        return HttpResponseServerError(error_message)
    
+                                  
 
 @login_required(login_url='signin')
 def cadenavalor(request):
