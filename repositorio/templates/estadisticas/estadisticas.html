@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
-{% csrf_token %}
-    {{ error }}
+
 {% block contenido %}
   <h2>Estadísticas</h2>
-  <img src="data:image/png;base64,{{ image_base64 }}" alt="Estadísticas">
+
+  {% if error %}
+    <div class="alert alert-danger">
+      {{ error }}
+    </div>
+  {% else %}
+    <img src="data:image/png;base64,{{ image_base64 }}" alt="Estadísticas">
+  {% endif %}
+
 {% endblock %}
