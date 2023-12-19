@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-
+{% csrf_token %}
+    {{ error }}
 {% block contenido %}
   <h2>Estadísticas</h2>
   <img src="data:image/png;base64,{{ image_base64 }}" alt="Estadísticas">

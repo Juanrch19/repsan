@@ -3,8 +3,7 @@ from . import views
 from django.contrib.auth import views as auth_views
 from .forms import CustomSetPasswordForm 
 from django.contrib.auth.views import PasswordResetConfirmView
-from django.http import HttpResponseServerError
-import logging
+
 
 urlpatterns = [
    path('signout', views.signout, name='signout'),
