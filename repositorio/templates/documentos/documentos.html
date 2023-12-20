@@ -67,11 +67,22 @@
                                    role="button">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
-                                <a class="btn btn-danger btn-sm rounded-pill"
-                                   href="{% url 'eliminardocumento' document.id_archivo %}"
-                                   role="button">
+                                <a class="btn btn-danger btn-sm rounded-pill" href="#" onclick= confirmarEliminacion()>
                                     <i class="bi bi-trash"></i>
                                 </a>
+                                
+                                <script>
+                                    function confirmarEliminacion(idArchivo) {
+                                     
+                                        var confirmacion = confirm("¿Está seguro de que desea eliminar este documento?");
+                                        
+                                        if (confirmacion) {
+                                        
+                                            window.location.href = "{% url 'eliminardocumento' document.id_archivo %}";
+                                        }
+        
+                                    }
+                                </script>
                             </td>
                             {% endif %}
                         </tr>
