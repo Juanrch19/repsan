@@ -30,7 +30,7 @@ def estadisticas(request):
         manuales_count = Document.objects.filter(categoria__nombre_categoria='Manuales').count()
         
         # Crear un gráfico con matplotlib
-        labels = ['Caracterizaciones', 'Formatos', 'Diagramas', 'Procedimientos','Manuales']
+        labels = ['Caracterizacion', 'Formatos', 'Diagramas', 'Procedimientos','Manuales']
         values = [caracterizaciones_count, formatos_count, diagramas_count, procedimientos_count,manuales_count]
 
         plt.bar(labels, values)

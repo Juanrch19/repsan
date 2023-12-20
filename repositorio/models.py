@@ -30,7 +30,8 @@ class Document(models.Model):
     titulo = models.CharField(max_length=100, verbose_name="Titulo")
     file = models.FileField(upload_to='documents/', verbose_name="Archivo")
     fecha_creacion = models.DateTimeField(default=datetime.datetime.now().replace(microsecond=0))
-    numero_autoincrementable = models.IntegerField(default=1)
+    numero_autoincrementable = models.IntegerField(null=True, blank=True)
+
 
     def __str__(self):
         return self.titulo
@@ -39,19 +40,20 @@ class Document(models.Model):
     def save(self, *args, **kwargs):
         # Asegurarse de que siempre haya un código proporcionado por el usuario
         if not self.codigo:
-            raise ValueError("El campo 'codigo' es obligatorio y debe ser proporcionado por el usuario.")
-
-        # Incrementar el número autoincrementable solo si la categoría está presente, no es "caracterización" y no se ha asignado ya un número autoincrementable para esta categoría
-        if self.categoria and self.categoria.nombre_categoria.lower() != 'caracterización' and self.numero_autoincrementable is None:
-            # Obtener el número autoincrementable actual para esta categoría
-            ultimo_numero = Document.objects.filter(categoria=self.categoria).aggregate(models.Max('numero_autoincrementable'))['numero_autoincrementable__max'] or 0
-            self.numero_autoincrementable = ultimo_numero + 1
+            raise ValueError("El campo 'codigo_usuario' es obligatorio y debe ser proporcionado por el usuario.")
+        categorias_incrementables = ['procedimiento','formato','manuales','diagrama']
+        # Incrementar el número autoincrementable solo si la categoría es 'formato'
+        if self.categoria and self.categoria.nombre_categoria.lower() in categorias_incrementables:
+            self.numero_autoincrementable = Document.objects.filter(categoria=self.categoria).aggregate(models.Max('numero_autoincrementable'))['numero_autoincrementable__max'] or 0
+            self.numero_autoincrementable += 1
+        else:
+            self.numero_autoincrementable = None  # No incrementar si la categoría no es 'formato'
 
         # Agregar el número autoincrementable al código proporcionado por el usuario
         if self.numero_autoincrementable is not None:
             self.codigo = f"{self.codigo}-{self.numero_autoincrementable}"
 
-     
+        # Guardar el objeto
         super().save(*args, **kwargs)
 
     def delete(self, using=None, keep_parents=False):
