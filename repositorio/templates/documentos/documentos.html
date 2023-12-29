@@ -26,8 +26,6 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            
-                            <th scope="col" style="width: 1%;">ID</th>
                             <th scope="col" style="width: 15%;">Proceso</th>
                             <th scope="col" style="width: 15%;">Codigo</th>
                             <th scope="col" style="width: 15%;">Título</th>
@@ -43,7 +41,6 @@
                     <tbody>
                         {% for document in documentos %}
                         <tr>
-                            <td>{{ document.id_archivo }}</td>
                             <td>{{ document.proceso.nombre_proceso }}</td>
                             <td>{{ document.codigo }}</td>
                             <td>{{ document.titulo }}</td>

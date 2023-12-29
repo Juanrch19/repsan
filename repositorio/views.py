@@ -20,53 +20,6 @@ from django.http import HttpResponseServerError
 import logging
 
 @login_required(login_url='signin')
-def estadisticas(request):
-   try:
-        # Obtener el número exacto de documentos por categoría
-        caracterizaciones_count = Document.objects.filter(categoria__nombre_categoria='Caracterización').count()
-        formatos_count = Document.objects.filter(categoria__nombre_categoria='Formato').count()
-        diagramas_count = Document.objects.filter(categoria__nombre_categoria='Diagrama').count()
-        procedimientos_count = Document.objects.filter(categoria__nombre_categoria='Procedimiento').count()
-        manuales_count = Document.objects.filter(categoria__nombre_categoria='Manuales').count()
-        
-        # Crear un gráfico con matplotlib
-        labels = ['Caracterizacion', 'Formatos', 'Diagramas', 'Procedimientos','Manuales']
-        values = [caracterizaciones_count, formatos_count, diagramas_count, procedimientos_count,manuales_count]
-
-        plt.bar(labels, values)
-        plt.title('Cantidad de Documentos por Categoría')
-        plt.xlabel('Categorías')
-        plt.ylabel('Cantidad')
-
-        # Guardar el gráfico en memoria
-        buffer = BytesIO()
-        plt.savefig(buffer, format='png')
-        buffer.seek(0)
-        plt.close('all') 
-
-        # Convertir la imagen a base64 para mostrarla en la plantilla
-        image_base64 = base64.b64encode(buffer.read()).decode('utf-8')
-
-        # Pasar los conteos a la plantilla
-        context = {
-            'image_base64': image_base64,
-            'caracterizaciones_count': caracterizaciones_count,
-            'formatos_count': formatos_count,
-            'diagramas_count': diagramas_count,
-            'procedimientos_count': procedimientos_count,
-            'manuales': manuales_count,
-        }
-
-        return render(request, 'estadisticas/estadisticas.html', context)
-   except Exception as e:
-        # Capturar cualquier excepción y registrarla
-        logging.Logger.error(f"Error en la vista estadisticas: {str(e)}")
-        
-        # Puedes personalizar el mensaje de error que se mostrará al usuario
-        error_message = "Ocurrió un error al cargar las estadísticas. Por favor, inténtalo de nuevo más tarde."
-        return HttpResponseServerError(error_message)
-
-@login_required(login_url='signin')
 def cadenavalor(request):
     print(f"Usuario autenticado: {request.user}")
     return render(request, 'cadenavalor.html')
