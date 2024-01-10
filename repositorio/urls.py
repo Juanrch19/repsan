@@ -77,6 +77,8 @@ urlpatterns = [
          views.servicioalpublico, name='servicioalpublico'),
     path('cadenavalor/calidadintegral/autoevaluacionyacreditacion',
          views.autoevaluacionyacreditacion, name='autoevaluacionyacreditacion'),
+    path('cadenavalor/calidadintegral/aseguramiento de la calidad de procesos',
+         views.aseguramientodelacalidadprocesos, name='aseguramientodelacalidadprocesos'),
     
     #Talento Humano y Bienestar
     path('cadenavalor/talentohumanobienestar',

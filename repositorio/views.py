@@ -317,6 +317,8 @@ def servicioalpublico(request):
 login_required(login_url='signin')
 def autoevaluacionyacreditacion(request):
     return render(request, 'procesos/calidadintegral/autoevaluacionyacreditacion.html')
+def aseguramientodelacalidadprocesos(request):
+    return render(request, 'procesos/calidadintegral/aseguramientodelacalidadprocesos.html')
 
 #Talento humano y Bienestar
 @login_required(login_url='signin')
