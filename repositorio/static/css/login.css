@@ -1,6 +1,9 @@
 body {
     overflow-y: hidden; /* Oculta la barra de desplazamiento vertical en el cuerpo de la página */
   }
+  *{
+    font-family: 'Open Sans', sans-serif;
+  }
 
 /* Estilo para el título "Inicia Sesión" */
 .form-title {

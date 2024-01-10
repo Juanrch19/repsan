@@ -6,6 +6,9 @@
     <script src="{% static 'js/pdfjs/build/pdf.js' %}"></script>
     <script src="{% static 'js/pdfjs/build/pdf.viewer.js' %}"></script>
     <!-- Agrega esto en la sección <head> -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
     <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 
     <title>{% block titulo %} {% endblock %}</title>
@@ -22,8 +25,11 @@
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
-
+      
     <style>
+      *{
+        font-family: 'Open Sans', sans-serif;
+      }
       /* Estilos personalizados para el navbar */
       .navbar {
         background-color: #f8f9fa; /* Cambiar al tono más claro que desees */
@@ -62,7 +68,7 @@
               <a
                 class="nav-link active"
                 aria-current="page"
-                href="{% url 'estadisticas' %}"
+                href="{% url 'inicio' %}"
                 >Inicio</a
               >
             </li>

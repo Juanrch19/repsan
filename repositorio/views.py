@@ -20,8 +20,11 @@ from django.http import HttpResponseServerError
 import logging
 
 @login_required(login_url='signin')
+def inicio(request):
+    return render(request,'inicio.html')
+
+@login_required(login_url='signin')
 def cadenavalor(request):
-    print(f"Usuario autenticado: {request.user}")
     return render(request, 'cadenavalor.html')
 
 @login_required(login_url='signin')
@@ -81,7 +84,7 @@ def signin(request):
             })
         else:
             login(request, user)
-            return redirect('estadisticas')
+            return redirect('inicio')
         
 #CRUD CATEGORIAS
 @login_required(login_url='signin')

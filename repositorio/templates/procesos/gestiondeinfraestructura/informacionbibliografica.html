@@ -2,6 +2,651 @@
 {% block titulo %} Gestión de la información Bibliografica {% endblock %}
 {% block contenido %}
 {% load static %}
-
-
+<div>
+    <table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+        <tbody>
+            <tr>
+                <td rowspan="3" style="width:19.58%; border:0.75pt inset #eeeeee; vertical-align:top;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="height:0pt; text-align:left; display:block; position:absolute; z-index:0;"><img src="data:image/png;base64,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" width="162" height="53" alt="Fundación Universitaria San Pablo" style="margin: 0 0 0 auto; display: block; "></span><strong><span style="font-family:Arial;">&nbsp;</span></strong></p>
+                </td>
+                <td style="width:60.02%; border:0.75pt inset #eeeeee; vertical-align:middle;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial;">CARACTERIZACI&Oacute;N DE PROCESOS UNISANPABLO</span></strong></p>
+                </td>
+                <td style="width:20.4%; border:0.75pt inset #eeeeee; padding-left:3.75pt; vertical-align:middle;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:Arial;">C&oacute;digo: CR-FT-GIB</span></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:60.02%; border:0.75pt inset #eeeeee; vertical-align:middle;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial;">GESTI&Oacute;N DE LA INFRAESTRUCTURA F&Iacute;SICA Y TECNOL&Oacute;GICA</span></strong></p>
+                </td>
+                <td style="width:20.4%; border:0.75pt inset #eeeeee; padding-left:3.75pt; vertical-align:middle;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:Arial;">Versi&oacute;n: 1</span></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:60.02%; border:0.75pt inset #eeeeee; vertical-align:middle;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial;">GESTI&Oacute;N DE LA INFORMACI&Oacute;N BIBLIOGR&Aacute;FICA</span></strong></p>
+                </td>
+                <td style="width:20.4%; border:0.75pt inset #eeeeee; padding-left:3.75pt; vertical-align:middle;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:Arial;">Fecha: 01/Dic/2023</span></strong></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+        <tbody>
+            <tr>
+                <td colspan="2" style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle; background-color:#3f94ab;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">PROCESO</span></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:50%; border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:top;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:Arial;">NOMBRE:</span></strong></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Gesti&oacute;n De La Informaci&oacute;n Bibliogr&aacute;fica</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                </td>
+                <td style="width:50%; border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:top;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:Arial;">ALCANCE:</span></strong></p>
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                                <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:8pt; line-height:108%; font-size:11pt;"><span style="font-family:Arial;">Inicia con la identificaci&oacute;n de las necesidades de informaci&oacute;n bibliogr&aacute;fica de los usuarios de la Comunidad Universitaria, a trav&eacute;s del acceso a los recursos de informaci&oacute;n bibliogr&aacute;fica, y finaliza con el control y seguimiento de los servicios de informaci&oacute;n.</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:Arial;">OBJETIVO:</span></strong></p>
+                    <p style="margin-top:0pt; margin-bottom:8pt; line-height:108%; font-size:11pt;"><span style="font-family:Arial;">Gestionar y proveer el acceso a fuentes de informaci&oacute;n acad&eacute;micas, investigativas y culturales a la Comunidad Universitaria, a trav&eacute;s de recursos y servicios de informaci&oacute;n oportunos, pertinentes y actualizados con el fin de apoyar y fortalecer los Procesos Misionales de UNISANPABLO.</span></p>
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                                <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><br></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+        <tbody>
+            <tr style="height:11.25pt;">
+                <td style="width:15%; border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle; background-color:#3f94ab;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">PROVEEDORES</span></strong></p>
+                </td>
+                <td style="width:15%; border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle; background-color:#3f94ab;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">ENTRADAS</span></strong></p>
+                </td>
+                <td style="width:10%; border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle; background-color:#3f94ab;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">PHVA</span></strong></p>
+                </td>
+                <td style="width:30%; border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle; background-color:#3f94ab;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">DESCRIPCI&Oacute;N</span></strong></p>
+                </td>
+                <td style="width:15%; border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle; background-color:#3f94ab;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">SALIDAS</span></strong></p>
+                </td>
+                <td style="width:15%; border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle; background-color:#3f94ab;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">CLIENTES</span></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="4" style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:top;">
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">&nbsp;</span></strong></p>
+                                </td>
+                                <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">EXTERNOS</span></strong></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(P1) Distribuidores.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(P2) C&aacute;mara Colombiana del Libro.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(P3) Asociaci&oacute;n de Editoriales Universitarias a nivel mundial.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(P4) Librer&iacute;as, Editoriales y Ferias de libros.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(P5) Entidades p&uacute;blicas y privadas.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(P6) Ministerio de Educaci&oacute;n Nacional.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(P7) Direcci&oacute;n Nacional de Derechos de Autor.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(P10) Biblioteca Nacional.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">INTERNOS</span></strong><span style="font-family:Arial;">.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(P11) Proceso Comercializaci&oacute;n y Venta.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(P11) Todos los procesos.</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><br></p>
+                </td>
+                <td rowspan="4" style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:top;">
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:10pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+                                </td>
+                                <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(E2) Reporte ISBN.</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(E7) Normatividad aplicable a la protecci&oacute;n de derechos de autor.</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(E10) Lineamientos para el registro y reconocimiento de publicaciones seriadas.</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(E11) Portafolio de productos y servicios de la instituci&oacute;n en medios impresos y digitales.</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(E11) Informaci&oacute;n de usabilidad (descargas, visitas, uso, lectura, etc.).</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(E11) Requisitos y necesidades de los clientes internos.</span></p>
+                </td>
+                <td style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial;">P</span></strong></p>
+                </td>
+                <td style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:top;">
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                                <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">1.</span></strong><span style="font-family:Arial;">&nbsp;Formular Plan de Acci&oacute;n del Proceso de Gesti&oacute;n de la Informaci&oacute;n Bibliogr&aacute;fica.</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">2.</span></strong><span style="font-family:Arial;">&nbsp;Identificar las necesidades de servicios de informaci&oacute;n bibliogr&aacute;fica.</span></p>
+                </td>
+                <td rowspan="4" style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:top;">
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:10pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+                                </td>
+                                <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(S1) Puesta a disposici&oacute;n del Patrimonio bibliogr&aacute;fico y documental de la Naci&oacute;n.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(S2) Registro de Derechos de Autor.&nbsp;</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(S4,S5,S6,</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">S10,S8,S9) Cat&aacute;logo de Publicaciones.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(S4,S5,S6,S10,S13,</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">S10,S11) Libros de apoyo a la Docencia, de Proyecci&oacute;n Social, de literatura, Institucionales, seriados y resultado de Investigaci&oacute;n.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(S7,S9,S7,S9,S15,</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">S10,S18,S11) Art&iacute;culos de Investigaci&oacute;n.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(S7,S8,S7,S9,) Revistas Cient&iacute;ficas.</span><br><span style="font-family:Arial;">(S7,S19,) Registro de las publicaciones seriadas en la plataforma OJS.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(S3) Informe de libros por l&iacute;nea editorial.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(S10) Informe de libros por &aacute;reas de conocimiento.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(S6) Reporte de entradas y salidas de libros</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(S11) Informes de gesti&oacute;n.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><br></p>
+                </td>
+                <td rowspan="4" style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:top;">
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:10pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+                                </td>
+                                <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">EXTERNOS</span></strong></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(C1) Dep&oacute;sito Legal (Biblioteca Nacional, Senado y C&aacute;mara).</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(C2) Direcci&oacute;n Nacional de Derechos de Autor.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">C3) Distribuidores.</span><br><span style="font-family:Arial;">(C4) Asociaci&oacute;n de Editoriales Universitarias.</span><br><span style="font-family:Arial;">(C5) Librer&iacute;as y Ferias de libros.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(C6) Estudiantes.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(C7) Redes Acad&eacute;micas.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(C8) Comunidades.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(C9) Organizaci&oacute;n San Pablo.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">INTERNOS</span></strong></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(C10) Proceso Comercializaci&oacute;n y Venta.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">(C11) Profesores.</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Todos los Procesos.</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><br></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial;">H</span></strong></p>
+                </td>
+                <td style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:top;">
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                                <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">3.</span></strong><span style="font-family:Arial;">&nbsp;Adquirir material bibliogr&aacute;fico en sus diferentes formas y formatos.</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">4.</span></strong><span style="font-family:Arial;">&nbsp;An&aacute;lisis y procesamiento t&eacute;cnico del material bibliogr&aacute;fico.</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">5.</span></strong><span style="font-family:Arial;">&nbsp;Brindar servicios de informaci&oacute;n bibliogr&aacute;fica, registro y publicaci&oacute;n de documentos en el Repositorio Institucional.</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial;">V</span></strong></p>
+                </td>
+                <td style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:top;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">6.</span></strong><span style="font-family:Arial;">&nbsp;Realizar control y seguimiento de los servicios prestados por la Biblioteca.</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">7.</span></strong><span style="font-family:Arial;">&nbsp;Identificaci&oacute;n de los activos, novedades, baja de bienes e inconsistencias.</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">8.</span></strong><strong><span style="font-family:Arial;">&nbsp;</span></strong><span style="font-family:Arial;">Reportar entradas y salidas de los libros (f&iacute;sicos y electr&oacute;nicos)</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial;">A</span></strong></p>
+                </td>
+                <td style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:top;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">9.</span></strong><span style="font-family:Arial;">&nbsp;Generar Planes de Mejoramiento Continuo mediante solicitudes de acciones correctivas y/o preventivas&nbsp;</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">10.</span></strong><span style="font-family:Arial;">&nbsp;Efectuar informes de revisi&oacute;n del sistema integrado de gesti&oacute;n.</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+        <tbody>
+            <tr>
+                <td style="width:50%; border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle; background-color:#3f94ab;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">REQUISITOS LEGALES Y NORMATIVOS</span></strong></p>
+                </td>
+                <td style="width:50%; border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle; background-color:#3f94ab;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">DIAGRAMA DE PROCESO - ROLES Y RESPONSABILIDADES</span></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle;">
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="width:35.4pt; font-family:Arial; display:inline-block;">&nbsp;</span></strong><span style="font-family:Arial;">&bull; Plan de Desarrollo Institucional</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="width:35.4pt; font-family:Arial; display:inline-block;">&nbsp;</span><span style="font-family:Arial;">&bull; Matriz de requisitos ISO</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="width:35.4pt; font-family:Arial; display:inline-block;">&nbsp;</span><span style="font-family:Arial;">&bull; Ver requisitos legales y normativos</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="width:35.4pt; font-family:Arial; display:inline-block;">&nbsp;</span><span style="font-family:Arial;">&bull; Ver Matriz de alineaci&oacute;n de los procesos del Plan de Desarrollo Institucional</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><br></p>
+                </td>
+                <td style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle;">
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="width:0.3pt; padding:0.75pt; vertical-align:top;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:10pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+                                </td>
+                                <td style="width:307.95pt; padding:0.75pt; vertical-align:top;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:Arial;">&bull; Ver diagrama de flujo</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                                <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><br></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+        <tbody>
+            <tr>
+                <td style="width:50%; border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle; background-color:#3f94ab;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">INDICADORES</span></strong></p>
+                </td>
+                <td style="width:50%; border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle; background-color:#3f94ab;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">REQUISITOS Y NECESIDADES DE LAS PARTES INTERESADAS</span></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                                <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Indicadores</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><br></p>
+                </td>
+                <td style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle;">
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="width:0.3pt; padding:0.75pt; vertical-align:top;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                                <td style="width:307.95pt; padding:0.75pt; vertical-align:top;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:Arial;">&bull; Matriz de partes interesadas pertinentes UNISANPABLO</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><br></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+        <tbody>
+            <tr>
+                <td style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle; background-color:#3f94ab;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">DOCUMENTOS ASOCIADOS</span></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border:0.75pt inset #eeeeee; padding:3.75pt; vertical-align:middle;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                                <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:10pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                                <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:10pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><br></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+    <div style="text-align:center;">
+        <table cellspacing="0" cellpadding="0" style="width:100%; margin-right:auto; margin-left:auto; border:0.75pt outset #eeeeee;">
+            <tbody>
+                <tr>
+                    <td style="width:15%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">VERSI&Oacute;N</span></strong></p>
+                    </td>
+                    <td style="width:15%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">FECHA</span></strong></p>
+                    </td>
+                    <td style="width:70%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">RAZ&Oacute;N DE LA ACTUALIZACI&Oacute;N</span></strong></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:15%; border:0.75pt inset #eeeeee; vertical-align:middle;">
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">1</span></p>
+                    </td>
+                    <td style="width:15%; border:0.75pt inset #eeeeee; vertical-align:middle;">
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">Dic/2023</span></p>
+                    </td>
+                    <td style="width:70%; border:0.75pt inset #eeeeee; vertical-align:middle;">
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Creaci&oacute;n del proceso</span></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+        <tbody>
+            <tr>
+                <td style="width:34%; border:0.75pt inset #eeeeee; padding:0.75pt; vertical-align:middle; background-color:#3f94ab;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">ELABOR&Oacute;</span></strong></p>
+                </td>
+                <td style="width:34%; border:0.75pt inset #eeeeee; padding:0.75pt; vertical-align:middle; background-color:#3f94ab;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">REVIS&Oacute;</span></strong></p>
+                </td>
+                <td style="width:34%; border:0.75pt inset #eeeeee; padding:0.75pt; vertical-align:middle; background-color:#3f94ab;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:Arial; color:#ffffff;">APROB&Oacute;</span></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border:0.75pt inset #eeeeee; padding:0.75pt; vertical-align:top;">
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="width:25%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                                </td>
+                                <td style="width:75%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                                </td>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                                </td>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><br></p>
+                </td>
+                <td style="border:0.75pt inset #eeeeee; padding:0.75pt; vertical-align:top;">
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="width:25%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                                </td>
+                                <td style="width:75%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                                </td>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                                </td>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="width:25%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                                </td>
+                                <td style="width:75%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                                </td>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                                </td>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="width:25%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                                </td>
+                                <td style="width:75%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                                </td>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                                </td>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><br></p>
+                </td>
+                <td style="border:0.75pt inset #eeeeee; padding:0.75pt; vertical-align:top;">
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="width:25%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                                </td>
+                                <td style="width:75%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                                </td>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                                </td>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                    <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                        <tbody>
+                            <tr>
+                                <td style="width:25%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                                </td>
+                                <td style="width:75%; padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                                </td>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                                </td>
+                                <td style="padding:0.75pt; vertical-align:middle;">
+                                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><br></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="margin-top:0pt; margin-bottom:8pt;">&nbsp;</p>
+</div>
 {% endblock  %}
