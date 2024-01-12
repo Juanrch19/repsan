@@ -306,8 +306,8 @@ def comunicacion(request):
 def calidadintegral(request):
     return render(request, 'procesos/calidadintegral.html')
 @login_required(login_url='signin')
-def evaluacionycontrol(request):
-    return render(request,'procesos/calidadintegral/evaluacionycontrol.html')
+def auditorias(request):
+    return render(request,'procesos/calidadintegral/auditorias.html')
 @login_required(login_url='signin')
 def gestionintegrada(request):
     return render(request,'procesos/calidadintegral/gestionintegrada.html')

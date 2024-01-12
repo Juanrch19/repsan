@@ -69,8 +69,8 @@ urlpatterns = [
     #Calidad Integral
     path('cadenavalor/calidadintegral',
          views.calidadintegral, name='calidadintegral'),
-    path('cadenavlor/calidadintegral/evaluacionycontrol',
-         views.evaluacionycontrol, name='evaluacionycontrol'),
+    path('cadenavlor/calidadintegral/auditorias',
+         views.auditorias, name='auditorias'),
     path('cadenavalor/calidadintegral/gestionintegrada',
          views.gestionintegrada,name='gestionintegrada'), 
     path('cadenavalor/calidadintegral/servicioalpublico',
