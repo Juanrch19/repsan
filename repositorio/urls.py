@@ -79,6 +79,13 @@ urlpatterns = [
          views.autoevaluacionyacreditacion, name='autoevaluacionyacreditacion'),
     path('cadenavalor/calidadintegral/aseguramiento de la calidad de procesos',
          views.aseguramientodelacalidadprocesos, name='aseguramientodelacalidadprocesos'),
+    path('cadenavalor/calidadintegral/gestion del servicio al usuario',
+          views.gestiondelservicioalusuario, name='gestiondelservicioalusuario'),
+    path('cadenavalor/calidadintegral/gestiondel registro calificado',
+          views.gestiondelregistrocalificado, name='gestiondelregistrocalificado'),
+    path('cadenavalor/calidadintegral/aseguramiento de la calidad academica',
+          views.aseguramientodelacalidadacademica, name='aseguramientodelacalidadacademica'),
+     
     
     #Talento Humano y Bienestar
     path('cadenavalor/talentohumanobienestar',

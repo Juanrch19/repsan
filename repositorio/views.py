@@ -306,6 +306,18 @@ def comunicacion(request):
 def calidadintegral(request):
     return render(request, 'procesos/calidadintegral.html')
 @login_required(login_url='signin')
+def autoevaluacionyacreditacion(request):
+    return render(request, 'procesos/calidadintegral/autoevaluacionyacreditacion.html')
+@login_required(login_url='signin')
+def gestiondelservicioalusuario(request):
+    return render(request,'procesos/calidadintegral/gestiondelservicioalusuario.html')
+@login_required(login_url='signin')
+def gestiondelregistrocalificado(request):
+    return render(request,'procesos/calidadintegral/gestiondelregistrocalificado.html')
+@login_required(login_url='signin')
+def aseguramientodelacalidadacademica(request):
+    return render(request,'procesos/calidadintegral/aseguramientodelacalidadacademica.html')
+@login_required(login_url='signin')
 def auditorias(request):
     return render(request,'procesos/calidadintegral/auditorias.html')
 @login_required(login_url='signin')
@@ -315,8 +327,6 @@ login_required(login_url='signin')
 def servicioalpublico(request):
     return render(request, 'procesos/calidadintegral/servicioalpublico.html')
 login_required(login_url='signin')
-def autoevaluacionyacreditacion(request):
-    return render(request, 'procesos/calidadintegral/autoevaluacionyacreditacion.html')
 def aseguramientodelacalidadprocesos(request):
     return render(request, 'procesos/calidadintegral/aseguramientodelacalidadprocesos.html')
 

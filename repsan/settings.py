@@ -38,16 +38,22 @@ INSTALLED_APPS = [
     'repositorio',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',  # Agregado para manejar CORS
+]
+LANGUAGE_CODE = 'es'
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),  # Si quieres agregar traducciones personalizadas
 ]
 
 ROOT_URLCONF = 'repsan.urls'
