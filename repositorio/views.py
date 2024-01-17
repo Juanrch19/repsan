@@ -388,9 +388,9 @@ def informacionbibliografica(request):
 @login_required(login_url='signin')
 def gestionjuridica(request):
     return render(request, 'procesos/gestionjuridica.html')
-@login_required(login_url="sigin")
+@login_required(login_url="signin")
 def gestioncontractual(request):
     return render(request,'procesos/gestionjuridica/gestioncontractual.html')
-@login_required(login_url="sigin")
+@login_required(login_url="signin")
 def gestjuridica(request):
     return render(request,'procesos/gestionjuridica/gestionjuridica.html')
