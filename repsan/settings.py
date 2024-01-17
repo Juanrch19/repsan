@@ -61,7 +61,7 @@ ROOT_URLCONF = 'repsan.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['C:\repsan\repositorio\templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
