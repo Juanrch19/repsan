@@ -3,7 +3,34 @@
 {% block titulo %} Lista maestra de documentos {% endblock %}
 
 {% block contenido %}
+<style>
+    /* Personaliza el estilo de la ventana de alerta */
+    .custom-alert {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #007bff;
+        color: #fff;
+        padding: 0.75rem;
+        text-align: center;
+        width: 300px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        display: none; /* Inicialmente oculta */
+    }
 
+    /* Estilo para el botón de cierre */
+    .custom-alert .close-btn {
+        cursor: pointer;
+        position: absolute;
+        top: 0.25rem;
+        right: 0.5rem;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #fff;
+    }
+</style>
 <form method="get" action="{% url 'documentos' %}">
     <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Buscar documentos" name="q" value="{{ request.GET.q }}">
@@ -12,7 +39,7 @@
 </form>
 
 <div class="container mt-5">
-    {% if user.is_authenticated and user.is_superuser %}
+    {% if user.is_authenticated and user.is_superuser  %}
     <div class="mb-3">
         <a class="btn btn-primary" href="{% url 'crear' %}" role="button">Agregar Documento</a>
     </div>
@@ -33,7 +60,7 @@
                             <th scope="col" style="width: 10%;">Fecha de Creación</th>
                             <th scope="col" style="width: 5%;">Visualizar</th>
                             <th scope="col" style="width: 5%;">Descargar</th>
-                            {% if user.is_authenticated and user.is_superuser %}
+                            {% if user.is_authenticated  and user.is_staff  %}
                             <th scope="col" style="width: 10%;">Acciones</th>
                             {% endif %}
                         </tr>
@@ -52,6 +79,8 @@
                                     <i class="bi bi-eye-fill"></i>
                                 </a>
                             </td>
+                            {% with can_download_document=user.has_perm('download_document') %}
+                              {% if can_download_document %}
                             <td>
                                 <a class="btn btn-success btn-sm rounded-pill"
                                    href="{% url 'download' document.id_archivo %}"
@@ -59,8 +88,11 @@
                                    class="text-decoration-none text-info">
                                     <i class="bi bi-download"></i>
                                 </a>
+                                 {% else %}
+                                <p> No tiene permisos para descargar este archivo.</p>
+                               {% endif %}
                             </td>
-                            {% if user.is_authenticated and user.is_superuser %}
+                            {% if user.is_authenticated and user.is_staff %}
                             <td>
                                 <a class="btn btn-info btn-sm rounded-pill"
                                    href="{% url 'editardocumento' document.id_archivo %}"
@@ -73,14 +105,53 @@
                                 
                                 <script>
                                     function confirmarEliminacion(idArchivo) {
-                                     
                                         var confirmacion = confirm("¿Está seguro de que desea eliminar este documento?");
                                         
                                         if (confirmacion) {
-                                        
-                                            window.location.href = "{% url 'eliminardocumento' document.id_archivo %}";
+                                            
+                                            var xhr = new XMLHttpRequest();
+                                            xhr.open("GET", "{% url 'eliminardocumento' document.id_archivo %}", true);
+                                            xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+                                            xhr.onreadystatechange = function() {
+                                                if (xhr.readyState === 4 && xhr.status === 200) {
+                                                   
+                                                    window.location.href = "{% url 'documentos' %}";
+                                                } else if (xhr.readyState === 4 && xhr.status === 403) {
+                                                    
+                                                    alert("No tiene permisos para eliminar este documento.");
+                                                } else {
+                                                   
+                                                    alert("Error al intentar eliminar el documento.");
+                                                }
+                                            };
+                                            xhr.send();
                                         }
-        
+                                    }
+                                    function mostrarAlerta(mensaje) {
+                                        // Crea un elemento de alerta personalizado
+                                        var alerta = document.createElement("div");
+                                        alerta.className = "custom-alert";
+                                        alerta.textContent = mensaje;
+
+                                        // Agrega un botón de cierre
+                                        var closeBtn = document.createElement("span");
+                                        closeBtn.className = "close-btn";
+                                        closeBtn.innerHTML = "&times;"; // Símbolo de 'x'
+                                        closeBtn.addEventListener("click", function() {
+                                            alerta.style.display = "none";
+                                        });
+                                        alerta.appendChild(closeBtn);
+
+                                        // Agrega la alerta al cuerpo del documento
+                                        document.body.appendChild(alerta);
+
+                                        // Muestra la alerta
+                                        alerta.style.display = "block";
+
+                                        // Después de un tiempo, oculta la alerta
+                                        setTimeout(function() {
+                                            alerta.style.display = "none";
+                                        }, 5000);  // La alerta se ocultará después de 5 segundos (puedes ajustar este valor)
                                     }
                                 </script>
                             </td>

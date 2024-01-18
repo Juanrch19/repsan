@@ -6,7 +6,7 @@ from repositorio.forms import CategoriaForm, DocumentForm, ProcesoForm
 from repositorio.models import Categoria, Document, Proceso
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db import IntegrityError
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -180,6 +180,7 @@ def editardocumento(request, id):
     return render(request, 'documentos/editardocumento.html', {'formulario': formulario})
 
 @login_required(login_url='signin')
+@permission_required('delete_document', raise_exception=True)
 def eliminardocumento(request, id):
     try:
         documento = Document.objects.get(id_archivo=id)
@@ -194,6 +195,7 @@ def eliminardocumento(request, id):
         raise Http404("El documento no existe.")
 
 @login_required(login_url='signin')
+@permission_required('download_document', raise_exception=True)
 def download(request, pk):
     document = get_object_or_404(Document, pk=pk)
     response = HttpResponse(document.file.read())
@@ -219,7 +221,6 @@ def crearproceso(request):
     return render(request,'procesos/crearproceso.html',{'formulario': formulario})
 
 @login_required(login_url='signin')
-
 def editarproceso(request, id):
     proceso = get_object_or_404(Proceso, id_proceso=id)
     formulario = ProcesoForm(request.POST or None, request.FILES or None, instance=proceso)
