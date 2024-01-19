@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q 
+from django.views.generic import ( View,TemplateView,ListView,DetailView)
 import matplotlib
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
@@ -240,10 +241,15 @@ def eliminarproceso(request, id):
 
 #Visualizar Documentos
 @xframe_options_exempt
+
 def ver_pdf(request, id):
     document = get_object_or_404(Document, id_archivo=id)
     file_path = document.file.path
     return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
+
+class Error403View(TemplateView):
+    template_name = "register/error_403.html"
+
 
 #Procesos Misionales
 #Docencia Calidad

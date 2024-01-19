@@ -79,8 +79,6 @@
                                     <i class="bi bi-eye-fill"></i>
                                 </a>
                             </td>
-                            {% with can_download_document=user.has_perm('download_document') %}
-                              {% if can_download_document %}
                             <td>
                                 <a class="btn btn-success btn-sm rounded-pill"
                                    href="{% url 'download' document.id_archivo %}"
@@ -88,9 +86,6 @@
                                    class="text-decoration-none text-info">
                                     <i class="bi bi-download"></i>
                                 </a>
-                                 {% else %}
-                                <p> No tiene permisos para descargar este archivo.</p>
-                               {% endif %}
                             </td>
                             {% if user.is_authenticated and user.is_staff %}
                             <td>

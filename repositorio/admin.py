@@ -7,14 +7,18 @@ from repositorio.models import Categoria,Document,Proceso
 
 class DocumentAdmin(admin.ModelAdmin):
     search_fields = ['proceso__nombre_proceso','codigo','titulo','categoria__nombre_categoria']
+    list_display = ['proceso', 'codigo','titulo', 'categoria','fecha_creacion']
+    exclude = ['numero_autoincrementable']
 admin.site.register(Document, DocumentAdmin)
 
 class ProcesoAdmin(admin.ModelAdmin):
     search_fields = ['nombre_proceso']
+    list_display = ['nombre_proceso','fecha_creacion']
 admin.site.register(Proceso, ProcesoAdmin)
 
 class CategoriaAdmin(admin.ModelAdmin):
     search_fields = ['nombre_categoria']
+    list_display = ['nombre_categoria','fecha_creacion']
 admin.site.register(Categoria, CategoriaAdmin)
 
 admin.site.register(Permission)
