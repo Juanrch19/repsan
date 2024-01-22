@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.signin, name='signin'),  
     path('repositorio/', include('repositorio.urls')),
+    path('cadenavalor', views.cadenavalor, name='cadenavalor'),
     
 ]
 
