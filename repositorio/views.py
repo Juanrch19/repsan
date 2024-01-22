@@ -241,7 +241,7 @@ def eliminarproceso(request, id):
 
 #Visualizar Documentos
 @xframe_options_exempt
-
+@permission_required('viewpdf_document', raise_exception=True)
 def ver_pdf(request, id):
     document = get_object_or_404(Document, id_archivo=id)
     file_path = document.file.path
@@ -257,12 +257,19 @@ class Error403View(TemplateView):
 def docenciac(request):
     return render(request, 'procesos/docenciac.html')
 @login_required(login_url='signin')
-def docenciacalidad(request):
-    documentos = Document.objects.filter(titulo__iexact='Gestión de docencia')
+def enseñanzaprendizajeyevaluacion(request):
+    documentos = Document.objects.filter(titulo__iexact='Enseñanza aprendizaje y evaluación')
     
 
     context = {'documentos': documentos}
-    return render(request, 'procesos/docenciacalidad/docenciacalidad.html', context)
+    return render(request, 'procesos/docenciacalidad/enseñanzaprendizajeyevaluacion.html', context)
+@login_required(login_url='signin')
+def desarrollocurricular(request):
+    documentos = Document.objects.filter(titulo__iexact='Desarrollo curricular')
+    
+
+    context = {'documentos': documentos}
+    return render(request, 'procesos/docenciacalidad/desarrollocurricular.html', context)
 
 #Investigacion Pertinente
 @login_required(login_url='signin')
@@ -285,6 +292,11 @@ def extensionyproyeccion(request):
     documentos = Document.objects.filter(titulo__iexact='Extensión y Proyección social')
     context ={'documentos': documentos}
     return render(request, 'procesos/proyeccionsocial/extensionproyeccion.html',context)
+@login_required(login_url='signin')
+def relacionamientoconegresados(request):
+    documentos = Document.objects.filter(titulo__iexact='Relacionamiento con egresados')
+    context ={'documentos': documentos}
+    return render(request, 'procesos/proyeccionsocial/relacionamientoconegresados.html',context)
 
 #Procesos Estrategicos
 #Planeación Estrategicas
@@ -296,6 +308,11 @@ def planeacionestrategica(request):
     documentos = Document.objects.filter(titulo__iexact='Planeación estratégica institucional')
     context = {'documentos': documentos}
     return render(request, 'procesos/planeacionestrategica/planeacionestrategica.html', context)
+@login_required(login_url='signin')
+def gestiondelainformacion(request):
+    documentos = Document.objects.filter(titulo__iexact='Gestión de la información')
+    context = {'documentos': documentos}
+    return render(request, 'procesos/planeacionestrategica/gestiondelainformacion.html', context)
 
 #Relaciones Interinstitucionales
 @login_required(login_url='signin')

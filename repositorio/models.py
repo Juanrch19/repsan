@@ -41,10 +41,18 @@ class Document(models.Model):
         # Asegurarse de que siempre haya un código proporcionado por el usuario
         if not self.codigo:
             raise ValueError("El campo 'codigo_usuario' es obligatorio y debe ser proporcionado por el usuario.")
-        categorias_incrementables = ['procedimiento','formato','manuales','diagrama']
+        categorias_incrementables = ['procedimiento', 'formato', 'manuales', 'diagrama']
+
+        # Verificar si el objeto ya existe en la base de datos
+        if self.id_archivo is not None:
+            # Objeto existente, no realizar incremento
+            super().save(*args, **kwargs)
+            return
+
         # Incrementar el número autoincrementable solo si la categoría es 'formato'
         if self.categoria and self.categoria.nombre_categoria.lower() in categorias_incrementables:
-            self.numero_autoincrementable = Document.objects.filter(categoria=self.categoria).aggregate(models.Max('numero_autoincrementable'))['numero_autoincrementable__max'] or 0
+            self.numero_autoincrementable = Document.objects.filter(categoria=self.categoria).aggregate(
+                models.Max('numero_autoincrementable'))['numero_autoincrementable__max'] or 0
             self.numero_autoincrementable += 1
         else:
             self.numero_autoincrementable = None  # No incrementar si la categoría no es 'formato'

@@ -58,7 +58,9 @@
                             <th scope="col" style="width: 15%;">Título</th>
                             <th scope="col" style="width: 10%;">Categoria</th>
                             <th scope="col" style="width: 10%;">Fecha de Creación</th>
+                            
                             <th scope="col" style="width: 5%;">Visualizar</th>
+                           
                             <th scope="col" style="width: 5%;">Descargar</th>
                             {% if user.is_authenticated  and user.is_staff  %}
                             <th scope="col" style="width: 10%;">Acciones</th>
@@ -73,12 +75,14 @@
                             <td>{{ document.titulo }}</td>
                             <td>{{ document.categoria.nombre_categoria }}</td>
                             <td>{{ document.fecha_creacion }}</td>
+                            
                             <td>
                                 <a href="{% url 'ver_pdf' document.id_archivo %}" class="btn btn-success btn-sm rounded-pill"
                                    class="text-decoration-none text-info">
                                     <i class="bi bi-eye-fill"></i>
                                 </a>
                             </td>
+                    
                             <td>
                                 <a class="btn btn-success btn-sm rounded-pill"
                                    href="{% url 'download' document.id_archivo %}"

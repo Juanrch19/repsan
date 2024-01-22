@@ -11,31 +11,35 @@
 <main>
     <section class="container-fluid">
         <div class="row">
+          
       </section>
-      <div class="text-center">
-        <img src="{% static 'img/mapadeprocesos.png' %}" usemap="#mapa" class="img-fluid" alt="Descripción de la imagen" style="max-width: 100%; max-height: 100%; height: auto; width: auto;">
+      <div class="text-center" style="*{
+        font-family: 'Open Sans', sans-serif;
+      }">
+        <h1>MAPA DE PROCESOS</h1>
+        <img src="{% static 'img/mapadeprocesos.png' %}?version=3" usemap="#mapa" class="img-fluid" alt="Descripción de la imagen" style="max-width: 200%; max-height: 100%; height: auto; width: auto;">
       </div>
     <map name="mapa">
 
         <!-- PROCESOS MISIONALES-->
 
-        <area shape="poly" coords="549,211,620,152,697,113,736,258,659,312" href="{% url 'docenciac' %}" alt="Docencia de Calidad">
-        <area shape="poly" coords="702,113,778,97,869,102,856,250,741,258" href="{% url 'investigacionp' %}" alt="Investigacion Pertinente">
-        <area shape="poly" coords="589,56,642,92,635,144,529,131,534,37" href="{% url 'extensioyp' %}" alt="Proyección social de impacto">
+        <area shape="poly" coords="384,146,437,103,487,81,514,179,461,215" href="{% url 'docenciac' %}" alt="Docencia de Calidad">
+        <area shape="poly" coords="493,78,548,67,609,70,599,174,519,178" href="{% url 'investigacionp' %}" alt="Investigacion Pertinente">
+        <area shape="poly" coords="613,70,677,92,740,140,735,198,603,175" href="{% url 'extensioyp' %}" alt="Proyección social de impacto">
     
         <!-- PROCESOS DE APOYO-->
 
-        <area shape="poly" coords="650,195,700,200,698,287,608,263,598,191" href="{% url 'gestiondeinfraestructura' %}" alt="Gestión de la infraestructura física y tecnologica">
-        <area shape="poly" coords="648,280,696,293,650,381,575,328,607,270" href="{% url 'gestionadminfinan' %}" alt="Gestión administrativa y financiera">
-        <area shape="poly" coords="609,357,646,386,566,443,539,354,572,332" href="{% url 'gestionmercadeo' %}" alt="Gestión de mercadeo y admisiones">
-        <area shape="poly" coords="547,397,560,443,478,458,477,365,535,357" href="{% url 'gestionjuridica' %}" alt="Gestión juridica y contractual">
+        <area shape="poly" coords="689,249,802,260,799,354,750,341,700,327" href="{% url 'gestiondeinfraestructura' %}" alt="Gestión de la infraestructura física y tecnologica">
+        <area shape="poly" coords="698,333,746,346,798,359,745,463,663,400" href="{% url 'gestionadminfinan' %}" alt="Gestión administrativa y financiera">
+        <area shape="poly" coords="660,404,699,433,742,467,649,531,619,432" href="{% url 'gestionmercadeo' %}" alt="Gestión de mercadeo y admisiones">
+        <area shape="poly" coords="581,443,615,434,645,533,543,547,541,442" href="{% url 'gestionjuridica' %}" alt="Gestión juridica y contractual">
 
         <!-- DIRECCIONAMINETO ESTRATEGICO-->
 
-        <area shape="poly" coords="373,366,413,333,453,356,376,432,335,400" href="{% url 'talentohumanobienestar' %}" alt="Talento humano y bienestar"> 
-        <area shape="poly" coords="334,319,388,300,408,330,331,395,292,335" href="{% url 'calidadintegral' %}" alt="Calidad Integral">
-        <area shape="poly" coords="323,243,376,248,387,294,291,331,278,240" href="{% url 'relacionesinter' %}" alt="Relaciones Interinstitucionales">
-        <area shape="poly" coords="343,156,373,224,373,244,279,233,294,173" href="{% url 'planeacionestra' %}" alt="planeacionestra">
+        <area shape="poly" coords="498,420,528,433,456,526,383,475,478,404" href="{% url 'talentohumanobienestar' %}" alt="Talento humano y bienestar"> 
+        <area shape="poly" coords="392,376,447,364,475,402,381,470,335,391" href="{% url 'calidadintegral' %}" alt="Calidad Integral">
+        <area shape="poly" coords="381,301,437,304,447,360,334,387,325,298" href="{% url 'relacionesinter' %}" alt="Relaciones Interinstitucionales">
+        <area shape="poly" coords="342,226,398,205,439,300,375,297,326,294" href="{% url 'planeacionestra' %}" alt="planeacionestra">
 
 </main>
 {% endblock %}

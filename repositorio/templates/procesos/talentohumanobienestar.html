@@ -15,16 +15,18 @@
           
       </section>
       <div class="text-center">
-        <img src="{% static 'img/talentohumano.png' %}" usemap="#mapa" style="max-width: 100%; max-height: 50%; height: auto; width: auto; margin: 0 auto;" class="mx-auto">
+        <img src="{% static 'img/talentohumano.png' %}?version=2" usemap="#mapa" style="max-width: 100%; max-height: 50%; height: auto; width: auto; margin: 0 auto;" class="mx-auto">
       </div>
     <map name="mapa">
 
         <!-- PROCESOS MISIONALES-->
          
-        <area shape="poly" coords="586,14,658,14,658,152,520,152,519,13" href="{% url 'bienestarinstitucional' %}" alt="bienestarinstitucional">
-        <area shape="poly" coords="916,23,988,24,987,162,849,163,848,25" href="{% url 'pastoral' %}" alt="pastoral">
-        <area shape="poly" coords="587,218,657,219,658,357,520,356,520,218" href="{% url 'gestionydesarrollohumano' %}" alt="gestionydesarrollohumano">
-        <area shape="poly" coords="911,198,982,198,982,337,845,336,845,198" href="{% url 'controldisciplinario' %}" alt="controldisciplinario">
-        
+        <area shape="poly" coords="506,26,581,27,657,27,659,179,506,178" href="{% url 'gestionydesarrollohumano' %}" alt="gestionydesarrollohumano">
+        <area shape="poly" coords="757,37,827,37,899,37,899,177,759,177" href="{% url 'controldisciplinario' %}" alt="controldisciplinario">
+        <area shape="poly" coords="641,251,709,251,778,251,780,391,640,391" href="{% url 'bienestarinstitucional' %}" alt="bienestarinstitucional">
+       
+
+
+         <!-- <area shape="poly" coords="916,23,988,24,987,162,849,163,848,25" href="{% url 'pastoral' %}" alt="pastoral">-->
 </main>
 {% endblock %}
