@@ -26,7 +26,12 @@ def inicio(request):
 
 @login_required(login_url='signin')
 def cadenavalor(request):
-    return render(request, 'cadenavalor.html')
+    ultimos_archivos = Document.objects.order_by('-fecha_creacion')[:3]  # Obtén los últimos 5 archivos
+    
+    # Pasar los archivos al contexto del template
+    context = {'ultimos_archivos': ultimos_archivos}
+    
+    return render(request, 'cadenavalor.html',context)
 
 @login_required(login_url='signin')
 def manuales(request):
@@ -125,6 +130,7 @@ def documentos(request):
     if query:
         documentos_list = documentos_list.filter(
             Q(titulo__icontains=query) |
+            Q(codigo__icontains=query) |
             Q(id_archivo__icontains=query) |
             Q(categoria__nombre_categoria__icontains=query)|
             Q(proceso__nombre_proceso__icontains=query)

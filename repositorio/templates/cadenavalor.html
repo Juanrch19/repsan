@@ -13,10 +13,8 @@
         <div class="row">
           
       </section>
-      <div class="text-center" style="*{
-        font-family: 'Open Sans', sans-serif;
-      }">
-        <h1>MAPA DE PROCESOS</h1>
+      <div class="text-center">
+        <h1 class="mb-4" style="font-family: 'Signika Negative', sans-serif; font-style: italic;">MAPA DE PROCESOS</h1>
         <img src="{% static 'img/mapadeprocesos.png' %}?version=3" usemap="#mapa" class="img-fluid" alt="Descripción de la imagen" style="max-width: 200%; max-height: 100%; height: auto; width: auto;">
       </div>
     <map name="mapa">
@@ -42,4 +40,25 @@
         <area shape="poly" coords="342,226,398,205,439,300,375,297,326,294" href="{% url 'planeacionestra' %}" alt="planeacionestra">
 
 </main>
+<section class="container mt-4">
+  <h2 class="mb-3"><i class="bi bi-megaphone-fill"></i> Últimas Novedades</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-3">
+      {% for archivo in ultimos_archivos %}
+          <div class="col mb-4">
+              <div class="card">
+                  <div class="card-body">
+                      <h6 class="card-title">{{ archivo.titulo }}</h6>
+                      <p class="card-text small">Fecha de subida: {{ archivo.fecha_creacion|date:"F d, Y H:i" }}</p>
+                      <p class="card-text">Categoria: {{ archivo.categoria.nombre_categoria }}</p>
+                      <a href="{% url 'ver_pdf' archivo.id_archivo %}" class="btn btn-success btn-sm rounded-pill"
+                                   class="text-decoration-none text-info">
+                                    <i class="bi bi-eye-fill"></i>
+                                </a>
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+  </div>
+</section>
+
 {% endblock %}
