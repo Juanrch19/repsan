@@ -47,8 +47,8 @@
 
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Documentos</h4>
-
+            <h4 class="card-title">Documentos  </h4>
+           
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
@@ -177,11 +177,11 @@
                         </a>
                     </li>
                     {% endif %}
-
+            
                     <li class="page-item disabled">
-                        <span class="page-link">Página {{ documentos.number }} de {{ documentos.paginator.num_pages }}.</span>
+                        <span class="page-link">Página {{ documentos.number }} de {{ documentos.paginator.num_pages }}. Número de resultados:({{ documentos.paginator.count }})</span>
                     </li>
-
+            
                     {% if documentos.has_next %}
                     <li class="page-item">
                         <a class="page-link" href="?page={{ documentos.next_page_number }}" aria-label="Siguiente">
@@ -194,9 +194,9 @@
                         </a>
                     </li>
                     {% endif %}
-
                 </ul>
             </nav>
+            
 
         </div>
     </div>

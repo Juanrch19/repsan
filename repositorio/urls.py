@@ -124,6 +124,8 @@ urlpatterns = [
          views.gestioncartera, name='gestioncartera'),
     path('cadenavalor/gestion recursos financieros',
          views.gestionrefinanciero, name='gestionrefinanciero'),
+    path('cadenavalor/gestion recursos financieros/gestión documental',
+         views.gestiondocumental, name='gestiondocumental'),
     
     # Gestión de mercadeo
     path('cadenavalor/gestion de mercadeo',

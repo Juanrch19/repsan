@@ -25,5 +25,3 @@ urlpatterns = [
     path('repositorio/', include('repositorio.urls'))
     
 ]
-
-handler403 = views.Error403View.as_view()

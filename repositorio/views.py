@@ -10,6 +10,8 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.models import Permission
+from django.contrib.contenttypes.models import ContentType
 from django.db.models import Q 
 from django.views.generic import ( View,TemplateView,ListView,DetailView)
 import matplotlib
@@ -19,6 +21,7 @@ import base64
 from io import BytesIO
 from django.http import HttpResponseServerError
 import logging
+
 
 @login_required(login_url='signin')
 def inicio(request):
@@ -246,15 +249,14 @@ def eliminarproceso(request, id):
 
 
 #Visualizar Documentos
+@login_required(login_url='signin')
 @xframe_options_exempt
-@permission_required('viewpdf_document', raise_exception=True)
 def ver_pdf(request, id):
     document = get_object_or_404(Document, id_archivo=id)
     file_path = document.file.path
     return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
 
-class Error403View(TemplateView):
-    template_name = "register/error_403.html"
+
 
 
 #Procesos Misionales
@@ -391,6 +393,9 @@ def gestioncartera(request):
 @login_required(login_url='signin')
 def gestionrefinanciero(request):
     return render(request, 'procesos/gestionadministrativa/gestionrefinanciero.html')
+@login_required(login_url='signin')
+def gestiondocumental(request):
+    return render(request, 'procesos/gestionadministrativa/gestiondocumental.html')
 
 #Gestion Mercadeo y Admisiones
 @login_required(login_url='signin')
