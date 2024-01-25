@@ -54,6 +54,8 @@ urlpatterns = [
          views.extensionyproyeccion, name="extensionyproyeccion"),
     path('cadenavalor/extensionyproyeccion/Relacionamiento con egresados',
          views.relacionamientoconegresados, name="relacionaminetoconegresados"),
+    path('cadenavalor/extensionyproyeccion/procedimientos/Relacionamiento con egresados',
+         views.prorelacionamientoegresados, name="prorelacionamientoegresados"),
 
     #Procesos estrategicos
     path('cadenavalor/planeacionestra',
@@ -62,6 +64,8 @@ urlpatterns = [
          views.planeacionestrategica, name='planeacionestrategica'),
     path('cadenavalor/planeacionestrategica/gestión de la información',
          views.gestiondelainformacion, name='gestiondelainformacion'),
+    path('cadenavalor/planeacionestrategica/procedimientos/Reporte de Información al SNIES',
+         views.reporteSNIES, name='reporteSNIES'),
 
     #Relaciones Interinstitucionales
     path('cadenavalor/relacionesinter',

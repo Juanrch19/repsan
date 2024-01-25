@@ -102,12 +102,12 @@
               {% if user.is_authenticated and user.is_superuser %}
               <li>
                 <a class="dropdown-item" href="{% url 'procesos' %}" 
-                  >Procesos</a
+                  ><i class="bi bi-list"></i> Procesos</a
                 > 
               </li>
                 <li>
                   <a class="dropdown-item" href="{% url 'categorias' %}" 
-                    >Categorias</a
+                    ><i class="bi bi-list"></i> Categorias</a
                   > 
                 </li>
                 {% endif %}

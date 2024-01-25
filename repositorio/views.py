@@ -305,6 +305,11 @@ def relacionamientoconegresados(request):
     documentos = Document.objects.filter(titulo__iexact='Relacionamiento con egresados')
     context ={'documentos': documentos}
     return render(request, 'procesos/proyeccionsocial/relacionamientoconegresados.html',context)
+@login_required(login_url='signin')
+def prorelacionamientoegresados(request):
+    documentos = Document.objects.filter(titulo__iexact='Relacionamiento con egresados')
+    context ={'documentos': documentos}
+    return render(request, 'procesos/proyeccionsocial/procedimientos/relacionamientoegresados.html',context)
 
 #Procesos Estrategicos
 #Planeación Estrategicas
@@ -321,6 +326,9 @@ def gestiondelainformacion(request):
     documentos = Document.objects.filter(titulo__iexact='Gestión de la información')
     context = {'documentos': documentos}
     return render(request, 'procesos/planeacionestrategica/gestiondelainformacion.html', context)
+@login_required(login_url='signin')
+def reporteSNIES(request):
+    return render(request,'procesos/planeacionestrategica/procedimientos/reporteSNIES.html')
 
 #Relaciones Interinstitucionales
 @login_required(login_url='signin')
