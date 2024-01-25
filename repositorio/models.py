@@ -59,7 +59,7 @@ class Document(models.Model):
 
         # Agregar el número autoincrementable al código proporcionado por el usuario
         if self.numero_autoincrementable is not None:
-            self.codigo = f"{self.codigo}-{self.numero_autoincrementable}"
+            self.codigo = f"{self.codigo}"
 
         # Guardar el objeto
         super().save(*args, **kwargs)

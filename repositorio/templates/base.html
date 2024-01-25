@@ -73,15 +73,16 @@
                 class="nav-link active"
                 aria-current="page"
                 href="{% url 'inicio' %}"
-                >Inicio</a
-              >
+                ><i class="bi bi-play-fill"></i>Inicio </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'cadenavalor' %}"
-                >Mapa de Procesos</a
+                ><i class="bi bi-fan"></i> Mapa de Procesos</a
               >
             </li>
             <li class="nav-item dropdown">
+
+              
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
@@ -90,12 +91,14 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
+              <i class="bi bi-book"></i>
                 Documentación
               </a>
               <ul
                 class="dropdown-menu dropdown-menu-end"
                 aria-labelledby="navbarDropdown"
               >
+              
               {% if user.is_authenticated and user.is_superuser %}
               <li>
                 <a class="dropdown-item" href="{% url 'procesos' %}" 
@@ -110,12 +113,12 @@
                 {% endif %}
                 <li>
                   <a class="dropdown-item" href="{% url 'documentos' %}" 
-                    >Listado maestro de documentos</a
+                    ><i class="bi bi-list"></i> Listado maestro de documentos</a
                   > 
                 </li>
                 <li>
                   <a class="dropdown-item" href="{% url 'manuales' %}" 
-                    >Manuales</a
+                    ><i class="bi bi-list"></i> Manuales</a
                   > 
                 </li>
               </ul>
@@ -129,6 +132,7 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
+              <i class="bi bi-person-circle"></i>
                 {{ user.first_name }} {{ user.last_name }}
               </a>
               <ul
@@ -139,7 +143,7 @@
 
                 <li>
                   <a class="dropdown-item" href="{% url 'signout' %}"
-                    >Cerrar sesión</a
+                    ><i class="bi bi-power"> </i>Cerrar sesión</a
                   >
                 </li>
                 {% else %}
@@ -187,7 +191,19 @@
     ></script>
     <!-- En el encabezado de tu base.html o directamente en la plantilla -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/dist/js/bootstrap-icons.js"></script>
-
+{% block footer %}
+        <!-- Contenido del pie de página común -->
+    
+<footer class="bg-dark text-light py-4">
+  <div class="container-fluid"> <!-- Cambié container por container-fluid -->
+      <div class="row mt-3">
+          <div class="col-md-12 text-center">
+              <p>&copy; 2024 UNISANPABLO. Todos los derechos reservados.</p>
+          </div>
+      </div>
+  </div>
+</footer>
+{% endblock %}
   </body>
 </html>
 
