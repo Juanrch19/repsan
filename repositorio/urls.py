@@ -6,6 +6,7 @@ from django.contrib.auth.views import PasswordResetConfirmView
 
 
 urlpatterns = [
+     
    path('signout', views.signout, name='signout'),
    path('inicio', views.inicio,name='inicio'),
    #Manueales
@@ -31,32 +32,40 @@ urlpatterns = [
    # Visualizador
     path('ver-pdf/<int:id>/', views.ver_pdf, name='ver_pdf'),
     path('cadenavalor', views.cadenavalor, name='cadenavalor'),
-    path('cadenavalor/docenciacalidad',
-         views.docenciac, name='docenciac'),
-
+  
       # Docencia de calidad
     path('cadenavalor/docenciacalidad',
          views.docenciac, name='docenciac'),
-    path('cadenavalor/docenciac/docenciacalidad',
-         views.docenciacalidad, name='docenciacalidad'),
+    path('cadenavalor/docenciac/Enseñanza aprendizaje y evaluación',
+         views.enseñanzaprendizajeyevaluacion, name='enseñanzaprendizajeyevaluacion'),
+    path('cadenavalor/docenciac/Desarrollo curricular',
+         views.desarrollocurricular, name='desarrollocurricular'),
     
     # Investigacion pertinente
     path('cadenavalor/investigacionpertinente',
          views.investigacionp, name="investigacionp"),
-    path('cadenavalor/investigacionpertinente/gestioninvestigacion',
+    path('cadenavalor/investigacionpertinente/gestion de investigacion',
          views.gestioninvestigacion, name='gestioninvestigacion'),
     
     # Proyeccion social
     path('cadenavalor/extensionyproyección',
          views.extensioyp, name='extensioyp'),
-    path('cadenavalor/extensionyproyeccion/extensionyproyeccionsocial',
+    path('cadenavalor/extensionyproyeccion/extension y proyeccion social',
          views.extensionyproyeccion, name="extensionyproyeccion"),
+    path('cadenavalor/extensionyproyeccion/Relacionamiento con egresados',
+         views.relacionamientoconegresados, name="relacionaminetoconegresados"),
+    path('cadenavalor/extensionyproyeccion/procedimientos/Relacionamiento con egresados',
+         views.prorelacionamientoegresados, name="prorelacionamientoegresados"),
 
     #Procesos estrategicos
     path('cadenavalor/planeacionestra',
          views.planeacionestra, name='planeacionestra'),
-    path('cadenavalor/planeacionestrategica/planeacionestrategicainstitucional',
+    path('cadenavalor/planeacionestrategica/planeacion estrategica institucional',
          views.planeacionestrategica, name='planeacionestrategica'),
+    path('cadenavalor/planeacionestrategica/gestión de la información',
+         views.gestiondelainformacion, name='gestiondelainformacion'),
+    path('cadenavalor/planeacionestrategica/procedimientos/Reporte de Información al SNIES',
+         views.reporteSNIES, name='reporteSNIES'),
 
     #Relaciones Interinstitucionales
     path('cadenavalor/relacionesinter',
@@ -75,8 +84,8 @@ urlpatterns = [
          views.gestionintegrada,name='gestionintegrada'), 
     path('cadenavalor/calidadintegral/servicioalpublico',
          views.servicioalpublico, name='servicioalpublico'),
-    path('cadenavalor/calidadintegral/autoevaluacionyacreditacion',
-         views.autoevaluacionyacreditacion, name='autoevaluacionyacreditacion'),
+    path('cadenavalor/calidadintegral/autoevaluacion y acreditacion',
+         views.autoevaluacionyacreditacion, name='autoevaluacion y acreditacion'),
     path('cadenavalor/calidadintegral/aseguramiento de la calidad de procesos',
          views.aseguramientodelacalidadprocesos, name='aseguramientodelacalidadprocesos'),
     path('cadenavalor/calidadintegral/gestion del servicio al usuario',
@@ -88,50 +97,52 @@ urlpatterns = [
      
     
     #Talento Humano y Bienestar
-    path('cadenavalor/talentohumanobienestar',
+    path('cadenavalor/talento humano bienestar',
          views.talentohumanobienestar,name="talentohumanobienestar"),
-    path('cadenavalor/talentohumanobienestar/controldisciplinario',
+    path('cadenavalor/talentohumanobienestar/control disciplinario',
          views.controldisciplinario,name='controldisciplinario'),
-    path('cadenavalor/talentohumanobienestar/bienestarinstitucional',
+    path('cadenavalor/talentohumanobienestar/bienestar institucional',
          views.bienestarinstitucional,name="bienestarinstitucional"),
     path('cadenavalor/talentohumanobienestar/pastoral',
          views.pastoral,name="pastoral"),
-    path('cadenavalor/talentohumanobienestar/gestionydesarrollohumano',
+    path('cadenavalor/talentohumanobienestar/gestion y esarrollo humano',
          views.gestionydesarrollohumano,name="gestionydesarrollohumano"),
     path('procedimientos/seleccion y contratación',
          views.procedimientogth,name='procedimientogth'),
     # Procesos de apoyo
     
     #Gestión de infraestructura fisica y tecnologica
-    path('cadenavalor/gestiondeinfraestructura',
+    path('cadenavalor/gestion de infraestructura',
          views.gestiondeinfraestructura, name='gestiondeinfraestructura'),
     path('cadenavalor/gestiondeinfraestructura/gestion de los sistemas de comunicacion y telecomunicaciones',
          views.gestionsistemas, name='gestionsistemas'),
-    path('cadenavalor/gestiondeinfraestructura/gestiondelainfraestructurafisica',
+    path('cadenavalor/gestiondeinfraestructura/gestion de la infraestructura fisica',
          views.infraestructurafisica, name='infraestructurafisica'),
-    path('cadenavalor/gestiondeinfraestructura/gestiondelainformacionbibliografica',
+    path('cadenavalor/gestiondeinfraestructura/gestion de la informacion bibliografica',
          views.informacionbibliografica, name='informacionbibliografica'),
 
     # Gestión administrativa y financiera
     path('cadenavalor/Gestión administrativa y financiera',
          views.gestionadminfinan, name='gestionadminfinan'),
-    path('cadenavalor/gestionadminfinan/gestioncartera',
+    path('cadenavalor/gestionadminfinan/gestion cartera',
          views.gestioncartera, name='gestioncartera'),
-    path('cadenavalor/gestionrefinanciero',
+    path('cadenavalor/gestion recursos financieros',
          views.gestionrefinanciero, name='gestionrefinanciero'),
+    path('cadenavalor/gestion recursos financieros/gestión documental',
+         views.gestiondocumental, name='gestiondocumental'),
     
     # Gestión de mercadeo
-    path('cadenavalor/gestiondemercadeo',
+    path('cadenavalor/gestion de mercadeo',
          views.gestionmercadeo, name='gestionmercadeo'),
-    path('cadenavalor/gestiondemercadeo/admisionesregistroycontrol',
+    path('cadenavalor/gestiondemercadeo/admisiones registro y control',
          views.adminregiscontrol, name='adminregiscontrol'),
 
     #Gestión Juridica y contractual
     path('cadenavalor/gestiónjuridicaycontractual',
          views.gestionjuridica, name='gestionjuridica'), 
-    path('cadenavalor/gestiónjuridicaycontractual/gestioncontractual',
+    path('cadenavalor/gestiónjuridicaycontractual/gestion contractual',
           views.gestioncontractual, name='gestioncontractual'),
-    path('cadenavalor/gestiónjuridicaycontractual/gestionjuridica',
+    path('cadenavalor/gestiónjuridicaycontractual/gestion juridica',
           views.gestjuridica, name='gesjuridica'),
 
 

@@ -15,15 +15,19 @@
           
       </section>
       <div class="text-center">
-        <img src="{% static 'img/relacionesinter.png' %}" usemap="#mapa" style="max-width: 100%; max-height: 50%; height: auto; width: auto; margin: 0 auto;" class="mx-auto">
+        <img src="{% static 'img/relacionesinterinstitucionales.png' %}?version=2" usemap="#mapa" style="max-width: 100%; max-height: 50%; height: auto; width: auto; margin: 0 auto;" class="mx-auto">
       </div>
     <map name="mapa">
 
         <!-- PROCESOS MISIONALES-->
 
-        <area shape="poly" coords="606,20,538,19,678,20,679,160,539,160" href="{% url 'internacionalizacion' %}" alt="internacionalizacion">
-        <area shape="poly" coords="935,28,1007,31,1006,68,868,169,868,32" href="{% url 'comunicacion' %}" alt="comunicacion">
+        <area shape="poly" coords="507,91,582,90,658,91,658,242,507,242" href="{% url 'internacionalizacion' %}" alt="internacionalizacion">
+        <area shape="poly" coords="760,102,829,101,899,101,899,240,760,241" href="{% url 'comunicacion' %}" alt="comunicacion">
        
         
 </main>
+{% block footer %}
+<!-- Contenido específico del pie de página para la página Ejemplo -->
+
+{% endblock %}
 {% endblock %}

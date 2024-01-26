@@ -15,19 +15,22 @@
           
       </section>
       <div class="text-center">
-        <img src="{% static 'img/calidadint.png' %}" usemap="#mapa" style="max-width: 100%; max-height: 50%; height: auto; width: auto; margin: 0 auto;" class="mx-auto">
+        <img src="{% static 'img/calidadacademicaprocesos.png' %}" usemap="#mapa" style="max-width: 100%; max-height: 50%; height: auto; width: auto; margin: 0 auto;" class="mx-auto">
       </div>
     <map name="mapa">
 
         <!-- PROCESOS MISIONALES-->
 
-        <area shape="poly" coords="455,23,525,23,597,23,599,165,457,165" href="{% url 'autoevaluacionyacreditacion' %}" alt="autoevaluacionyacreditacion">
-        <area shape="poly" coords="712,25,780,25,852,25,852,165,712,163" href="{% url 'gestiondelservicioalusuario' %}" alt="gestiondelservicioalusuario">
-        <area shape="poly" coords="455,222,525,220,597,222,597,361,457,363" href="{% url 'auditorias' %}" alt="auditorias">
-        <area shape="poly" coords="713,222,780,222,850,222,852,361,712,361" href="{% url 'gestiondelregistrocalificado' %}" alt="gestiondelregistrocalificado">
-        <area shape="poly" coords="455,418,523,420,595,420,595,558,457,558" href="{% url 'aseguramientodelacalidadprocesos' %}" alt="aseguramientodelacalidaddeprocesos">
-        <area shape="poly" coords="712,420,782,420,850,420,850,558,713,558" href="{% url 'aseguramientodelacalidadacademica' %}" alt="aseguramientodelacalidadacademica">
+        <area shape="poly" coords="456,24,525,25,597,25,597,165,455,165"    href="{% url 'gestiondelservicioalusuario' %}" alt="gestiondelservicioalusuario">
+        <area shape="poly" coords="711,25,781,24,852,25,852,165,711,164"    href="{% url 'auditorias' %}" alt="auditorias">
+        <area shape="poly" coords="456,202,525,202,597,202,597,342,456,342" href="{% url 'gestiondelregistrocalificado' %}" alt="gestiondelregistrocalificado">
+        <area shape="poly" coords="712,202,779,202,853,201,851,342,712,342" href="{% url 'aseguramientodelacalidadprocesos' %}" alt="aseguramientodelacalidaddeprocesos">
+        <area shape="poly" coords="586,386,654,385,724,385,725,525,585,524" href="{% url 'aseguramientodelacalidadacademica' %}" alt="aseguramientodelacalidadacademica">
+
 
 </main>
+{% block footer %}
+<!-- Contenido específico del pie de página para la página Ejemplo -->
 
+{% endblock %}
 {% endblock %}

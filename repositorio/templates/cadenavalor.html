@@ -11,35 +11,54 @@
 <main>
     <section class="container-fluid">
         <div class="row">
-          <div class="col-md-12">
-            <h1 class="text-center">Mapa de Procesos</h1>
-          </div>
           
       </section>
       <div class="text-center">
-        <img src="{% static 'img/macropro.png' %}" usemap="#mapa" class="img-fluid" alt="Descripción de la imagen" style="max-width: 100%; max-height: 50%; height: auto; width: auto;">
+        <h1 class="mb-4" style="font-family: 'Signika Negative', sans-serif; font-style: italic;">MAPA DE PROCESOS</h1>
+        <img src="{% static 'img/mapadeprocesos.png' %}?version=3" usemap="#mapa" class="img-fluid" alt="Descripción de la imagen" style="max-width: 200%; max-height: 100%; height: auto; width: auto;">
       </div>
     <map name="mapa">
 
         <!-- PROCESOS MISIONALES-->
 
-        <area shape="poly" coords="384,61,421,47,445,133,399,167,342,94" href="{% url 'docenciac' %}" alt="Docencia de Calidad">
-        <area shape="poly" coords="480,34,528,35,523,130,450,132,428,42" href="{% url 'investigacionp' %}" alt="Investigacion Pertinente">
-        <area shape="poly" coords="589,56,642,92,635,144,529,131,534,37" href="{% url 'extensioyp' %}" alt="Proyección social de impacto">
+        <area shape="poly" coords="384,146,437,103,487,81,514,179,461,215" href="{% url 'docenciac' %}" alt="Docencia de Calidad">
+        <area shape="poly" coords="493,78,548,67,609,70,599,174,519,178" href="{% url 'investigacionp' %}" alt="Investigacion Pertinente">
+        <area shape="poly" coords="613,70,677,92,740,140,735,198,603,175" href="{% url 'extensioyp' %}" alt="Proyección social de impacto">
     
         <!-- PROCESOS DE APOYO-->
 
-        <area shape="poly" coords="650,195,700,200,698,287,608,263,598,191" href="{% url 'gestiondeinfraestructura' %}" alt="Gestión de la infraestructura física y tecnologica">
-        <area shape="poly" coords="648,280,696,293,650,381,575,328,607,270" href="{% url 'gestionadminfinan' %}" alt="Gestión administrativa y financiera">
-        <area shape="poly" coords="609,357,646,386,566,443,539,354,572,332" href="{% url 'gestionmercadeo' %}" alt="Gestión de mercadeo y admisiones">
-        <area shape="poly" coords="547,397,560,443,478,458,477,365,535,357" href="{% url 'gestionjuridica' %}" alt="Gestión juridica y contractual">
+        <area shape="poly" coords="689,249,802,260,799,354,750,341,700,327" href="{% url 'gestiondeinfraestructura' %}" alt="Gestión de la infraestructura física y tecnologica">
+        <area shape="poly" coords="698,333,746,346,798,359,745,463,663,400" href="{% url 'gestionadminfinan' %}" alt="Gestión administrativa y financiera">
+        <area shape="poly" coords="660,404,699,433,742,467,649,531,619,432" href="{% url 'gestionmercadeo' %}" alt="Gestión de mercadeo y admisiones">
+        <area shape="poly" coords="581,443,615,434,645,533,543,547,541,442" href="{% url 'gestionjuridica' %}" alt="Gestión juridica y contractual">
 
         <!-- DIRECCIONAMINETO ESTRATEGICO-->
 
-        <area shape="poly" coords="373,366,413,333,453,356,376,432,335,400" href="{% url 'talentohumanobienestar' %}" alt="Talento humano y bienestar"> 
-        <area shape="poly" coords="334,319,388,300,408,330,331,395,292,335" href="{% url 'calidadintegral' %}" alt="Calidad Integral">
-        <area shape="poly" coords="323,243,376,248,387,294,291,331,278,240" href="{% url 'relacionesinter' %}" alt="Relaciones Interinstitucionales">
-        <area shape="poly" coords="343,156,373,224,373,244,279,233,294,173" href="{% url 'planeacionestra' %}" alt="planeacionestra">
+        <area shape="poly" coords="498,420,528,433,456,526,383,475,478,404" href="{% url 'talentohumanobienestar' %}" alt="Talento humano y bienestar"> 
+        <area shape="poly" coords="392,376,447,364,475,402,381,470,335,391" href="{% url 'calidadintegral' %}" alt="Calidad Integral">
+        <area shape="poly" coords="381,301,437,304,447,360,334,387,325,298" href="{% url 'relacionesinter' %}" alt="Relaciones Interinstitucionales">
+        <area shape="poly" coords="342,226,398,205,439,300,375,297,326,294" href="{% url 'planeacionestra' %}" alt="planeacionestra">
 
 </main>
+<section class="container mt-4">
+  <h2 class="mb-3"><i class="bi bi-megaphone-fill"></i> Últimas Novedades</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-3">
+      {% for archivo in ultimos_archivos %}
+          <div class="col mb-4">
+              <div class="card">
+                  <div class="card-body">
+                      <h6 class="card-title">{{ archivo.titulo }}</h6>
+                      <p class="card-text small">Fecha de subida: {{ archivo.fecha_creacion|date:"F d, Y H:i" }}</p>
+                      <p class="card-text">Categoria: {{ archivo.categoria.nombre_categoria }}</p>
+                      <a href="{% url 'ver_pdf' archivo.id_archivo %}" class="btn btn-success btn-sm rounded-pill"
+                                   class="text-decoration-none text-info">
+                                    <i class="bi bi-eye-fill"></i>
+                                </a>
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+  </div>
+</section>
+
 {% endblock %}

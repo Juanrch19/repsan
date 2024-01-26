@@ -6,11 +6,14 @@ from repositorio.forms import CategoriaForm, DocumentForm, ProcesoForm
 from repositorio.models import Categoria, Document, Proceso
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db import IntegrityError
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.models import Permission
+from django.contrib.contenttypes.models import ContentType
 from django.db.models import Q 
+from django.views.generic import ( View,TemplateView,ListView,DetailView)
 import matplotlib
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
@@ -19,13 +22,19 @@ from io import BytesIO
 from django.http import HttpResponseServerError
 import logging
 
+
 @login_required(login_url='signin')
 def inicio(request):
     return render(request,'inicio.html')
 
 @login_required(login_url='signin')
 def cadenavalor(request):
-    return render(request, 'cadenavalor.html')
+    ultimos_archivos = Document.objects.order_by('-fecha_creacion')[:3]  # Obtén los últimos 5 archivos
+    
+    # Pasar los archivos al contexto del template
+    context = {'ultimos_archivos': ultimos_archivos}
+    
+    return render(request, 'cadenavalor.html',context)
 
 @login_required(login_url='signin')
 def manuales(request):
@@ -124,6 +133,7 @@ def documentos(request):
     if query:
         documentos_list = documentos_list.filter(
             Q(titulo__icontains=query) |
+            Q(codigo__icontains=query) |
             Q(id_archivo__icontains=query) |
             Q(categoria__nombre_categoria__icontains=query)|
             Q(proceso__nombre_proceso__icontains=query)
@@ -180,6 +190,7 @@ def editardocumento(request, id):
     return render(request, 'documentos/editardocumento.html', {'formulario': formulario})
 
 @login_required(login_url='signin')
+@permission_required('delete_document', raise_exception=True)
 def eliminardocumento(request, id):
     try:
         documento = Document.objects.get(id_archivo=id)
@@ -194,6 +205,7 @@ def eliminardocumento(request, id):
         raise Http404("El documento no existe.")
 
 @login_required(login_url='signin')
+@permission_required('download_document', raise_exception=True)
 def download(request, pk):
     document = get_object_or_404(Document, pk=pk)
     response = HttpResponse(document.file.read())
@@ -219,7 +231,6 @@ def crearproceso(request):
     return render(request,'procesos/crearproceso.html',{'formulario': formulario})
 
 @login_required(login_url='signin')
-
 def editarproceso(request, id):
     proceso = get_object_or_404(Proceso, id_proceso=id)
     formulario = ProcesoForm(request.POST or None, request.FILES or None, instance=proceso)
@@ -238,11 +249,15 @@ def eliminarproceso(request, id):
 
 
 #Visualizar Documentos
+@login_required(login_url='signin')
 @xframe_options_exempt
 def ver_pdf(request, id):
     document = get_object_or_404(Document, id_archivo=id)
     file_path = document.file.path
     return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
+
+
+
 
 #Procesos Misionales
 #Docencia Calidad
@@ -250,12 +265,19 @@ def ver_pdf(request, id):
 def docenciac(request):
     return render(request, 'procesos/docenciac.html')
 @login_required(login_url='signin')
-def docenciacalidad(request):
-    documentos = Document.objects.filter(titulo__iexact='Gestión de docencia')
+def enseñanzaprendizajeyevaluacion(request):
+    documentos = Document.objects.filter(titulo__iexact='Enseñanza aprendizaje y evaluación')
     
 
     context = {'documentos': documentos}
-    return render(request, 'procesos/docenciacalidad/docenciacalidad.html', context)
+    return render(request, 'procesos/docenciacalidad/enseñanzaprendizajeyevaluacion.html', context)
+@login_required(login_url='signin')
+def desarrollocurricular(request):
+    documentos = Document.objects.filter(titulo__iexact='Desarrollo curricular')
+    
+
+    context = {'documentos': documentos}
+    return render(request, 'procesos/docenciacalidad/desarrollocurricular.html', context)
 
 #Investigacion Pertinente
 @login_required(login_url='signin')
@@ -278,6 +300,16 @@ def extensionyproyeccion(request):
     documentos = Document.objects.filter(titulo__iexact='Extensión y Proyección social')
     context ={'documentos': documentos}
     return render(request, 'procesos/proyeccionsocial/extensionproyeccion.html',context)
+@login_required(login_url='signin')
+def relacionamientoconegresados(request):
+    documentos = Document.objects.filter(titulo__iexact='Relacionamiento con egresados')
+    context ={'documentos': documentos}
+    return render(request, 'procesos/proyeccionsocial/relacionamientoconegresados.html',context)
+@login_required(login_url='signin')
+def prorelacionamientoegresados(request):
+    documentos = Document.objects.filter(titulo__iexact='Relacionamiento con egresados')
+    context ={'documentos': documentos}
+    return render(request, 'procesos/proyeccionsocial/procedimientos/relacionamientoegresados.html',context)
 
 #Procesos Estrategicos
 #Planeación Estrategicas
@@ -289,6 +321,14 @@ def planeacionestrategica(request):
     documentos = Document.objects.filter(titulo__iexact='Planeación estratégica institucional')
     context = {'documentos': documentos}
     return render(request, 'procesos/planeacionestrategica/planeacionestrategica.html', context)
+@login_required(login_url='signin')
+def gestiondelainformacion(request):
+    documentos = Document.objects.filter(titulo__iexact='Gestión de la información')
+    context = {'documentos': documentos}
+    return render(request, 'procesos/planeacionestrategica/gestiondelainformacion.html', context)
+@login_required(login_url='signin')
+def reporteSNIES(request):
+    return render(request,'procesos/planeacionestrategica/procedimientos/reporteSNIES.html')
 
 #Relaciones Interinstitucionales
 @login_required(login_url='signin')
@@ -361,6 +401,9 @@ def gestioncartera(request):
 @login_required(login_url='signin')
 def gestionrefinanciero(request):
     return render(request, 'procesos/gestionadministrativa/gestionrefinanciero.html')
+@login_required(login_url='signin')
+def gestiondocumental(request):
+    return render(request, 'procesos/gestionadministrativa/gestiondocumental.html')
 
 #Gestion Mercadeo y Admisiones
 @login_required(login_url='signin')
@@ -388,9 +431,9 @@ def informacionbibliografica(request):
 @login_required(login_url='signin')
 def gestionjuridica(request):
     return render(request, 'procesos/gestionjuridica.html')
-@login_required(login_url="sigin")
+@login_required(login_url="signin")
 def gestioncontractual(request):
     return render(request,'procesos/gestionjuridica/gestioncontractual.html')
-@login_required(login_url="sigin")
+@login_required(login_url="signin")
 def gestjuridica(request):
     return render(request,'procesos/gestionjuridica/gestionjuridica.html')

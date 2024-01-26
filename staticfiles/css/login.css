@@ -1,0 +1,89 @@
+body {
+    overflow-y: hidden; /* Oculta la barra de desplazamiento vertical en el cuerpo de la página */
+  }
+  *{
+    font-family: 'Open Sans', sans-serif;
+  }
+
+/* Estilo para el título "Inicia Sesión" */
+.form-title {
+    font-size: 1.5rem; /* Ajusta el tamaño de fuente del título */
+    margin-bottom: 20px; /* Agrega espacio entre el título y los campos de entrada */
+    color: #333; /* Color de texto */
+  }
+  
+/* Estilo para el contenedor principal */
+/* Estilo para el contenedor principal con el nuevo fondo */
+/* Estilo para el contenedor principal con el nuevo fondo */
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Cambia a 100vh para que ocupe toda la página verticalmente */
+    background-color: #f5f5f5; /* Color de fondo más estético */
+    padding: 20px; /* Aumenta el padding para separar del borde de la página */
+    border-radius: 10px; /* Agrega borde redondeado al contenedor principal */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Sombra alrededor del contenedor principal */
+  }
+  
+  
+  /* Estilo para el contenedor de la imagen */
+  .image-container {
+    flex: 1; /* La imagen toma el 1/3 del ancho del contenedor principal */
+    text-align: center;
+  }
+  
+  /* Estilo para la imagen */
+  .image-container img {
+    max-width: 100%; /* La imagen se ajusta al ancho del contenedor */
+    height: auto; /* La altura se ajusta automáticamente para mantener la proporción */
+    margin-right: 20px; /* Espacio entre la imagen y el formulario */
+  }
+  
+/* Estilo para el formulario */
+.custom-form {
+    flex: 2; /* El formulario toma el 2/3 del ancho del contenedor principal */
+    max-width: 60%; /* Aumenta el ancho máximo del formulario para centrarlo mejor */
+    padding: 20px; /* Aumenta el padding para que se vea más cuadrado y centrado */
+    text-align: center;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px; /* Ajusta el valor de border-radius para que el formulario se vea más cuadrado */
+    margin: 0 auto; /* Centra el formulario horizontalmente en el contenedor */
+    background: none; /* Elimina el fondo actual */
+  }
+  
+  
+  /* Estilo para los campos de entrada */
+  .custom-form input {
+    width: 100%; /* Establece el ancho al 100% del contenedor del campo de entrada */
+    padding: 8px; /* Reduzca el relleno superior e inferior */
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    max-width: 250px; /* Establece un ancho fijo para los campos de entrada */
+  }
+  
+  
+  /* Estilo para las etiquetas de los campos */
+  .custom-form label {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  /* Estilo para el botón */
+  .custom-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .custom-form button:hover {
+    background-color: #0056b3;
+  }

@@ -3,12 +3,29 @@
 {% block titulo %} Manuales {% endblock %}
 
 {% block contenido %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 
-<h2>Política de calidad Integral</h2>
-<a href="{% url 'politica' %}">Politica de calidad integral</a>
 
-<h2>Objetivos de la calidad</h2>
-<a href="{% url 'objetivos' %}">Objetivos del sistema de gestión de calidad</a>
+    <h2>Política de calidad <i class="bi bi-check2-circle"></i></h2>
+    <a href="{% url 'politica' %}">Politica de calidad <i class="bi bi-file-earmark-image-fill"></i></a>
     
+    <h2>Objetivos de la calidad <i class="bi bi-check2-circle"></i></h2>
+    <a href="{% url 'objetivos' %}">Objetivos politica de calidad <i class="bi bi-file-earmark-image-fill"></i></a>  
+
+    {% block footer %}
+    <!-- Contenido específico del pie de página para la página Ejemplo -->
+    
+    {% endblock %}
+</body>
+</html>
+
 {% endblock contenido %}
+
     
