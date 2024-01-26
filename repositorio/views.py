@@ -205,7 +205,6 @@ def eliminardocumento(request, id):
         raise Http404("El documento no existe.")
 
 @login_required(login_url='signin')
-@permission_required('download_document', raise_exception=True)
 def download(request, pk):
     document = get_object_or_404(Document, pk=pk)
     response = HttpResponse(document.file.read())

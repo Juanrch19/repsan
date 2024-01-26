@@ -2,15 +2,7 @@
 
 
 /* Las adaptamos al modo oscuro */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --negro: #ececec;
-    --blanco: #303030;
-    --sombra-ppal: #242424;
-    --sombra-sec: #3c3c3c;
-    --borde-negro: #FFFFFF50;
-  }
-}
+
 /* Configuramos si un usuario ha activado el modo alto contraste. (BETA) */
 /*
     Estilos generales para que las etiquetas no contengan propiedades
@@ -141,7 +133,7 @@ form, input, textarea, select, button {
   color: var(--negro);
   transition: all 0.4s ease;
   border-radius: 1em;
-  background-color: var(--blanco);
+  background-color: var(--red);
   box-shadow: 0.6em 0.6em 1.2em var(--sombra-ppal), -0.6em -0.6em 1.2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
 }
 
