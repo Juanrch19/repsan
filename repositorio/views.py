@@ -255,8 +255,6 @@ def ver_pdf(request, id):
     return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
 
 
-
-
 #Procesos Misionales
 #Docencia Calidad
 @login_required(login_url='signin')
@@ -402,7 +400,12 @@ def gestionrefinanciero(request):
 @login_required(login_url='signin')
 def gestiondocumental(request):
     return render(request, 'procesos/gestionadministrativa/gestiondocumental.html')
-
+@login_required(login_url='signin')
+def matriculas(request):
+    return render(request,'procesos/gestionadministrativa/procedimientos/matriculas.html')
+@login_required(login_url='signin')
+def becas(request):
+    return render(request,'procesos/gestionadministrativa/procedimientos/becas.html')
 #Gestion Mercadeo y Admisiones
 @login_required(login_url='signin')
 def gestionmercadeo(request):

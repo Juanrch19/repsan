@@ -56,7 +56,7 @@ class Document(models.Model):
         categorias_incrementables = ['procedimiento', 'formato', 'manuales', 'diagrama']
         if self.categoria and self.categoria.nombre_categoria.lower() in categorias_incrementables:
             self.numero_autoincrementable = Document.objects.filter(categoria=self.categoria).aggregate(
-                models.Max('numero_autoincrementable'))['numero_autoincrementable__max'] or 0
+                models.Max('numero_autoincrementable'))['numero_autoincrementable__max'] or 0 
             self.numero_autoincrementable += 1
         else:
             self.numero_autoincrementable = None  # No incrementar si la categoría no es 'formato'

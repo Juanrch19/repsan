@@ -1,0 +1,636 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Matriculas {% endblock titulo %}
+
+{% block contenido %}
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:441.85pt; border:0.75pt outset #eeeeee;">
+    <tbody>
+        <tr>
+            <td rowspan="3" style="width:87.5pt; border-top:0.75pt inset #eeeeee; border-right:0.75pt inset #eeeeee; border-left:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><img src="data:image/png;base64,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" width="116" height="38" alt=""></p>
+            </td>
+            <td rowspan="3" style="width:209.25pt; border-top:0.75pt inset #eeeeee; border-right:0.75pt inset #eeeeee; border-left:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">PROCEDIMIENTO</span></strong></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">Matriculas</span></strong></p>
+            </td>
+            <td style="width:138.35pt; border:0.75pt inset #eeeeee; padding-left:3.75pt; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">C&Oacute;DIGO: PR-AF-GRF-01</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:138.35pt; border:0.75pt inset #eeeeee; padding-left:3.75pt; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">VERSI&Oacute;N: 1&nbsp;</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:138.35pt; border:0.75pt inset #eeeeee; padding-left:3.75pt; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">FECHA: 10/oct/2023</span></strong></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">1. OBJETIVO:</span></strong><br><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong><br><span style="font-family:Arial;">Realizar la prematricula y matricula de UNISANPABLO de los prospectos que desean estudiar.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">2. ALCANCE:</span></strong><br><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong><br><span style="font-family:Arial;">El presente procedimiento inicia con la identificaci&oacute;n de una oportunidad de estudiar en UNISANPABLO y finaliza con la matricula efectiva.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">3. DEFINICIONES:</span></strong></p>
+            </td>
+        </tr>
+        <tr style="height:15pt;">
+            <td style="vertical-align:middle;">
+                <table cellspacing="0" cellpadding="0">
+                    <tbody>
+                        <tr style="height:7.5pt;">
+                            <td style="vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+                <table cellspacing="2" cellpadding="0" style="width:441.9pt; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr style="height:15pt;">
+                            <td style="width:5.25pt; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                            <td style="width:433.65pt; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Aspirante: Persona natural que se inscribe y solicita la admisi&oacute;n a un programa acad&eacute;mico de forma regular o no regular, ofrecido por UNISANPABLO.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Estudiante: Persona natural que ha cumplido con los requisitos de admisi&oacute;n y matr&iacute;cula establecidos por UNISANPABLO.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Prematricula: Proceso que tiene como fin conocer con anticipaci&oacute;n la intenci&oacute;n de los Aspirantes.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Matricula: La matr&iacute;cula es un acto contractual mediante el cual un estudiante, formaliza su vinculaci&oacute;n a un periodo acad&eacute;mico en un determinado programa de educaci&oacute;n superior ofrecido por la Instituci&oacute;n. Para realizar la matr&iacute;cula el estudiante debe acreditar todos los requisitos acad&eacute;micos y administrativos.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Pago de Matricula: Se considera que un estudiante ha pagado su matr&iacute;cula cuando ha realizado el pago de la porci&oacute;n se&ntilde;alada en su recibo de matr&iacute;cula Y ha legalizado los cr&eacute;ditos que se hayan establecido como financiaci&oacute;n en el mismo recibo.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="width:35.4pt; font-family:Arial; display:inline-block;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Recibo de Matricula</span><span style="width:8.99pt; font-family:Arial; display:inline-block;">&nbsp;</span><span style="font-family:Arial;">Documento oficial de UNISANPABLO mediante el cual una persona natural realiza el pago de su matr&iacute;cula.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">4. DESARROLLO:</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial; text-transform:uppercase;">PR-AF-GRF-01 M</span><span style="font-family:Arial;">atriculas</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+        <tr style="height:11.25pt;">
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:10pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt solid #000000; border-collapse:collapse;">
+    <tbody>
+        <tr>
+            <td style="width:21.42%; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">Responsable</span></strong></p>
+            </td>
+            <td style="width:47.58%; border-right-style:solid; border-right-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">ACTIVIDAD</span></strong></p>
+            </td>
+            <td style="width:31%; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">DOCUMENTOS</span></strong></p>
+            </td>
+        </tr>
+        <tr style="height:11.25pt;">
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Aspirante</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Realizar la prematricula desde la plataforma <u><span style="color:#0000ff;">WWW.unisanpablo.edu&nbsp;</span></u></li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Se realiza la prematricula diligenciando los datos personales.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si no est&aacute; interesado actividad 2&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si est&aacute; interesado continuar actividad 3</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><a href="http://WWW.unisanpablo.edu.co" style="text-decoration:none;"><u><span style="font-family:Arial; color:#0000ff;">WWW.unisanpablo.edu.co</span></u></a></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Mercadeo</span><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="2" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Contactar a los Aspirantes.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-left:36pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Se contacta a los aspirantes, se entrega informaci&oacute;n requerida, como del programa, medios de pago y documentos a entregar.</span></p>
+                <p style="margin-top:0pt; margin-left:36pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si realiza matricula continuar actividad 3</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si no realiza matricula, fin del procedimiento.</span></p>
+                <p style="margin-top:0pt; margin-left:36pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-left:36pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">B de D de aspirantes</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Aspirante</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="3" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Realizar la matricula y subir los documentos.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">El aspirante realiza la matricula y sube los documentos</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si se suben los documentos y solicita descuentos, continuar actividad 6</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si no se suben los documentos continuar actividad 4</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Fotocopia Tarjeta de identidad o Cedula de ciudadan&iacute;a.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">EPS</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">ICFES</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Certificados acad&eacute;micos</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Diploma</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Aspirante</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="4" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Enviar documentos f&iacute;sicos o por whatsapp.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-left:36pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Documentos para realizar la matricula</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Mercadeo</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="5" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Revisar la matricula y si faltan documentos, cargarlos.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-left:36pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Una vez se env&iacute;en los documentos se suben en la plataforma Q10.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si se requiere solicitar descuentos actividad 6</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si no necesita descuentos, continuar actividad 7&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Plataforma Q10.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Rector</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="6" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Dar entrevista y descuento</li>
+                </ol>
+                <p style="margin-top:0pt; margin-left:36pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">De acuerdo con la entrevista que el Rector realiza se puede dar descuento o no.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Entrevista</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Aspirante</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Mercadeo</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="7" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Cargar la informaci&oacute;n del aspirante en Q10</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Se carga todo lo relacionado con el aspirante.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si no es diferido el pago. actividad 8</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si el pago es diferido, actividad 9</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Fecha, nombre completo, sede, jornada, programa y periodo acad&eacute;mico.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Aspirante</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="8" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Imprimir recibo de matricula</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Se imprime el recibo que llega a trav&eacute;s de la plataforma Q10.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si no llegar el recibo de pago, continuar actividad 10</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si llega el recibo continuar actividad 11</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Recibo de pago</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Aspirante</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Mercadeo</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="9" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Realizar el acuerdo de pago</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">El pago se podr&aacute; diferir en 3 o 4 cuotas.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Acuerdo de pagos.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Mercadeo</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="10" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:36pt; text-align:justify; font-family:Arial; font-size:11pt;">Generar recibo en forma manual y entregar.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Se le entrega el recibo al aspirante.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Recibo de pago</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Estudiante</span></p>
+            </td>
+            <td style="width:47.58%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="11" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:36pt; text-align:justify; font-family:Arial; font-size:11pt;">Realizar Pago en la entidad financiera.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Una vez se realiza el pago se adjunta el comprobante por la plataforma Q10 o por el whatsapp.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Fin del procedimiento.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Plataforma Q10.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Whatsapp.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr style="height:11.25pt;">
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+                    <tbody>
+                        <tr>
+                            <td colspan="2" style="border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">DOCUMENTACI&Oacute;N</span></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:29.98%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">C&Oacute;DIGO</span></strong></p>
+                            </td>
+                            <td style="width:70.02%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">NOMBRE</span></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="padding:0.75pt; vertical-align:middle;">
+                                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                            </td>
+                                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width:0.3pt; padding:0.75pt; vertical-align:middle;">
+                                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                            </td>
+                                            <td style="width:299.55pt; padding:0.75pt; vertical-align:middle;">
+                                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><br></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width:0.3pt; padding:0.75pt; vertical-align:middle;">
+                                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                            </td>
+                                            <td style="width:299.55pt; padding:0.75pt; vertical-align:middle;">
+                                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><br></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width:0.3pt; padding:0.75pt; vertical-align:middle;">
+                                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                            </td>
+                                            <td style="width:299.55pt; padding:0.75pt; vertical-align:middle;">
+                                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><br></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+    <tbody>
+        <tr>
+            <td style="width:15%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">VERSI&Oacute;N</span></strong></p>
+            </td>
+            <td style="width:15%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">FECHA</span></strong></p>
+            </td>
+            <td style="width:70%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">RAZ&Oacute;N DE LA ACTUALIZACI&Oacute;N</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">1</span></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">13/10/2023</span></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Se realiza el procedimiento.</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+    <tbody>
+        <tr>
+            <td style="width:33%; border:0.75pt inset #eeeeee; padding:3pt; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">ELABOR&Oacute;</span></strong></p>
+            </td>
+            <td style="width:33%; border:0.75pt inset #eeeeee; padding:3pt; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">REVIS&Oacute;</span></strong></p>
+            </td>
+            <td style="width:33%; border:0.75pt inset #eeeeee; padding:3pt; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">APROB&Oacute;</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border:0.75pt inset #eeeeee; padding:3pt; vertical-align:top;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="width:25%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                            </td>
+                            <td style="width:75%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Cristian Guillermo Velandia</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Aprendiz</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">13/10/2023</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; padding:3pt; vertical-align:top;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="width:25%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                            </td>
+                            <td style="width:75%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Martha Esperanza Rodriguez</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Calidad, Procesos y Riesgos</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">13/10/2023</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; padding:3pt; vertical-align:top;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="width:25%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                            </td>
+                            <td style="width:75%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Padre Hernando Jaramillo</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Director</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">13/10/2023</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:8pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+{% endblock contenido %}

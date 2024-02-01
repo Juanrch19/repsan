@@ -130,6 +130,10 @@ urlpatterns = [
          views.gestionrefinanciero, name='gestionrefinanciero'),
     path('cadenavalor/gestion recursos financieros/gestión documental',
          views.gestiondocumental, name='gestiondocumental'),
+    path('cadenavalor/gestión administrativa y financiera/gestion recursos financieros/procedimientos/Aplicación de becas descuento y patrocinios',
+         views.becas, name='becas'),
+    path('cadenavalor/gestión administrativa y financiera/gestion recursos financieros/procedimientos/Matriculas',
+         views.matriculas, name='matriculas'),
     
     # Gestión de mercadeo
     path('cadenavalor/gestion de mercadeo',
