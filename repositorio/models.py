@@ -67,6 +67,11 @@ class Document(models.Model):
 
     
         super().save(*args, **kwargs)
+    def delete(self, using=None, keep_parents=False):
+
+        self.file.storage.delete(self.file.name)
+        
+        super().delete(using, keep_parents)
 
 # Eliminar el archivo al eliminar el objeto Document
 @receiver(post_delete, sender=Document)
