@@ -52,20 +52,20 @@ class Document(models.Model):
             file_path = existing_obj.file.path
             default_storage.delete(file_path)
 
-        # Incrementar el número autoincrementable solo si la categoría es 'formato'
+        
         categorias_incrementables = ['procedimiento', 'formato', 'manuales', 'diagrama']
         if self.categoria and self.categoria.nombre_categoria.lower() in categorias_incrementables:
             self.numero_autoincrementable = Document.objects.filter(categoria=self.categoria).aggregate(
                 models.Max('numero_autoincrementable'))['numero_autoincrementable__max'] or 0 
             self.numero_autoincrementable += 1
         else:
-            self.numero_autoincrementable = None  # No incrementar si la categoría no es 'formato'
+            self.numero_autoincrementable = None  
 
-        # Agregar el número autoincrementable al código proporcionado por el usuario
+       
         if self.numero_autoincrementable is not None:
             self.codigo = f"{self.codigo}"
 
-        # Guardar el objeto
+    
         super().save(*args, **kwargs)
 
 # Eliminar el archivo al eliminar el objeto Document

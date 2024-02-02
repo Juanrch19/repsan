@@ -98,61 +98,19 @@
                                    role="button">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
-                                <a class="btn btn-danger btn-sm rounded-pill" href="#" onclick= confirmarEliminacion()>
-                                    <i class="bi bi-trash"></i>
-                                </a>
-                                
-                                <script>
-                                    function confirmarEliminacion(idArchivo) {
-                                        var confirmacion = confirm("¿Está seguro de que desea eliminar este documento?");
-                                        
-                                        if (confirmacion) {
-                                            
-                                            var xhr = new XMLHttpRequest();
-                                            xhr.open("GET", "{% url 'eliminardocumento' document.id_archivo %}", true);
-                                            xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-                                            xhr.onreadystatechange = function() {
-                                                if (xhr.readyState === 4 && xhr.status === 200) {
-                                                   
-                                                    window.location.href = "{% url 'documentos' %}";
-                                                } else if (xhr.readyState === 4 && xhr.status === 403) {
-                                                    
-                                                    alert("No tiene permisos para eliminar este documento.");
-                                                } else {
-                                                   
-                                                    alert("Error al intentar eliminar el documento.");
-                                                }
-                                            };
-                                            xhr.send();
+                                <a class="btn btn-danger btn-sm  rounded-pill" href="#" onclick= confirmarEliminacion() role="button"><i class="bi bi-trash"></i></a>
+                                    <script>
+                                        function confirmarEliminacion(idArchivo) {
+
+                                            var confirmacion = confirm("¿Está seguro de que desea eliminar este documento?");
+
+                                            if (confirmacion) {
+
+                                                window.location.href = "{% url 'eliminardocumento' document.id_archivo %}";
+                                            }
+
                                         }
-                                    }
-                                    function mostrarAlerta(mensaje) {
-                                        // Crea un elemento de alerta personalizado
-                                        var alerta = document.createElement("div");
-                                        alerta.className = "custom-alert";
-                                        alerta.textContent = mensaje;
-
-                                        // Agrega un botón de cierre
-                                        var closeBtn = document.createElement("span");
-                                        closeBtn.className = "close-btn";
-                                        closeBtn.innerHTML = "&times;"; // Símbolo de 'x'
-                                        closeBtn.addEventListener("click", function() {
-                                            alerta.style.display = "none";
-                                        });
-                                        alerta.appendChild(closeBtn);
-
-                                        // Agrega la alerta al cuerpo del documento
-                                        document.body.appendChild(alerta);
-
-                                        // Muestra la alerta
-                                        alerta.style.display = "block";
-
-                                        // Después de un tiempo, oculta la alerta
-                                        setTimeout(function() {
-                                            alerta.style.display = "none";
-                                        }, 5000);  // La alerta se ocultará después de 5 segundos (puedes ajustar este valor)
-                                    }
-                                </script>
+                                    </script> 
                             </td>
                             {% endif %}
                         </tr>
