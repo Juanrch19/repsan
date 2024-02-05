@@ -1,41 +1,39 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block titulo %} Objetivos Politica de Calidad {% endblock %}
-
+{% block titulo %} Objetivos de la Política de Calidad {% endblock %}
 
 {% block contenido %}
- <!DOCTYPE html>
- <html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css/app.css' %}">
-  <script defer src="{% static 'js/carrousel.js' %}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
- </head>
- <body>
-  <div class="carrousel">
-    <div class="grande">
-      <img src="{% static 'img/UNISANPABLO - Objetivos de la Politica de Calidad.png' %}?version=2" alt="Imagen 1" class="img">
-      <img src="{% static 'img/01.png' %}" alt="Imagen 2" class="img">
-      <img src="{% static 'img/02.png' %}" alt="Imagen 3" class="img">
-      <img src="{% static 'img/03-4.png' %}"alt="Imagen 4" class="img">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <script defer src="{% static 'js/carrousel.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</head>
+<body>
 
+    <div class="container mt-4">
+        <div class="carrousel">
+            <div class="grande">
+                <img src="{% static 'img/UNISANPABLO - Objetivos de la Politica de Calidad.png' %}?version=2" alt="Imagen 1" class="img">
+                <img src="{% static 'img/01.png' %}" alt="Imagen 2" class="img">
+                <img src="{% static 'img/02.png' %}" alt="Imagen 3" class="img">
+                <img src="{% static 'img/03-4.png' %}"alt="Imagen 4" class="img">
+            </div>
+            <ul class="puntos">
+                <li class="punto activo"></li>
+                <li class="punto"></li>
+            </ul>
+        </div>
     </div>
-    <ul class="puntos">
-      <li class="punto activo"></li>
-      <li class="punto"></li>
-      
 
-    </ul>
-  </div>
- </body>
- </html>
- 
+</body>
+</html>
+
 {% endblock contenido %}
-{% block footer %}
-<!--  <div class="text-center">
-    <img src="{% static 'img/UNISANPABLO - Objetivos de la Politica de Calidad.png' %}?version=2" alt="" style="max-width: 87%; height: auto; margin-top: 50px;">
-  </div> -->
 
+{% block footer %}
+    <!-- Contenido específico del pie de página para la página Objetivos de la Política de Calidad -->
 {% endblock %}

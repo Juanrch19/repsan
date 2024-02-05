@@ -1,13 +1,4 @@
 @charset "UTF-8";
-
-
-/* Las adaptamos al modo oscuro */
-
-/* Configuramos si un usuario ha activado el modo alto contraste. (BETA) */
-/*
-    Estilos generales para que las etiquetas no contengan propiedades
-    que nos estorben y en todos los navegadores se vean correctamente
-*/
 * {
   margin: 0;
   padding: 0;

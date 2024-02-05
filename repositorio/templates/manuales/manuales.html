@@ -3,29 +3,39 @@
 {% block titulo %} Manuales {% endblock %}
 
 {% block contenido %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<div class="container mt-4">
+    <h2>Manuales <i class="bi bi-stickies"></i></h2>
 
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Política de Calidad<i class="bi bi-check2-circle"></i></h5>
+                    <p class="card-text">Explora nuestra política de calidad.</p>
+                    <a href="{% url 'politica' %}" class="btn btn-primary">
+                        Ver Política <i class="bi bi-file-earmark-image-fill"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
 
-    <h2>Política de calidad <i class="bi bi-check2-circle"></i></h2>
-    <a href="{% url 'politica' %}">Politica de calidad <i class="bi bi-file-earmark-image-fill"></i></a>
-    
-    <h2>Objetivos de la calidad <i class="bi bi-check2-circle"></i></h2>
-    <a href="{% url 'objetivos' %}">Objetivos politica de calidad <i class="bi bi-file-earmark-image-fill"></i></a>  
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Objetivos de Calidad<i class="bi bi-check2-circle"></i></h5>
+                    <p class="card-text">Conoce nuestros objetivos de calidad.</p>
+                    <a href="{% url 'objetivos' %}" class="btn btn-primary">
+                        Ver Objetivos <i class="bi bi-file-earmark-image-fill"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     {% block footer %}
-    <!-- Contenido específico del pie de página para la página Ejemplo -->
-    
+    <!-- Contenido específico del pie de página para la página Manuales -->
     {% endblock %}
-</body>
-</html>
-
+</div>
 {% endblock contenido %}
 
     

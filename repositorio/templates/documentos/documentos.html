@@ -44,11 +44,44 @@
         <a class="btn btn-primary" href="{% url 'crear' %}" role="button">Agregar Documento</a>
     </div>
     {% endif %}
-
+     <!-- Mostrar la paginación -->
+     <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if documentos.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1" aria-label="Primera">
+                    <span aria-hidden="true">&laquo;&laquo; Primero</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ documentos.previous_page_number }}" aria-label="Anterior">
+                    <span aria-hidden="true">Anterior</span>
+                </a>
+            </li>
+            {% endif %}
+    
+            <li class="page-item disabled">
+                <span class="page-link">Página {{ documentos.number }} de {{ documentos.paginator.num_pages }}. Número de resultados:({{ documentos.paginator.count }})</span>
+            </li>
+    
+            {% if documentos.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ documentos.next_page_number }}" aria-label="Siguiente">
+                    <span aria-hidden="true">Siguiente</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ documentos.paginator.num_pages }}" aria-label="Última">
+                    <span aria-hidden="true">Ultimo &raquo;&raquo;</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
     <div class="card">
         <div class="card-body">
             <h4 class="card-title"> Listado de Documentos  <i class="bi bi-file-earmark-fill"></i></h4>
-           
+            
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
@@ -98,61 +131,19 @@
                                    role="button">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
-                                <a class="btn btn-danger btn-sm rounded-pill" href="#" onclick= confirmarEliminacion()>
-                                    <i class="bi bi-trash"></i>
-                                </a>
-                                
-                                <script>
-                                    function confirmarEliminacion(idArchivo) {
-                                        var confirmacion = confirm("¿Está seguro de que desea eliminar este documento?");
-                                        
-                                        if (confirmacion) {
-                                            
-                                            var xhr = new XMLHttpRequest();
-                                            xhr.open("GET", "{% url 'eliminardocumento' document.id_archivo %}", true);
-                                            xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-                                            xhr.onreadystatechange = function() {
-                                                if (xhr.readyState === 4 && xhr.status === 200) {
-                                                   
-                                                    window.location.href = "{% url 'documentos' %}";
-                                                } else if (xhr.readyState === 4 && xhr.status === 403) {
-                                                    
-                                                    alert("No tiene permisos para eliminar este documento.");
-                                                } else {
-                                                   
-                                                    alert("Error al intentar eliminar el documento.");
-                                                }
-                                            };
-                                            xhr.send();
+                                <a class="btn btn-danger btn-sm  rounded-pill" href="#" onclick= confirmarEliminacion() role="button"><i class="bi bi-trash"></i></a>
+                                    <script>
+                                        function confirmarEliminacion(idArchivo) {
+
+                                            var confirmacion = confirm("¿Está seguro de que desea eliminar este documento?");
+
+                                            if (confirmacion) {
+
+                                                window.location.href = "{% url 'eliminardocumento' document.id_archivo %}";
+                                            }
+
                                         }
-                                    }
-                                    function mostrarAlerta(mensaje) {
-                                        // Crea un elemento de alerta personalizado
-                                        var alerta = document.createElement("div");
-                                        alerta.className = "custom-alert";
-                                        alerta.textContent = mensaje;
-
-                                        // Agrega un botón de cierre
-                                        var closeBtn = document.createElement("span");
-                                        closeBtn.className = "close-btn";
-                                        closeBtn.innerHTML = "&times;"; // Símbolo de 'x'
-                                        closeBtn.addEventListener("click", function() {
-                                            alerta.style.display = "none";
-                                        });
-                                        alerta.appendChild(closeBtn);
-
-                                        // Agrega la alerta al cuerpo del documento
-                                        document.body.appendChild(alerta);
-
-                                        // Muestra la alerta
-                                        alerta.style.display = "block";
-
-                                        // Después de un tiempo, oculta la alerta
-                                        setTimeout(function() {
-                                            alerta.style.display = "none";
-                                        }, 5000);  // La alerta se ocultará después de 5 segundos (puedes ajustar este valor)
-                                    }
-                                </script>
+                                    </script> 
                             </td>
                             {% endif %}
                         </tr>
@@ -161,43 +152,6 @@
                     </tbody>
                 </table>
             </div>
-
-            <!-- Mostrar la paginación -->
-            <nav aria-label="Page navigation">
-                <ul class="pagination justify-content-center">
-                    {% if documentos.has_previous %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page=1" aria-label="Primera">
-                            <span aria-hidden="true">&laquo;&laquo; Primero</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ documentos.previous_page_number }}" aria-label="Anterior">
-                            <span aria-hidden="true">Anterior</span>
-                        </a>
-                    </li>
-                    {% endif %}
-            
-                    <li class="page-item disabled">
-                        <span class="page-link">Página {{ documentos.number }} de {{ documentos.paginator.num_pages }}. Número de resultados:({{ documentos.paginator.count }})</span>
-                    </li>
-            
-                    {% if documentos.has_next %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ documentos.next_page_number }}" aria-label="Siguiente">
-                            <span aria-hidden="true">Siguiente</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ documentos.paginator.num_pages }}" aria-label="Última">
-                            <span aria-hidden="true">Ultimo &raquo;&raquo;</span>
-                        </a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </nav>
-            
-
         </div>
     </div>
     

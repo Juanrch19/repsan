@@ -140,7 +140,7 @@ def documentos(request):
         )
 
     # Configura el paginador, aquí se configura para mostrar 10 documentos por página
-    paginator = Paginator(documentos_list, 10)
+    paginator = Paginator(documentos_list, 30)
     page = request.GET.get('page')
 
     try:
@@ -253,8 +253,6 @@ def ver_pdf(request, id):
     document = get_object_or_404(Document, id_archivo=id)
     file_path = document.file.path
     return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
-
-
 
 
 #Procesos Misionales
@@ -402,7 +400,12 @@ def gestionrefinanciero(request):
 @login_required(login_url='signin')
 def gestiondocumental(request):
     return render(request, 'procesos/gestionadministrativa/gestiondocumental.html')
-
+@login_required(login_url='signin')
+def matriculas(request):
+    return render(request,'procesos/gestionadministrativa/procedimientos/matriculas.html')
+@login_required(login_url='signin')
+def becas(request):
+    return render(request,'procesos/gestionadministrativa/procedimientos/becas.html')
 #Gestion Mercadeo y Admisiones
 @login_required(login_url='signin')
 def gestionmercadeo(request):
