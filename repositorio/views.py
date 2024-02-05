@@ -402,6 +402,12 @@ def gestionrefinanciero(request):
 @login_required(login_url='signin')
 def gestiondocumental(request):
     return render(request, 'procesos/gestionadministrativa/gestiondocumental.html')
+@login_required(login_url='signin')
+def becas(request):
+    return render(request, 'procesos/gestionadministrativa/procedimientos/becas.html')
+@login_required(login_url='signin')
+def matriculas(request):
+    return render(request, 'procesos/gestionadministrativa/procedimientos/matriculas.html')
 
 #Gestion Mercadeo y Admisiones
 @login_required(login_url='signin')
