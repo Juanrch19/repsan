@@ -190,7 +190,6 @@ def editardocumento(request, id):
     return render(request, 'documentos/editardocumento.html', {'formulario': formulario})
 
 @login_required(login_url='signin')
-@permission_required('delete_document', raise_exception=True)
 def eliminardocumento(request, id):
     try:
         documento = Document.objects.get(id_archivo=id)
