@@ -26,28 +26,24 @@
 </head>
 <body>
     
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <div id="modal" class="modal-container">
-        <div class="modal-content">
-            <h2>¡ Bienvenido {{ user.first_name }} {{ user.last_name }} al Repositorio UNISANPABLO ! </h2>
-           <br>
-            <p class="modal-text">
-                En este espacio dedicado, almacenamos y gestionamos los procesos fundamentales que dan vida a nuestra institución. Explora nuestro Mapa de Procesos para comprender la sinergia de las áreas misionales, de apoyo y estratégicas para entender cómo trabajamos y cómo cada componente se entrelaza para construir el éxito de nuestra institución.
-                <br><br>
-                ¡Descubre la esencia de UNISANPABLO! Bienvenido a nuestro viaje de eficiencia y excelencia.
-            </p>
+    <Script>  
+        Swal.fire({
+            icon:"warning",
+            title: "¡ Bienvenido {{ user.first_name }} {{ user.last_name }} al Repositorio UNISANPABLO !",
             
-            <div id="close" class="close">
-                <a href="{% url 'cadenavalor' %}">Ingresar  </a> 
-            </div>
-        </div>
-    </div>
+            html:"<p>En este espacio dedicado, almacenamos y gestionamos los procesos fundamentales que dan vida a nuestra institución. Explora nuestro Mapa de Procesos para comprender la sinergia de las áreas misionales, de apoyo y estratégicas para entender cómo trabajamos y cómo cada componente se entrelaza para construir el éxito de nuestra institución. </p> <br> <p>¡Descubre la esencia de UNISANPABLO! Bienvenido a nuestro viaje de eficiencia y excelencia. </p>",
+            confirmButtonText: '<a href ="{% url 'cadenavalor' %}" style="text-decoration:none; color:white;"> Ingresar </a>'
+
+        });
+    </Script>
 
     <script>
         // Redirigir a otra página después de 5 segundos (5000 milisegundos)
         setTimeout(function() {
             window.location.href = "{% url 'cadenavalor' %}";
-        }, 200000); // 5000 milisegundos = 5 segundos
+        }, 5000000000000); // 5000 milisegundos = 5 segundos
     </script>
 
 </body>

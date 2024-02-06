@@ -1,4 +1,5 @@
 from django.http import FileResponse, HttpResponse
+from django.urls import reverse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.clickjacking import xframe_options_exempt
 from django.http import Http404
@@ -74,7 +75,7 @@ def signup(request):
 @login_required(login_url='signin')
 def signout(request):
     logout(request)
-    return redirect('signin')
+    return redirect(reverse('signin'))
 
 def signin(request):
     if request.method == 'GET':
@@ -153,7 +154,7 @@ def documentos(request):
 
     return render(request, 'documentos/documentos.html', {'documentos': documentos, 'query': query})
 
-
+@login_required(login_url='signin')
 def crear(request):
     formulario = DocumentForm(request.POST or None, request.FILES or None)
 

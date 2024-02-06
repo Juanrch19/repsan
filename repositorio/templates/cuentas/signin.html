@@ -9,7 +9,7 @@
   <form action="" method="POST" class="custom-form needs-validation">
     {% csrf_token %}
     {{ error }}
-    <h2 class="form-title">Inicia Sesión</h2> <!-- Agregar el título "Inicia Sesión" -->
+    <h2 class="form-title">&nbsp;&nbsp;&nbsp;Inicia Sesión</h2> <!-- Agregar el título "Inicia Sesión" -->
     <div class="form-group">
       <label for="{{ form.username.id_for_label }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Usuario</label>
       {{ form.username }}
@@ -18,8 +18,11 @@
        <label for="{{ form.password.id_for_label }}">Contraseña</label>
       {{ form.password }}
     </div>
+    <br>
     <button class="btn btn-primary btn-block custom-button">Ingresar</button>
+    
     <div class="form-group">
+      <br>
       &nbsp;&nbsp;&nbsp;<a href="{% url 'reset_password' %}">¿Olvidaste tu contraseña?</a>
     </div>
   </form>

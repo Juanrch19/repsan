@@ -41,7 +41,7 @@
 <div class="container mt-5">
     {% if user.is_authenticated and user.is_superuser  %}
     <div class="mb-3">
-        <a class="btn btn-primary" href="{% url 'crear' %}" role="button">Agregar Documento</a>
+        <a class="btn btn-primary" href="{% url 'crear' %}" role="button">Agregar Documento <i class="bi bi-file-earmark-plus"></i></a>
     </div>
     {% endif %}
      <!-- Mostrar la paginación -->
