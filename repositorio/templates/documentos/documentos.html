@@ -31,6 +31,7 @@
         color: #fff;
     }
 </style>
+{% csrf_token %}
 <form method="get" action="{% url 'documentos' %}">
     <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Buscar documentos" name="q" value="{{ request.GET.q }}">
