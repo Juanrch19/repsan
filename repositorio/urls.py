@@ -110,6 +110,8 @@ urlpatterns = [
          views.gestionydesarrollohumano,name="gestionydesarrollohumano"),
     path('procedimientos/seleccion y contratación',
          views.procedimientogth,name='procedimientogth'),
+     path('procedimientos/Inducción a colaboradores',
+          views.induccioncolaboradores, name='induccioncolaboradores'),
     # Procesos de apoyo
     
     #Gestión de infraestructura fisica y tecnologica

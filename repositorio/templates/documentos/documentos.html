@@ -131,19 +131,44 @@
                                    role="button">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
-                                <a class="btn btn-danger btn-sm  rounded-pill" href="#" onclick= confirmarEliminacion() role="button"><i class="bi bi-trash"></i></a>
+                                <!-- Agrega SweetAlert CDN -->
+                                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+                                    <!-- Tu enlace con la clase btnEliminacion -->
+                                    <a class="btn btn-danger btn-sm rounded-pill btnEliminacion" href="{% url 'eliminardocumento' document.id_archivo %}" role="button" onclick="confirmDelete(event)">
+                                    <i class="bi bi-trash"></i>
+                                    </a>
+
                                     <script>
-                                        function confirmarEliminacion(idArchivo) {
+                                    // Función para confirmar la eliminación
+                                    function confirmDelete(id_archivo) {
+                                        id_archivo.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+                                        
+                                        // Mostrar la alerta de SweetAlert
+                                        Swal.fire({
+                                        title: "¿Estás seguro?",
+                                        text: "¡No podrás revertir esto!",
+                                        icon: "warning",
+                                        showCancelButton: true,
+                                        confirmButtonColor: "#3085d6",
+                                        cancelButtonColor: "#d33",
+                                        confirmButtonText: "Sí, eliminarlo"
+                                        }).then((result) => {
+                                        
+                                        if (result.isConfirmed) {
+                                            Swal.fire({
+                                                title: "Deleted!",
+                                                text: "Your file has been deleted.",
+                                                icon: "success"
+                                                }).then(() => {
+                                             window.location.href = id_archivo.target.href;
+                                        });
+                                    }
+                                        
+                                        });
+                                    }
+                                    </script>
 
-                                            var confirmacion = confirm("¿Está seguro de que desea eliminar este documento?");
-
-                                            if (confirmacion) {
-
-                                                window.location.href = "{% url 'eliminardocumento' document.id_archivo %}";
-                                            }
-
-                                        }
-                                    </script> 
                             </td>
                             {% endif %}
                         </tr>

@@ -21,8 +21,7 @@ import base64
 from io import BytesIO
 from django.http import HttpResponseServerError
 import logging
-
-
+    
 @login_required(login_url='signin')
 def inicio(request):
     return render(request,'inicio.html')
@@ -153,7 +152,6 @@ def documentos(request):
         documentos = paginator.page(paginator.num_pages)
 
     return render(request, 'documentos/documentos.html', {'documentos': documentos, 'query': query})
-
 
 
 def crear(request):
@@ -384,6 +382,9 @@ def pastoral(request):
 @login_required(login_url='signin')
 def gestionydesarrollohumano(request):
     return render(request,'procesos/talentohumanobienestar/gestionydesarrollohumano.html')
+@login_required(login_url='signin')
+def induccioncolaboradores(request):
+    return render(request,'procesos/talentohumanobienestar/procedimientos/induccionacolaboradores.html')
 @login_required(login_url='signin')
 def procedimientogth(request):
     return render(request,'procesos/talentohumanobienestar/procedimientos/seleccionycontratacion.html')

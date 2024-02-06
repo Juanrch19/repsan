@@ -1,0 +1,525 @@
+{% extends "base.html" %}
+
+{% block titulo %} Inducción a colaboradores {% endblock titulo %}
+
+{% block contenido %}
+
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:449.15pt; border:0.75pt outset #eeeeee;">
+    <tbody>
+        <tr>
+            <td rowspan="3" style="width:87.45pt; border-top:0.75pt inset #eeeeee; border-right:0.75pt inset #eeeeee; border-left:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><img src="data:image/png;base64,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" width="116" height="38" alt=""></p>
+            </td>
+            <td rowspan="3" style="width:222.55pt; border-top:0.75pt inset #eeeeee; border-right:0.75pt inset #eeeeee; border-left:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">PROCEDIMIENTO de&nbsp;</span></strong></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">INDUCCI&Oacute;N DE COLABORADORES&nbsp;</span></strong></p>
+            </td>
+            <td style="width:132.4pt; border:0.75pt inset #eeeeee; padding-left:3.75pt; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">C&Oacute;DIGO: PR-TB-GDT-02</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:132.4pt; border:0.75pt inset #eeeeee; padding-left:3.75pt; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">VERSI&Oacute;N: 1</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:132.4pt; border:0.75pt inset #eeeeee; padding-left:3.75pt; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">FECHA: 05/Ene/2024</span></strong></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+                            </td>
+                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">1. OBJETIVO:</span></strong><br><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Facilitar una integraci&oacute;n efectiva de los nuevos colaboradores en la organizaci&oacute;n, brind&aacute;ndoles informaci&oacute;n esencial y herramientas necesarias para comprender la cultura, pol&iacute;ticas, procesos y expectativas laborales. Adem&aacute;s, se les orienta para familiarizarse con la organizaci&oacute;n, el contexto institucional, los principios, la misi&oacute;n y otros elementos que contribuyan a una experiencia integral y alineada con la cultura misional.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+                            </td>
+                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">2. ALCANCE:</span></strong><br><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Este procedimiento inicia con la notificaci&oacute;n a los nuevos colaboradores de la instituci&oacute;n San Pablo para participar en la auto matr&iacute;cula en la inducci&oacute;n virtual, hasta asegurar una integraci&oacute;n efectiva de los nuevos colaboradores y un continuo perfeccionamiento del proceso en la instituci&oacute;n San Pablo.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;&nbsp;</span></strong><strong><span style="font-family:Arial; text-transform:uppercase;">3. DEFINICIONES:</span></strong></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Inducci&oacute;n:&nbsp;</span></strong><span style="font-family:Arial;">Familiarizaci&oacute;n y orientaci&oacute;n para integrar a nuevos colaboradores, facilitando su adaptaci&oacute;n al entorno laboral.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Pol&iacute;ticas y Procedimientos Internos</span></strong><span style="font-family:Arial;">: Normativas, reglas y protocolos organizacionales que rigen el comportamiento y las operaciones internas.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Cultura Organizacional:</span></strong><span style="font-family:Arial;">&nbsp;Valores, creencias, normas y comportamientos compartidos que influyen en la interacci&oacute;n y trabajo de los colaboradores.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Estructura Organizacional:</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Disposici&oacute;n y Jerarqu&iacute;a:</span></strong><span style="font-family:Arial;">&nbsp;Roles y responsabilidades en la organizaci&oacute;n que definen c&oacute;mo se toman decisiones y se llevan a cabo las operaciones.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Serie de Actividades</span></strong><span style="font-family:Arial;">: Facilita la incorporaci&oacute;n de un nuevo colaborador, desde la presentaci&oacute;n inicial hasta la integraci&oacute;n plena.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Beneficios y Recursos:&nbsp;</span></strong><span style="font-family:Arial;">Proporcionados por la organizaci&oacute;n, como seguro de salud, planes de jubilaci&oacute;n, entre otros.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">&nbsp;</span></strong></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Per&iacute;odo Inicial:</span></strong><span style="font-family:Arial;">&nbsp;Eval&uacute;a el desempe&ntilde;o del nuevo colaborador y determina su idoneidad para el cargo.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Coordinador de Inducci&oacute;n:</span></strong><span style="font-family:Arial;">&nbsp;Planifica, organiza y supervisa el proceso de inducci&oacute;n, brindando apoyo para una transici&oacute;n efectiva.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">4.DESARROLLO:</span></strong></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial; text-transform:uppercase;">PR-TB-GDT-02 I</span><span style="font-family:Arial;">nducci&oacute;n de colaboradores</span></p>
+            </td>
+        </tr>
+        <tr style="height:11.25pt;">
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:10pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:473.6pt; border:0.75pt solid #000000; border-collapse:collapse;">
+    <tbody>
+        <tr style="height:10.95pt;">
+            <td style="width:95.25pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><a name="_Hlk158038008"><strong><span style="font-family:Arial; text-transform:uppercase;">Responsable</span></strong></a></p>
+            </td>
+            <td style="width:209.4pt; border-right-style:solid; border-right-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">ACTIVIDAD</span></strong></p>
+            </td>
+            <td style="width:135.8pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">DOCUMENTOS</span></strong></p>
+            </td>
+        </tr>
+        <tr style="height:9.65pt;">
+            <td style="width:95.25pt; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Departamento de recursos humanos</span></p>
+            </td>
+            <td style="width:209.4pt; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Realizar notificaci&oacute;n y auto matr&iacute;cula para colaboradores.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Notificar a los nuevos colaboradores sobre la inducci&oacute;n y se realiza el registr&oacute; en el sistema</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si no hay errores, continuar actividad 3.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si hay errores, continuar actividad 2.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:135.8pt; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Registro en el sistema de notificaci&oacute;n y auto matr&iacute;cula.&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr style="height:9.65pt;">
+            <td style="width:95.25pt; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Departamento de recursos humanos</span></p>
+            </td>
+            <td style="width:209.4pt; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="2" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Brindar apoyo para completar la inducci&oacute;n.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-left:36pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Proporcionar asistencia y orientaci&oacute;n integral a individuos, reci&eacute;n incorporados, para asegurar la conclusi&oacute;n efectiva de su proceso de inducci&oacute;n.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:135.8pt; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr style="height:76.15pt;">
+            <td style="width:95.25pt; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Nuevo colaborador</span></p>
+            </td>
+            <td style="width:209.4pt; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="3" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Realizar Inducci&oacute;n virtual para nuevos colaboradores.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Definir una sesi&oacute;n para los nuevos colaboradores donde se abordar&aacute;n aspectos claves de la instituci&oacute;n.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:135.8pt; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Programa detallado de la sesi&oacute;n de inducci&oacute;n virtual.</span></p>
+            </td>
+        </tr>
+        <tr style="height:86.5pt;">
+            <td style="width:95.25pt; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Coordinador de inducci&oacute;n</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+            </td>
+            <td style="width:209.4pt; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="4" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Elaborar jornadas de inducci&oacute;n grupal y reinducci&oacute;n.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Llevar a cabo jornadas de inducci&oacute;n grupal y reinducci&oacute;n para ofrecer orientaci&oacute;n adicional y promover la interacci&oacute;n entre los nuevos colaboradores.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:135.8pt; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Agenda de jornadas de inducci&oacute;n.&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Registro de participaci&oacute;n&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr style="height:97.5pt;">
+            <td style="width:95.25pt; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Coordinador de inducci&oacute;n</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+            </td>
+            <td style="width:209.4pt; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="5" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Dar la bienvenida y presentaci&oacute;n inicial.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Dar la bienvenida, presentando la estructura organizativa y proporcionando informaci&oacute;n inicial sobre el equipo y las expectativas laborales.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:135.8pt; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr style="height:141.4pt;">
+            <td style="width:95.25pt; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Departamento de recursos humanos</span></p>
+            </td>
+            <td style="width:209.4pt; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="6" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Revisar las pol&iacute;ticas y procedimientos.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Repasar las pol&iacute;ticas internas, c&oacute;digos de conducta y entregar el manual del empleado para garantizar la comprensi&oacute;n y cumplimiento.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si hay errores o novedades, continuar actividad 7.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si no hay errores o novedades, continuar actividad 8.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:135.8pt; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Registro de la revisi&oacute;n de pol&iacute;ticas internas y c&oacute;digos de conducta.</span></p>
+            </td>
+        </tr>
+        <tr style="height:108.45pt;">
+            <td style="width:95.25pt; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Departamento de recursos humanos</span></p>
+            </td>
+            <td style="width:209.4pt; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="7" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Brindar asistencia para la revisi&oacute;n de las pol&iacute;ticas y procedimientos.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-left:36pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Involucrar la clarificaci&oacute;n de instrucciones, la resoluci&oacute;n de dudas, la provisi&oacute;n de herramientas adecuadas para la revisi&oacute;n, y la asistencia en la interpretaci&oacute;n de datos o contenido.&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:135.8pt; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr style="height:87.15pt;">
+            <td style="width:95.25pt; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Departamento de recursos humanos</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:209.4pt; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="8" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Proporcionar informaci&oacute;n sobre beneficios y recursos.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Proporcionar informaci&oacute;n detallada sobre beneficios, programas de bienestar y recursos disponibles para los colaboradores.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:135.8pt; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Documento detallado sobre beneficios, programas de bienestar y recursos proporcionados a los colaboradores.&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr style="height:12.9pt;">
+            <td style="width:95.25pt; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0.5pt; margin-bottom:0pt; font-size:10.5pt;"><span style="font-family:Arial;">Departamento de</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:10.5pt;"><span style="font-family:Arial;">TI</span></p>
+            </td>
+            <td style="width:209.4pt; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="9" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-right:4.7pt; margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Capacitar en sistemas y Herramientas para el desempe&ntilde;o laboral.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-right:4.7pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin:0pt 4.7pt 0pt 5.35pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Proporcionar a los empleados las habilidades necesarias para utilizar eficientemente los sistemas y herramientas relevantes en el entorno laboral. Este proceso de capacitaci&oacute;n se dise&ntilde;ar&aacute; para mejorar la competencia t&eacute;cnica y la eficacia en el manejo de las plataformas utilizadas en las tareas diarias.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:135.8pt; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr style="height:64.55pt;">
+            <td style="width:95.25pt; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Coordinador de inducci&oacute;n</span></p>
+            </td>
+            <td style="width:209.4pt; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="10" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:36pt; text-align:justify; font-family:Arial; font-size:11pt;">&nbsp;Definir expectativas&nbsp;&nbsp; laborales.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Revisar las expectativas laborales, responsabilidades y metas espec&iacute;ficas del nuevo colaborador para establecer un claro rendimiento.</span></p>
+            </td>
+            <td style="width:135.8pt; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr style="height:76.15pt;">
+            <td style="width:95.25pt; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Coordinador de inducci&oacute;n</span></p>
+            </td>
+            <td style="width:209.4pt; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="11" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:36pt; text-align:justify; font-family:Arial; font-size:11pt;">Realizar Sesi&oacute;n de preguntas y respuestas.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Brindar tiempo para preguntas y respuestas, fomentando la comunicaci&oacute;n abierta y abordado cualquier inquietud.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:135.8pt; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr style="height:119.45pt;">
+            <td style="width:95.25pt; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Departamento de recursos humanos</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:209.4pt; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="12" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:36pt; text-align:justify; font-family:Arial; font-size:11pt;">Realizar Seguimiento post-inducci&oacute;n.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Realizar un seguimiento para evaluar la experiencia del nuevo colaborador y abordar cualquier ajuste que sea necesario.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Fin del procedimiento</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:135.8pt; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Documento de seguimiento.</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr style="height:11.25pt;">
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+    <tbody>
+        <tr>
+            <td style="width:15%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">VERSI&Oacute;N</span></strong></p>
+            </td>
+            <td style="width:15%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">FECHA</span></strong></p>
+            </td>
+            <td style="width:70%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">RAZ&Oacute;N DE LA ACTUALIZACI&Oacute;N</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">1</span></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">05/01/2024</span></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Se realiza el procedimiento.</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+    <tbody>
+        <tr>
+            <td style="width:33%; border:0.75pt inset #eeeeee; padding:3pt; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">ELABOR&Oacute;</span></strong></p>
+            </td>
+            <td style="width:33%; border:0.75pt inset #eeeeee; padding:3pt; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">REVIS&Oacute;</span></strong></p>
+            </td>
+            <td style="width:33%; border:0.75pt inset #eeeeee; padding:3pt; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">APROB&Oacute;</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border:0.75pt inset #eeeeee; padding:3pt; vertical-align:top;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="width:25%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                            </td>
+                            <td style="width:75%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Juan Esteban Romero Chacon</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Aprendiz</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">05/01/2024</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; padding:3pt; vertical-align:top;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="width:25%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                            </td>
+                            <td style="width:75%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Martha Esperanza Rodriguez</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Calidad, Procesos y Riesgos</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; padding:3pt; vertical-align:top;">
+                <table cellspacing="2" cellpadding="0" style="width:35.12%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="width:93.88%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:8pt;">&nbsp;</p>
+<p style="margin-top:0pt; margin-bottom:8pt;">&nbsp;</p>
+<p style="margin-top:0pt; margin-bottom:8pt;">&nbsp;</p>
+{% endblock contenido %}
