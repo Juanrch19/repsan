@@ -34,10 +34,8 @@ class Document(models.Model):
     fecha_creacion = models.DateTimeField(default=datetime.datetime.now().replace(microsecond=0))
     numero_autoincrementable = models.IntegerField(null=True, blank=True)
 
-
     def __str__(self):
         return self.titulo
-
 
     def save(self, *args, **kwargs):
         # Asegurarse de que siempre haya un código proporcionado por el usuario
@@ -47,12 +45,11 @@ class Document(models.Model):
         # Obtener el objeto existente en la base de datos
         existing_obj = Document.objects.filter(id_archivo=self.id_archivo).first()
 
-        # Eliminar el archivo anterior si existe
-        if existing_obj and existing_obj.file:
+        # Si se está editando y se proporciona un nuevo archivo, eliminar el archivo antiguo
+        if existing_obj and existing_obj.file != self.file:
             file_path = existing_obj.file.path
             default_storage.delete(file_path)
 
-        
         categorias_incrementables = ['procedimiento', 'formato', 'manuales', 'diagrama']
         if self.categoria and self.categoria.nombre_categoria.lower() in categorias_incrementables:
             self.numero_autoincrementable = Document.objects.filter(categoria=self.categoria).aggregate(
@@ -61,16 +58,13 @@ class Document(models.Model):
         else:
             self.numero_autoincrementable = None  
 
-       
         if self.numero_autoincrementable is not None:
             self.codigo = f"{self.codigo}"
 
-    
         super().save(*args, **kwargs)
-    def delete(self, using=None, keep_parents=False):
 
+    def delete(self, using=None, keep_parents=False):
         self.file.storage.delete(self.file.name)
-        
         super().delete(using, keep_parents)
 
 # Eliminar el archivo al eliminar el objeto Document

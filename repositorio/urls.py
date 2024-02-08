@@ -95,7 +95,11 @@ urlpatterns = [
           views.gestiondelregistrocalificado, name='gestiondelregistrocalificado'),
     path('cadenavalor/calidadintegral/aseguramiento de la calidad academica',
           views.aseguramientodelacalidadacademica, name='aseguramientodelacalidadacademica'),
-     
+    #Procedimientos
+    path('cadenavalor/calidadintegral/procedimientos/Modificación de los programas academicos',
+         views.modificacionprogramas, name='modificacionprogramas'), 
+    path('cadenavalor/calidadintegral/procedimientos/Pre-radicación de cumplimiento de condiciones de calidad institucional',
+         views.preradicacion, name='preradicacion'), 
     
     #Talento Humano y Bienestar
     path('cadenavalor/talento humano bienestar',

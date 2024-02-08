@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.clickjacking import xframe_options_exempt
 from django.http import Http404
+from django.core.files.storage import default_storage
 from repositorio.forms import CategoriaForm, DocumentForm, ProcesoForm
 from repositorio.models import Categoria, Document, Proceso
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -140,7 +141,7 @@ def documentos(request):
         )
 
     # Configura el paginador, aquí se configura para mostrar 10 documentos por página
-    paginator = Paginator(documentos_list, 10)
+    paginator = Paginator(documentos_list, 20)
     page = request.GET.get('page')
 
     try:
@@ -183,10 +184,17 @@ def editardocumento(request, id):
     
     if request.method == 'POST':
         if formulario.is_valid():
+            # Verificar si se carga un nuevo archivo
+            if 'file' in request.FILES:
+                # Eliminar el archivo anterior
+                if documento.file:
+                    file_path = documento.file.path
+                    default_storage.delete(file_path)
             formulario.save()
             return redirect('documentos')
 
     return render(request, 'documentos/editardocumento.html', {'formulario': formulario})
+
 
 @login_required(login_url='signin')
 def eliminardocumento(request, id):
@@ -366,7 +374,11 @@ def servicioalpublico(request):
 login_required(login_url='signin')
 def aseguramientodelacalidadprocesos(request):
     return render(request, 'procesos/calidadintegral/aseguramientodelacalidadprocesos.html')
-
+#Procedimientos
+def modificacionprogramas(request):
+    return render(request,'procesos/calidadintegral/procedimientos/modificacionprogramas.html')
+def preradicacion(request):
+    return render(request,'procesos/calidadintegral/procedimientos/preradicacion.html')
 #Talento humano y Bienestar
 @login_required(login_url='signin')
 def talentohumanobienestar(request):

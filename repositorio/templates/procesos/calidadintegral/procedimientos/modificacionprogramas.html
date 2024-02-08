@@ -1,0 +1,564 @@
+{% extends "base.html" %}
+
+{% block titulo %}{% endblock titulo %}
+
+{% block contenido %}
+<table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+    <tbody>
+        <tr>
+            <td rowspan="3" style="width:20%; border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><img src="data:image/png;base64,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" width="116" height="38" alt=""></p>
+            </td>
+            <td rowspan="3" style="width:47.4%; border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">PROCEDIMIENTO de&nbsp;</span></strong></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">Modificaci&oacute;n a los programas acad&eacute;micos&nbsp;</span></strong></p>
+            </td>
+            <td style="width:32.6%; border:0.75pt inset #eeeeee; padding-left:3.75pt; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">C&Oacute;DIGO: PR-CA-GRC-03</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:32.6%; border:0.75pt inset #eeeeee; padding-left:3.75pt; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">VERSI&Oacute;N: 1</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:32.6%; border:0.75pt inset #eeeeee; padding-left:3.75pt; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">FECHA: 05/feb/2024</span></strong></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+                            </td>
+                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">1. OBJETIVO:</span></strong><br><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong><br><span style="font-family:Arial;">Mejorar la calidad y pertinencia de los programas acad&eacute;micos de la instituci&oacute;n, mediante un proceso participativo, sistem&aacute;tico y riguroso, que responda a las necesidades y expectativas de los estudiantes, profesores, empleadores y sociedad en general.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+                            </td>
+                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">2. ALCANCE:</span></strong><br><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Inicia con la identificaci&oacute;n de la necesidad de modificaci&oacute;n en los programas acad&eacute;micos, hasta la elaboraci&oacute;n de un informe detallado de resultados, asegurando as&iacute; una gesti&oacute;n integral de la modificaci&oacute;n efectuada en los programas de la instituci&oacute;n.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;&nbsp;</span></strong><strong><span style="font-family:Arial; text-transform:uppercase;">3. DEFINICIONES:</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align:middle;">
+                <table cellspacing="0" cellpadding="0">
+                    <tbody>
+                        <tr style="height:7.5pt;">
+                            <td style="vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Comunidad Educativa:&nbsp;</span></strong><span style="font-family:Arial;">Es aquella conformada por estudiantes, educadores, padres de familia, egresados, directivos docentes y administradores escolares. Todos ellos, seg&uacute;n su competencia, deben participar en el dise&ntilde;o, ejecuci&oacute;n y evaluaci&oacute;n del Proyecto Educativo Institucional y en la buena marcha del respectivo establecimiento educativo.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Comisi&oacute;n Nacional Intersectorial de Aseguramiento de la Calidad de la Educaci&oacute;n Superior &ndash; CONACES:&nbsp;</span></strong><span style="font-family:Arial;">Organismo del Gobierno Nacional vinculado al Ministerio de Educaci&oacute;n Nacional, de asesor&iacute;a y coordinaci&oacute;n sectorial perteneciente al Sector Administrativo de la Educaci&oacute;n Superior, cuyas competencias est&aacute;n relacionadas con el Sistema de Aseguramiento de la Calidad de la Educaci&oacute;n Superior que tiene como principales funciones: la coordinaci&oacute;n y orientaci&oacute;n del aseguramiento de la calidad de la educaci&oacute;n superior, la evaluaci&oacute;n del cumplimiento de los requisitos para la creaci&oacute;n de instituciones de educaci&oacute;n superior, su cambio de car&aacute;cter acad&eacute;mico redefinici&oacute;n, creaci&oacute;n de seccionales y reconocimiento como universidades, as&iacute; como tambi&eacute;n le corresponde evaluar que los programas acad&eacute;micos cumplan con las condiciones de calidad para su oferta y desarrollo, y emitir el respectivo concepto sobre la procedencia del otorgamiento o renovaci&oacute;n del registro calificado. Referencia: Art&iacute;culo 39&ordm; del Decreto 4675 de diciembre 28 de 2006, por el cual se modifica la estructura del Ministerio de Educaci&oacute;n Nacional, y se dictan otras disposiciones.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Comit&eacute; Curricular &Uacute;nico (CCU):&nbsp;</span></strong><span style="font-family:Arial;">Grupo de personas designadas para colaborar en la planificaci&oacute;n, desarrollo y revisi&oacute;n de los planes de estudio y programas acad&eacute;micos en una instituci&oacute;n educativa. Este comit&eacute; tiene la responsabilidad de tomar decisiones relacionadas con los objetivos educativos, la estructura del curr&iacute;culo, la selecci&oacute;n de materiales did&aacute;cticos, la evaluaci&oacute;n del rendimiento estudiantil y otros aspectos importantes del dise&ntilde;o y la implementaci&oacute;n de los programas educativos.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Consejo Acad&eacute;mico de Sede:&nbsp;</span></strong><span style="font-family:Arial;">Es la autoridad colegiada de la Sede con competencia en asuntos acad&eacute;micos, tanto en el desarrollo de las funciones sustantivas e institucionales, como en los asuntos con los estudiantes. El Consejo Acad&eacute;mico es el encargado de implementar, contextualizar y desarrollar las pol&iacute;ticas generales acad&eacute;micas, en la respectiva Sede.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Consejo de Facultad:</span></strong><span style="font-family:Arial;">&nbsp;Es la autoridad colegiada de gobierno en la facultad. Su responsabilidad es trazar los lineamientos espec&iacute;ficos para la administraci&oacute;n y desarrollo de la facultad; tomar las decisiones respectivas de acuerdo con la ley, los Estatutos y los reglamentos internos, siguiendo las directrices del Rector de la Sede y las pol&iacute;ticas y orientaciones emanadas de las diversas autoridades de UNISANPABLO.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Ministerio de Educaci&oacute;n Nacional (MEN):</span></strong><span style="font-family:Arial;">&nbsp;Organismo de administraci&oacute;n del orden nacional que forma parte del Sector Central de la Rama Ejecutiva del Poder P&uacute;blico (Administraci&oacute;n P&uacute;blica Nacional), al cual le corresponde cumplir las funciones y deberes se&ntilde;aladas en el Art&iacute;culo 2, del Decreto 5012 del 28 de diciembre de 2009.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Modificaci&oacute;n de Programas:&nbsp;</span></strong><span style="font-family:Arial;">Hace referencia a cualquier ajuste, cambio o actualizaci&oacute;n en las condiciones de calidad de un programa que cuente con registro calificado.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Plan de Transici&oacute;n:&nbsp;</span></strong><span style="font-family:Arial;">Son las equivalencias asociadas a los espacios acad&eacute;micos de dos planes de estudio diferentes, a trav&eacute;s de un proceso de homologaci&oacute;n, que permiten la movilidad voluntaria de los estudiantes de un plan antiguo a uno nuevo aprobado por el MEN.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Programa Acad&eacute;mico:&nbsp;</span></strong><span style="font-family:Arial;">Conjunto de asignaturas, materias u ofrecimientos educativos, organizado por disciplinas, de tal forma que da derecho a quien lo completa satisfactoriamente a recibir de la instituci&oacute;n que lo ofrece un reconocimiento acad&eacute;mico, producto del estudio formal y seg&uacute;n el nivel de formaci&oacute;n.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Registro Calificado:</span></strong><strong><span style="font-family:Arial;">&nbsp;&nbsp;</span></strong><span style="font-family:Arial;">Es la licencia que el MEN otorga a un programa de Educaci&oacute;n Superior cuando demuestra ante el mismo que re&uacute;ne las condiciones de calidad que la ley exige.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Sistema Nacional de Aseguramiento de la Calidad de Educaci&oacute;n Superior:&nbsp;</span></strong><span style="font-family:Arial;">Es el conjunto de instituciones e instancias definidas por el marco normativo vigente, que se articulan por medio de pol&iacute;ticas y procesos dise&ntilde;ados, con el prop&oacute;sito de asegurar la calidad de las instituciones y de sus programas. Este sistema promueve en las instituciones los procesos de autoevaluaci&oacute;n, auto regulaci&oacute;n y mejoramiento de sus labores formativas, acad&eacute;micas, docentes, cient&iacute;ficas, culturales y de extensi&oacute;n, contribuyendo al avance y fortalecimiento de su comunidad y sus resultados acad&eacute;micos, bajo principios de equidad, diversidad, inclusi&oacute;n y sostenibilidad.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">SACES: Sistema de Aseguramiento de la Calidad de Educaci&oacute;n Superior:&nbsp;</span></strong><span style="font-family:Arial;">Plataforma que permite a las Instituciones de Educaci&oacute;n Superior (IES) presentar de forma autom&aacute;tica los tr&aacute;mites asociados al proceso de Registro Calificado y de tipo institucional. A trav&eacute;s de este sistema, las instituciones pueden hacer la solicitud de registro calificado y hacer seguimiento a cada una de las etapas para obtenerlo.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Sistema Nacional de Informaci&oacute;n de la Educaci&oacute;n Superior (SNIES):</span></strong><span style="font-family:Arial;">&nbsp;Es un sistema de informaci&oacute;n que ha sido creado para responder a las necesidades de informaci&oacute;n de la educaci&oacute;n superior en Colombia. En este sistema se recopila y organiza la informaci&oacute;n relevante sobre la educaci&oacute;n superior que permite hacer planeaci&oacute;n, monitoreo, evaluaci&oacute;n, asesor&iacute;a, inspecci&oacute;n y vigilancia del sector.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">4. DESARROLLO:</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial; text-transform:uppercase;">PR-CA-GRC-03&nbsp;</span><span style="font-family:Arial;">Modificaci&oacute;n a los Programas Acad&eacute;micos</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+        <tr style="height:11.25pt;">
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:10pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt solid #000000; border-collapse:collapse;">
+    <tbody>
+        <tr>
+            <td style="width:21.42%; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">Responsable</span></strong></p>
+            </td>
+            <td style="width:47.58%; border-right-style:solid; border-right-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">ACTIVIDAD</span></strong></p>
+            </td>
+            <td style="width:31%; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">DOCUMENTOS</span></strong></p>
+            </td>
+        </tr>
+        <tr style="height:11.25pt;">
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Decano Facultad</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Identificar la necesidad de la modificaci&oacute;n.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Identificar las razones espec&iacute;ficas que motivan la modificaci&oacute;n de los programas acad&eacute;micos. Pueden ser cambios en las demandas del mercado laboral, avances tecnol&oacute;gicos, actualizaciones curriculares, entre otros.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si se identifica la necesidad de la modificaci&oacute;n, continuar actividad 2.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si no se identifica la necesidad de la modificaci&oacute;n, fin del procedimiento.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Formato de diagnostico de necesidades de los programas.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Vicerrector&iacute;a Acad&eacute;mica</span><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="2" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Formar un equipo de modificaci&oacute;n.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Crear un equipo de personas con experiencia y conocimiento relevante, que representen a diferentes &aacute;reas y perspectivas, equipo que ser&aacute; responsable de guiar y liderar el proceso de modificaci&oacute;n.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Formato de conformaci&oacute;n de comit&eacute;.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Comit&eacute; Curricular</span><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="3" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Analizar las propuestas de modificaci&oacute;n.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Revisar las propuestas presentadas para modificar los programas acad&eacute;micos, analizar detalladamente los cambios propuestos, evaluar su viabilidad, impacto y coherencia con los objetivos institucionales.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si las propuestas de modificaci&oacute;n no son viables, retomar actividad 3.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si las propuestas de modificaci&oacute;n son viables, continuar actividad 4.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Comit&eacute; Curricular</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="4" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Consultar con las partes interesadas.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Llevar a cabo un proceso de consulta con todas las partes interesadas, como profesores, estudiantes, empleadores, y otros miembros de la comunidad acad&eacute;mica. De esa forma, recoger opiniones, sugerencias y garantizar la aceptaci&oacute;n general de las modificaciones.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si las partes interesadas no est&aacute;n de acuerdo con las propuestas, continuar actividad 3.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si las partes interesadas est&aacute;n de acuerdo con las propuestas, continuar actividad 5.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Encuestas / entrevistas.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Vicerrector&iacute;a Acad&eacute;mica</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="5" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Realizar la aprobaci&oacute;n preliminar.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Llevar a cabo la aprobaci&oacute;n preliminar para avanzar con el proceso. No implica la aprobaci&oacute;n final, pero, indica que las modificaciones propuestas son consideradas viables.&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Formulario de aprobaci&oacute;n preliminar con comentarios y condiciones.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Oficina de Asesor&iacute;a Jur&iacute;dica</span><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="6" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Revisar aspecto legal y normativo.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Verificar que las modificaciones propuestas cumplan con los requisitos legales y normativos establecidos por las autoridades educativas gubernamentales.&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si no se cumplen los requisitos legales y normativos, continuar actividad 3.&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si se cumplen los requisitos legales y normativos, continuar actividad 7.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Formato de verificaci&oacute;n legal y normativa.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Vicerrector&iacute;a Acad&eacute;mica</span><span style="font-family:Arial; background-color:#ffff00;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="7" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Dar aprobaci&oacute;n final.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Abordar todas las consideraciones y realizar los ajustes necesarios a las propuestas de modificaci&oacute;n, posteriormente otorgar la aprobaci&oacute;n final.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si se aprueban las modificaciones, continuar actividad 8.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si no se aprueban las modificaciones, fin del procedimiento.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Formato oficial de aprobaci&oacute;n final.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Decano Facultad</span><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="8" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Desarrollar materiales y recursos.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Desarrollar los materiales did&aacute;cticos y asegurar los recursos necesarios para la implementaci&oacute;n de los cambios en los programas acad&eacute;micos.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Lista de materiales y recursos necesarios.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Decano Facultad</span><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="9" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Comunicar a estudiantes y profesores.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Informar a estudiantes y profesores sobre las modificaciones planeadas, proporcionar detalles sobre los cambios, fechas de implementaci&oacute;n y cualquier otro aspecto relevante.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Comunicado oficial / correo electr&oacute;nico / presentaci&oacute;n informativa.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Decano Facultad</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="10" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:36pt; text-align:justify; font-family:Arial; font-size:11pt;">Realizar implementaci&oacute;n gradual.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Llevar a cabo la implementaci&oacute;n gradual y planificada de las modificaciones, para minimizar interrupciones y permitir la adaptaci&oacute;n progresiva de todos los involucrados.&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Plan de implementaci&oacute;n.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Decano Facultad</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="11" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:36pt; text-align:justify; font-family:Arial; font-size:11pt;">Hacer monitoreo y evaluaci&oacute;n continua.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Establecer un sistema de monitoreo continuo para evaluar el impacto de las modificaciones en el rendimiento acad&eacute;mico, la satisfacci&oacute;n de los estudiantes y otros indicadores relevantes.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Decano Facultad</span></p>
+            </td>
+            <td style="width:47.58%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="12" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:36pt; text-align:justify; font-family:Arial; font-size:11pt;">Elaborar informe de resultados.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Realizar un informe detallado que resuma los resultados obtenidos, lecciones aprendidas y cualquier resultado adicional necesario para mejorar el proceso en el futuro.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Fin del procedimiento.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr style="height:11.25pt;">
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+    <tbody>
+        <tr>
+            <td style="width:15%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">VERSI&Oacute;N</span></strong></p>
+            </td>
+            <td style="width:15%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">FECHA</span></strong></p>
+            </td>
+            <td style="width:70%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">RAZ&Oacute;N DE LA ACTUALIZACI&Oacute;N</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">1</span></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">05/02/2024</span></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Se realiza el procedimiento.</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+    <tbody>
+        <tr>
+            <td style="width:33%; border:0.75pt inset #eeeeee; padding:3pt; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">ELABOR&Oacute;</span></strong></p>
+            </td>
+            <td style="width:33%; border:0.75pt inset #eeeeee; padding:3pt; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">REVIS&Oacute;</span></strong></p>
+            </td>
+            <td style="width:33%; border:0.75pt inset #eeeeee; padding:3pt; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">APROB&Oacute;</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border:0.75pt inset #eeeeee; padding:3pt; vertical-align:top;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="width:25%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                            </td>
+                            <td style="width:75%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Cristian Guillermo Velandia</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Aprendiz</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">05/02/2024</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; padding:3pt; vertical-align:top;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="width:25%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                            </td>
+                            <td style="width:75%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Martha Esperanza Rodriguez</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Calidad, Procesos y Riesgos</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; padding:3pt; vertical-align:top;">
+                <table cellspacing="2" cellpadding="0" style="width:35.12%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="width:93.88%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:8pt;">&nbsp;</p>
+{% endblock contenido %}
