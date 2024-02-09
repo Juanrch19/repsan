@@ -1,0 +1,656 @@
+{% extends "base.html" %}
+
+{% block tiutlo %}Procedimiento Disciplinario {% endblock tiutlo %}
+
+{% block contenido %} 
+
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+    <tbody>
+        <tr>
+            <td rowspan="3" style="width:20%; border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><img src="data:image/png;base64,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" width="116" height="38" alt=""></p>
+            </td>
+            <td rowspan="3" style="width:50.62%; border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">PROCEDIMIENTO</span></strong></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">CONTROL DISCIPLINARIO&nbsp;</span></strong></p>
+            </td>
+            <td style="width:29.38%; border:0.75pt inset #eeeeee; padding-left:3.75pt; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">C&Oacute;DIGO: PR-TB-CDI-01</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:29.38%; border:0.75pt inset #eeeeee; padding-left:3.75pt; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">VERSI&Oacute;N: 1</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:29.38%; border:0.75pt inset #eeeeee; padding-left:3.75pt; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">FECHA: 30/NOV/2023</span></strong></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+                            </td>
+                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">1. OBJETIVO:</span></strong><br><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong><br><span style="font-family:Arial;">Mantener un ambiente educativo seguro, respetuoso y propicio para el aprendizaje al abordar y corregir conductas que violen el c&oacute;digo de conducta establecido. Promover la integridad acad&eacute;mica, el respeto mutuo y la responsabilidad, as&iacute; como garantizar la justicia y equidad en la aplicaci&oacute;n de sanciones disciplinarias cuando sea necesario. Adem&aacute;s, el procedimiento tambi&eacute;n tiene como objetivo proporcionar a los involucrados un proceso justo y transparente para abordar las denuncias de conducta inapropiada.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+                            </td>
+                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">2. ALCANCE:</span></strong><br><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Inicia con la recepci&oacute;n de denuncias y reportes sobre presuntas violaciones al c&oacute;digo de conducta en la comunidad universitaria, hasta la aplicaci&oacute;n de sanciones disciplinarias y el registro de la infracci&oacute;n en los archivos disciplinarios de la universidad.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;&nbsp;</span></strong><strong><span style="font-family:Arial; text-transform:uppercase;">3. DEFINICIONES:</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align:middle;">
+                <table cellspacing="0" cellpadding="0">
+                    <tbody>
+                        <tr style="height:7.5pt;">
+                            <td style="vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Oficina de Conducta Estudiantil: Entidad encargada de recibir denuncias, coordinar el proceso disciplinario, notificar a los estudiantes involucrados y aplicar sanciones disciplinarias.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Comit&eacute; de Investigaci&oacute;n Disciplinaria:</span> <span style="font-family:Arial;">Grupo responsable de realizar investigaciones preliminares, recopilar evidencia y determinar la validez de las denuncias antes de una audiencia disciplinaria.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Comit&eacute; Disciplinario: Panel encargado de conducir audiencias disciplinarias, evaluar la evidencia presentada y tomar decisiones sobre la responsabilidad y las sanciones disciplinarias.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">C&oacute;digo de Conducta: Conjunto de normas y expectativas de comportamiento establecidas por la universidad que los miembros de la comunidad deben seguir.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Audiencia Disciplinaria: Proceso en el cual el Comit&eacute; Disciplinario escucha pruebas y testimonios para determinar la responsabilidad del estudiante acusado de una violaci&oacute;n al c&oacute;digo de conducta.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Sanciones Disciplinarias: Medidas impuestas como consecuencia de una violaci&oacute;n al c&oacute;digo de conducta, que pueden incluir advertencias escritas, restricciones, suspensiones temporales o expulsiones.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Apelaci&oacute;n:</span> <span style="font-family:Arial;">Mecanismo que permite a los acusados apelar las decisiones del Comit&eacute; Disciplinario en busca de revisi&oacute;n imparcial.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Seguimiento y Evaluaci&oacute;n: Actividad posterior a la aplicaci&oacute;n de sanciones, destinada a garantizar el cumplimiento y evaluar la efectividad del proceso disciplinario.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Registro Disciplinario: Archivos institucionales que documentan las infracciones disciplinarias, decisiones y sanciones aplicadas a colaboradores y estudiantes a lo largo del tiempo.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">4. DESARROLLO:</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">PR-TB-CDI-01 Procedimiento Disciplinario</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+        <tr style="height:11.25pt;">
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:10pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt solid #000000; border-collapse:collapse;">
+    <tbody>
+        <tr>
+            <td style="width:21.42%; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">Responsable</span></strong></p>
+            </td>
+            <td style="width:47.58%; border-right-style:solid; border-right-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">ACTIVIDAD</span></strong></p>
+            </td>
+            <td style="width:31%; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">DOCUMENTOS</span></strong></p>
+            </td>
+        </tr>
+        <tr style="height:11.25pt;">
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span><span style="font-family:Arial;">&Aacute;rea de conducta</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Recibir el reporte de la infracci&oacute;n.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Recibir por parte de un estudiante, profesor o personal, una presunta violaci&oacute;n al c&oacute;digo de conducta.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Formulario de Denuncia o Reporte.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Comit&eacute; de investigaci&oacute;n disciplinaria</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="2" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Realizar investigaci&oacute;n preliminar.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Realizar una investigaci&oacute;n para evaluar la validez de la denuncia, recopilando pruebas y de esa forma determinar si hay suficiente evidencia para proceder con una audiencia.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si hay evidencia suficiente, continuar actividad 3.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si no hay evidencia suficiente, fin del procedimiento.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Formulario de Investigaci&oacute;n Preliminar.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Comit&eacute; de investigaci&oacute;n disciplinaria</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="3" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Determinar la gravedad.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Evaluar la gravedad de la infracci&oacute;n para determinar qu&eacute; nivel de proceso disciplinario se aplicar&aacute;.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Matriz de Evaluaci&oacute;n de Gravedad de Infracciones.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&Aacute;rea de conducta</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="4" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Notificar a la persona acusada.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si la investigaci&oacute;n sugiere la posibilidad de una violaci&oacute;n al c&oacute;digo de conducta, el estudiante involucrado recibe notificaci&oacute;n formal de la denuncia. Se le proporciona la oportunidad de responder y presentar su versi&oacute;n de los hechos.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Carta de Notificaci&oacute;n Formal.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Comit&eacute; disciplinario</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="5" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Conducir audiencia disciplinaria.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Llevar a cabo una audiencia disciplinaria, en donde se presentar&aacute;n pruebas, se escuchar&aacute;n las declaraciones del acusado y de otros involucrados, y se determinar&aacute; la responsabilidad del presunto infractor.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Lista de Participantes.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Comit&eacute; disciplinario</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="6" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Determinar la responsabilidad.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Se tomar&aacute; una decisi&oacute;n sobre la responsabilidad del acusado. Dependiendo de los hallazgos, se procede a la aplicaci&oacute;n de sanciones o se concluye el proceso si se determina que no hubo violaci&oacute;n.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si es responsable el acusado, continuar actividad 7.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si no es responsable el acusado, fin del procedimiento.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Acta de Audiencia con Conclusiones.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Comit&eacute; disciplinario</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="7" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Determinar las sanciones disciplinarias.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Determinar las sanciones disciplinarias correspondientes, dependiendo de la gravedad de la infracci&oacute;n.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si desea apelar el acusado, continuar actividad 8.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si no se desea apelar el acusado, continuar actividad 9.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Carta de Sanciones Disciplinarias.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Acuerdo de Cumplimiento y Aceptaci&oacute;n de Sanciones.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Comit&eacute; disciplinario</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="8" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Facilitar proceso de apelaci&oacute;n.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Proporcionar al acusado la oportunidad de apelar la decisi&oacute;n si no est&aacute; de acuerdo con los resultados de la audiencia disciplinaria. Establecer un proceso para revisar la apelaci&oacute;n de manera justa e imparcial.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si es v&aacute;lida la apelaci&oacute;n, continuar a la actividad 5.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si no es v&aacute;lida la apelaci&oacute;n, continuar con la actividad 9.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Formulario de Apelaci&oacute;n.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Comit&eacute; disciplinario</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="9" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Implementar sanciones.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Aplicar las sanciones disciplinarias que pueden variar, desde, advertencias escritas, hasta suspensiones temporales o expulsiones.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Registro de Implementaci&oacute;n de Sanciones.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&Aacute;rea de conducta</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="10" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:36pt; text-align:justify; font-family:Arial; font-size:11pt;">Realizar seguimiento y evaluaci&oacute;n.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Realizar un seguimiento para garantizar el cumplimiento y evaluar la efectividad del proceso disciplinario. Esto ayuda a la universidad a ajustar y mejorar sus pol&iacute;ticas y procedimientos seg&uacute;n sea necesario.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Formulario de Seguimiento de Sanciones.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Formulario de Seguimiento de Sanciones.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&Aacute;rea de conducta</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="11" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:36pt; text-align:justify; font-family:Arial; font-size:11pt;">Registrar la infracci&oacute;n.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Registrar la infracci&oacute;n, la decisi&oacute;n y las sanciones en los registros disciplinarios de la universidad. Este registro es importante para mantener un historial de las acciones disciplinarias y garantizar la consistencia en la aplicaci&oacute;n de pol&iacute;ticas en el futuro.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Fin del procedimiento.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Registro Disciplinario Institucional.</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr style="height:11.25pt;">
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+                    <tbody>
+                        <tr>
+                            <td colspan="2" style="border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">DOCUMENTACI&Oacute;N</span></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:29.98%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">C&Oacute;DIGO</span></strong></p>
+                            </td>
+                            <td style="width:70.02%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">NOMBRE</span></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">FR-TB-CDI-01</span></p>
+                            </td>
+                            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="padding:0.75pt; vertical-align:middle;">
+                                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                            </td>
+                                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;&nbsp;Formato de denuncia o reporte</span></p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">FR-TB-CDI-02</span></p>
+                            </td>
+                            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width:0.3pt; padding:0.75pt; vertical-align:middle;">
+                                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                            </td>
+                                            <td style="width:299.55pt; padding:0.75pt; vertical-align:middle;">
+                                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Formato de investigaci&oacute;n preliminar</span></p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><br></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">FR-TB-CDI-03</span></p>
+                            </td>
+                            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width:0.3pt; padding:0.75pt; vertical-align:middle;">
+                                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                            </td>
+                                            <td style="width:299.55pt; padding:0.75pt; vertical-align:middle;">
+                                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Formato de evaluaci&oacute;n de gravedad de infracciones</span></p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><br></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">FR-TB-CDI-04</span></p>
+                            </td>
+                            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width:0.3pt; padding:0.75pt; vertical-align:middle;">
+                                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                            </td>
+                                            <td style="width:299.55pt; padding:0.75pt; vertical-align:middle;">
+                                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Formato de notificaci&oacute;n formal</span></p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><br></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+    <tbody>
+        <tr>
+            <td style="width:15%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">VERSI&Oacute;N</span></strong></p>
+            </td>
+            <td style="width:15%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">FECHA</span></strong></p>
+            </td>
+            <td style="width:70%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">RAZ&Oacute;N DE LA ACTUALIZACI&Oacute;N</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">1</span></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">30/11/2023</span></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Se realiza el procedimiento.</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+    <tbody>
+        <tr>
+            <td style="width:33%; border:0.75pt inset #eeeeee; padding:3pt; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">ELABOR&Oacute;</span></strong></p>
+            </td>
+            <td style="width:33%; border:0.75pt inset #eeeeee; padding:3pt; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">REVIS&Oacute;</span></strong></p>
+            </td>
+            <td style="width:33%; border:0.75pt inset #eeeeee; padding:3pt; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">APROB&Oacute;</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border:0.75pt inset #eeeeee; padding:3pt; vertical-align:top;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="width:25%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                            </td>
+                            <td style="width:75%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Cristian Guillermo Velandia</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Aprendiz</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">30/11/2023</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; padding:3pt; vertical-align:top;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="width:25%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                            </td>
+                            <td style="width:75%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Martha Esperanza Rodriguez</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Calidad, Procesos y Riesgos</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">30/11/2023</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; padding:3pt; vertical-align:top;">
+                <table cellspacing="2" cellpadding="0" style="width:35.12%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="width:93.88%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:8pt;">&nbsp;</p>
+{% endblock contenido %}

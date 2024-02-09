@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.clickjacking import xframe_options_exempt
 from django.http import Http404
 from django.core.files.storage import default_storage
-from repositorio.forms import CategoriaForm, DocumentForm, ProcesoForm
+from repositorio.forms import CategoriaForm, DocumentForm, ProcesoForm, UserRequestForm
 from repositorio.models import Categoria, Document, Proceso
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db import IntegrityError
@@ -14,6 +14,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
+from django.core.mail import send_mail
 from django.db.models import Q 
 from django.views.generic import ( View,TemplateView,ListView,DetailView)
 import matplotlib
@@ -48,6 +49,33 @@ def objetivos(request):
     return render(request,'manuales/objetivospolitica.html')
 
 # Vistas Login
+def user_request(request):
+    if request.method == 'POST':
+        form = UserRequestForm(request.POST)
+        if form.is_valid():
+            # Procesar la solicitud y enviarla al administrador
+            full_name = form.cleaned_data['full_name']
+            email = form.cleaned_data['email']
+            reason = form.cleaned_data['reason']
+            
+            # Envía un correo electrónico al administrador con los detalles de la solicitud
+            send_mail(
+                'Solicitud de usuario',
+                f'Se ha recibido una solicitud de usuario:\nNombre: {full_name}\nCorreo electrónico: {email}\nMotivo: {reason}',
+                'from@example.com',
+                ['proluxgamer456@gmail.com'],  # Reemplaza admin@example.com con la dirección de correo electrónico del administrador
+                fail_silently=False,
+            )
+
+            # Redirigir a una página de confirmación
+            return redirect('user_request_confirmation')
+    else:
+        form = UserRequestForm()
+    return render(request, 'cuentas/user_request.html', {'form': form})
+
+def user_request_confirmation(request):
+    return render(request,'cuentas/user_request_confirmation.html')
+        
 @login_required(login_url='signin')
 def signup(request):
     if request.method == 'GET':
@@ -401,7 +429,10 @@ def induccioncolaboradores(request):
 @login_required(login_url='signin')
 def procedimientogth(request):
     return render(request,'procesos/talentohumanobienestar/procedimientos/seleccionycontratacion.html')
-
+def desvinculacion(request):
+    return render(request,'procesos/talentohumanobienestar/procedimientos/desvinculacion.html')
+def disciplinario(request):
+    return render(request,'procesos/talentohumanobienestar/procedimientos/disciplinario.html')
 #Procesos de Apoyo
 #Gestion administrativa y financiera
 @login_required(login_url='signin')

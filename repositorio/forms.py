@@ -2,6 +2,13 @@ from django import forms
 from .models import Categoria, Document, Proceso
 from django.contrib.auth.forms import SetPasswordForm
 
+
+class UserRequestForm(forms.Form):
+    full_name = forms.CharField(label='Nombre completo', max_length=100)
+    email = forms.EmailField(label='Correo electronico')
+    reason = forms.CharField(label='Motivo de la solicitud',widget=forms.Textarea)
+
+    
 class CategoriaForm(forms.ModelForm):
 
     class Meta:

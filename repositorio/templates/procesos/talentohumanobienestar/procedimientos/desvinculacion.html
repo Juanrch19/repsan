@@ -1,0 +1,452 @@
+{% extends "base.html" %}
+
+{% block titulo %}{% endblock titulo %}
+
+
+
+{% block contenido %}
+<table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+    <tbody>
+        <tr>
+            <td rowspan="3" style="width:23.16%; border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><img src="data:image/png;base64,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" width="116" height="38" alt="Imagen que contiene Logotipo
+
+Descripción generada automáticamente"></p>
+            </td>
+            <td rowspan="3" style="width:44.24%; border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">PROCEDIMIENTO de&nbsp;</span></strong></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">Desvinculaci&oacute;n&nbsp;</span></strong></p>
+            </td>
+            <td style="width:32.6%; border:0.75pt inset #eeeeee; padding-left:3.75pt; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">C&Oacute;DIGO: PR-TB-GDT-03</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:32.6%; border:0.75pt inset #eeeeee; padding-left:3.75pt; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">VERSI&Oacute;N: 1</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:32.6%; border:0.75pt inset #eeeeee; padding-left:3.75pt; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">FECHA: 21/dic/2023</span></strong></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+                            </td>
+                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">1. OBJETIVO:</span></strong><br><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Concluir los v&iacute;nculos contractuales con profesores, colaboradores o aprendices, en un entorno caracterizado por oportunidad, calidad y calidez, garantizando el cumplimiento de las normativas actuales.</span><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+                            </td>
+                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">2. ALCANCE:</span></strong><br><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Este procedimiento inicia desde la notificaci&oacute;n oficial de la terminaci&oacute;n del contrato hasta la comunicaci&oacute;n interna acerca de la desvinculaci&oacute;n total del colaborador.</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;&nbsp;</span></strong><strong><span style="font-family:Arial; text-transform:uppercase;">3. DEFINICIONES:</span></strong></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">&nbsp;</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Tipos de Retiro Contrato Laboral:</span></strong> <span style="font-family:Arial;">Terminaci&oacute;n del contrato puede deberse a: fallecimiento del colaborador; mutuo acuerdo entre empleador y colaborador; vencimiento en contratos a t&eacute;rmino fijo; decisi&oacute;n unilateral con justa causa por falta disciplinaria o pensi&oacute;n; decisi&oacute;n unilateral sin justa causa, basada &uacute;nicamente en la voluntad del empleador; t&eacute;rmino durante el periodo de prueba acordado al inicio (dos meses para contrato indefinido, quinta parte del tiempo inicial para contrato a t&eacute;rmino fijo); o renuncia libre y voluntaria, expresada por el colaborador para dar por concluida la relaci&oacute;n laboral.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Tipos de Retiro Contrato de Aprendizaje:</span></strong><span style="font-family:Arial;">&nbsp;Se aplica cuando concluye el plazo acordado en contratos de aprendizaje. El contrato de aprendizaje puede finalizar por mutuo acuerdo entre empleador y aprendiz. La renuncia del aprendiz, un acto unilateral, implica la expresi&oacute;n de su voluntad para dar por concluido el contrato de aprendizaje.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">4. DESARROLLO:</span></strong></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">&nbsp;</span></strong></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial; text-transform:uppercase;">PR-TB-GDT-03&nbsp;</span><span style="font-family:Arial;">Desvinculaci&oacute;n</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr style="height:11.25pt;">
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:10pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt solid #000000; border-collapse:collapse;">
+    <tbody>
+        <tr>
+            <td style="width:21.42%; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">Responsable</span></strong></p>
+            </td>
+            <td style="width:47.58%; border-right-style:solid; border-right-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">ACTIVIDAD</span></strong></p>
+            </td>
+            <td style="width:31%; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">DOCUMENTOS</span></strong></p>
+            </td>
+        </tr>
+        <tr style="height:11.25pt;">
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&Aacute;rea de recursos humanos</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Presentar terminaci&oacute;n de contrato.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Comunicar oficialmente y documentar la finalizaci&oacute;n de la relaci&oacute;n laboral entre un empleador y un colaborador. Esta presentaci&oacute;n implica notificar al colaborador sobre la decisi&oacute;n de poner fin a su contrato laboral, ya sea por razones espec&iacute;ficas como terminaci&oacute;n de proyectos, reestructuraci&oacute;n organizativa, desempe&ntilde;o insatisfactorio, entre otros motivos leg&iacute;timos.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Carta formal de terminaci&oacute;n de contrato.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Jefe de &aacute;rea</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="2" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Revisar y preparar discusi&oacute;n sobre la desvinculaci&oacute;n.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-left:36pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Llevar cabo una reuni&oacute;n con el colaborador para discutir la decisi&oacute;n de desvinculaci&oacute;n. Comunicar al colaborador la decisi&oacute;n de finalizar su contrato, proporcionar explicaciones claras sobre las razones detr&aacute;s de esta determinaci&oacute;n, y revisar detalles log&iacute;sticos cruciales, tales como la fecha efectiva de la terminaci&oacute;n, beneficios y compensaci&oacute;n asociados, y el proceso de devoluci&oacute;n de activos de la empresa.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si se confirma la decisi&oacute;n de desvincular, continuar actividad 3.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si no se confirma la decisi&oacute;n de desvincular, fin del procedimiento.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&Aacute;rea de recursos humanos</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="3" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Preparar la documentaci&oacute;n necesaria.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Preparar y recopilar la documentaci&oacute;n necesaria para formalizar y respaldar la decisi&oacute;n de desvinculaci&oacute;n laboral.&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Carta de terminaci&oacute;n de contrato.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Cualquier otro documento legal necesario.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">Jefe de &aacute;rea</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="4" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Entregar los documentos.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Proporcionar al colaborador los documentos pertinentes asociados con su desvinculaci&oacute;n laboral.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Registro de entrega de documentos.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.4pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&Aacute;rea de recursos humanos</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="5" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Recepci&oacute;n de activos de la empresa.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Recolectar todos los activos pertenecientes a la empresa que est&eacute;n en posesi&oacute;n del colaborador. Esto puede incluir tarjetas de identificaci&oacute;n, dispositivos electr&oacute;nicos, llaves, uniformes u otros materiales y equipo proporcionados por la empresa durante el periodo de empleo.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;">&nbsp;<span style="font-family:Arial;">Registro detallado de los activos devueltos por el colaborador.&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&Aacute;rea de n&oacute;mina</span><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="6" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Procesar pago de liquidaci&oacute;n y paz y salvo.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Calcular y procesar cualquier pago pendiente que deba recibir el colaborador, como salarios, d&iacute;as de vacaciones acumulados, bonificaciones u otros beneficios contractuales. La liquidaci&oacute;n financiera se realiza de acuerdo con las pol&iacute;ticas internas y las regulaciones laborales aplicables.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Adem&aacute;s, emitir un &quot;paz y salvo&quot; al colaborador, indicando que ha cumplido con todas las obligaciones contractuales y financieras con la empresa. Este documento confirma que no existen deudas pendientes ni asuntos sin resolver entre ambas partes.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Registro de c&aacute;lculos y procesos de pago relacionados con salarios, d&iacute;as de vacaciones acumulados, bonificaciones y otros beneficios.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span><span style="font-family:Arial;">Documento formal de &quot;paz y salvo&quot; indicando que el colaborador ha cumplido con todas las obligaciones contractuales y financieras.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&Aacute;rea de Recursos Rumanos</span><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="7" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Garantizar la seguridad de la informaci&oacute;n.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Asegurar la protecci&oacute;n de la informaci&oacute;n confidencial de la empresa y la revocaci&oacute;n adecuada del acceso del excolaborador a sistemas y datos internos. Hacer una revisi&oacute;n exhaustiva para asegurarse de que el excolaborador ya no tenga acceso a informaci&oacute;n confidencial tras la terminaci&oacute;n del contrato laboral.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si se requiere ocupar la vacante continuar al procedimiento &ldquo;PR-TB-GDT-01 Selecci&oacute;n y Contrataci&oacute;n&rdquo;.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Si no se requiere ocupar la vacante, continuar actividad 8.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.42%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:Arial;">&Aacute;rea de Recursos Humanos</span><span style="font-family:Arial; display:none;">&nbsp;</span></p>
+            </td>
+            <td style="width:47.58%; border-top-style:solid; border-top-width:0.75pt; border-right-style:solid; border-right-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <ol start="8" type="1" style="margin:0pt; padding-left:0pt;">
+                    <li style="margin-left:32.17pt; text-align:justify; padding-left:3.83pt; font-family:Arial; font-size:11pt;">Realizar anuncio interno.</li>
+                </ol>
+                <p style="margin-top:0pt; margin-left:36pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Comunicar dentro de la organizaci&oacute;n sobre la desvinculaci&oacute;n laboral de un colaborador. Este anuncio interno puede variar en su alcance y detalle, pero implica informar a los miembros del equipo y a otros departamentos relevantes sobre la salida del colaborador.</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Fin del procedimiento.&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+            <td style="width:31%; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Comunicaci&oacute;n del anuncio interno acerca de la desvinculaci&oacute;n laboral del colaborador dentro de la organizaci&oacute;n.&nbsp;</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr style="height:11.25pt;">
+            <td style="vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+    <tbody>
+        <tr>
+            <td style="width:15%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">VERSI&Oacute;N</span></strong></p>
+            </td>
+            <td style="width:15%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">FECHA</span></strong></p>
+            </td>
+            <td style="width:70%; border:0.75pt inset #eeeeee; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">RAZ&Oacute;N DE LA ACTUALIZACI&Oacute;N</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">1</span></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">21/12/2024</span></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; vertical-align:middle;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                            <td style="width:100%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Se realiza el procedimiento.</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:12pt;"><span style="font-family:'Times New Roman'; display:none;">&nbsp;</span></p>
+<table cellspacing="0" cellpadding="0" style="width:100%; border:0.75pt outset #eeeeee;">
+    <tbody>
+        <tr>
+            <td style="width:33%; border:0.75pt inset #eeeeee; padding:3pt; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">ELABOR&Oacute;</span></strong></p>
+            </td>
+            <td style="width:33%; border:0.75pt inset #eeeeee; padding:3pt; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">REVIS&Oacute;</span></strong></p>
+            </td>
+            <td style="width:33%; border:0.75pt inset #eeeeee; padding:3pt; vertical-align:middle; background-color:#3f94ab;">
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><strong><span style="font-family:Arial; text-transform:uppercase;">APROB&Oacute;</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border:0.75pt inset #eeeeee; padding:3pt; vertical-align:top;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="width:25%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                            </td>
+                            <td style="width:75%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Cristian Guillermo Velandia</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">Aprendiz</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">04/01/2024</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; padding:3pt; vertical-align:top;">
+                <table cellspacing="2" cellpadding="0" style="width:100%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="width:25%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                            </td>
+                            <td style="width:75%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                            </td>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><span style="font-family:Arial;">&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+            <td style="border:0.75pt inset #eeeeee; padding:3pt; vertical-align:top;">
+                <table cellspacing="2" cellpadding="0" style="width:35.12%; border-spacing:1.5pt;">
+                    <tbody>
+                        <tr>
+                            <td style="width:93.88%; padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Nombre:</span></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Cargo:</span></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.75pt; vertical-align:middle;">
+                                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><strong><span style="font-family:Arial;">Fecha:</span></strong></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:11pt;"><br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin-top:0pt; margin-bottom:8pt;">&nbsp;</p>
+{% endblock contenido %}

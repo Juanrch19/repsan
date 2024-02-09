@@ -9,6 +9,9 @@ urlpatterns = [
      
    path('signout', views.signout, name='signout'),
    path('inicio', views.inicio,name='inicio'),
+   path('user-request/', views.user_request,name='user_request'),
+   path('user-request-confirmation/', views.user_request_confirmation, name='user_request_confirmation'),
+
    
    #Manueales
    path('manuales',views.manuales, name='manuales' ),
@@ -114,10 +117,14 @@ urlpatterns = [
          views.gestionydesarrollohumano,name="gestionydesarrollohumano"),
     path('procedimientos/seleccion y contratación',
          views.procedimientogth,name='procedimientogth'),
-     path('procedimientos/Inducción a colaboradores',
+    path('procedimientos/Inducción a colaboradores',
           views.induccioncolaboradores, name='induccioncolaboradores'),
+    path('procedimientos/desvinculacion',
+         views.desvinculacion,name="desvinculacion"),
+    path('procedimientos/disciplinario',
+         views.disciplinario,name="disciplinario"),
+
     # Procesos de apoyo
-    
     #Gestión de infraestructura fisica y tecnologica
     path('cadenavalor/gestion de infraestructura',
          views.gestiondeinfraestructura, name='gestiondeinfraestructura'),
