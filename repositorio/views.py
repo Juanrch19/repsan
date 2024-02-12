@@ -16,14 +16,13 @@ from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
 from django.core.mail import send_mail
 from django.db.models import Q 
-from django.views.generic import ( View,TemplateView,ListView,DetailView)
 import matplotlib
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import base64
 from io import BytesIO
 from django.http import HttpResponseServerError
-import logging
+
     
 @login_required(login_url='signin')
 def inicio(request):
@@ -266,6 +265,8 @@ def crearproceso(request):
 @login_required(login_url='signin')
 def editarproceso(request, id):
     proceso = get_object_or_404(Proceso, id_proceso=id)
+    def tributar():
+        pass
     formulario = ProcesoForm(request.POST or None, request.FILES or None, instance=proceso)
     
     if request.method == 'POST' and formulario.is_valid():
@@ -289,6 +290,8 @@ def ver_pdf(request, id):
     file_path = document.file.path
     return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
 
+def tributar():
+    pass
 
 
 
