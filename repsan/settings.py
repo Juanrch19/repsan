@@ -76,16 +76,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'repsan.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'repsan',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-        'PORT': '5432',  # Puerto predeterminado de PostgreSQL
-    }
+    'default': dj_database_url.config(
+        default='postgresql://postgres:1234@localhost:5432/repsan',
+        conn_max_age=600
+    ),
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
