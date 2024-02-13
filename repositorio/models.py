@@ -10,8 +10,8 @@ from django.db.models.signals import post_delete
 
 class Glosario(models.Model):
     id_termino = models.AutoField(primary_key=True)
-    termino = models.CharField(max_length=50,verbose_name="termino")
-    definicion = models.TextField(max_length=500,verbose_name="definicion")
+    termino = models.CharField(max_length=150,verbose_name="termino")
+    definicion = models.TextField(max_length=2000,verbose_name="definicion")
 
 class Categoria(models.Model):
     id_categoria = models.AutoField(primary_key=True)

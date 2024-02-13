@@ -131,7 +131,8 @@ def glosario(request):
     query = request.GET.get('q')
     if query:
         glosario_list = glosario_list.filter(
-            Q(termino__icontains=query)
+            Q(termino__icontains=query) |
+            Q(definicion__icontains=query)
         )
 
     paginator = Paginator (glosario_list, 20)
@@ -146,7 +147,6 @@ def glosario(request):
         # Si la página está fuera del rango (por ejemplo, 9999), muestra la última página
         terminos = paginator.page(paginator.num_pages) 
     return render(request,'glosario/glosario.html',{'terminos': terminos, 'query':query})
-
 
 login_required(login_url='signin')
 def nuevo_termino(request):
