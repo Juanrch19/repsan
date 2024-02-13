@@ -1,9 +1,13 @@
 from django.contrib import admin
 from .models import Document
 from django.contrib.auth.models import Permission
-from repositorio.models import Categoria,Document,Proceso
+from repositorio.models import Categoria,Document,Proceso,Glosario
 
 # Register your models here.
+class GlosarioAdmin(admin.ModelAdmin):
+    search_fields = ['termino']
+    list_display = ['termino','definicion']
+admin.site.register(Glosario,GlosarioAdmin)
 
 class DocumentAdmin(admin.ModelAdmin):
     search_fields = ['proceso__nombre_proceso','codigo','titulo','categoria__nombre_categoria']

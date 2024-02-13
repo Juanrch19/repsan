@@ -1,7 +1,14 @@
 from django import forms
-from .models import Categoria, Document, Proceso
+from .models import Categoria, Document, Proceso,Glosario
 from django.contrib.auth.forms import SetPasswordForm
 
+
+class GlosarioForm(forms.ModelForm):
+    class Meta:
+        model = Glosario
+        fields = ['termino','definicion']
+    def save(self, commit=True):
+        super().save(commit)
 
 class UserRequestForm(forms.Form):
     full_name = forms.CharField(label='Nombre completo', max_length=100)

@@ -4,8 +4,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.clickjacking import xframe_options_exempt
 from django.http import Http404
 from django.core.files.storage import default_storage
-from repositorio.forms import CategoriaForm, DocumentForm, ProcesoForm, UserRequestForm
-from repositorio.models import Categoria, Document, Proceso
+from repositorio.forms import CategoriaForm, DocumentForm, ProcesoForm, UserRequestForm,GlosarioForm
+from repositorio.models import Categoria, Document, Proceso,Glosario
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required, permission_required
@@ -122,7 +122,55 @@ def signin(request):
         else:
             login(request, user)
             return redirect('inicio')
-        
+
+#CRUD GLOSARIO
+login_required(login_url='signin')
+def glosario(request):
+    glosario_list = Glosario.objects.all().order_by('termino')
+
+    query = request.GET.get('q')
+    if query:
+        glosario_list = glosario_list.filter(
+            Q(termino__icontains=query)
+        )
+
+    paginator = Paginator (glosario_list, 20)
+    page = request.GET.get('page')
+
+    try:
+        terminos = paginator.page(page)
+    except PageNotAnInteger:
+        # Si la página no es un número entero, muestra la primera página
+        terminos = paginator.page(1)
+    except EmptyPage:
+        # Si la página está fuera del rango (por ejemplo, 9999), muestra la última página
+        terminos = paginator.page(paginator.num_pages) 
+    return render(request,'glosario/glosario.html',{'terminos': terminos, 'query':query})
+
+
+login_required(login_url='signin')
+def nuevo_termino(request):
+    formulario = GlosarioForm(request.POST or None )
+    if formulario.is_valid():
+        glosario = Glosario(
+            termino = formulario.cleaned_data['termino'],
+            definicion = formulario.cleaned_data['definicion']
+        ) 
+        glosario.save()
+        return redirect ('glosario')
+    return render(request,'glosario/nuevo_termino.html',{'formulario':formulario})
+
+login_required(login_url='signin')
+def editar_termino(request, id):
+    termino = Glosario.objects.get(id_termino = id)
+    formulario = GlosarioForm(request.POST or None, instance=termino)
+    return render(request,'glosario/editartermino.html',{'formulario':formulario})
+
+def eliminar_termino(request, id):
+    termino = Glosario.objects.get(id_termino = id)
+    termino.delete()
+    return redirect('glosario')
+
 #CRUD CATEGORIAS
 @login_required(login_url='signin')
 def categorias(request):
@@ -131,7 +179,7 @@ def categorias(request):
 
 @login_required(login_url='signin')
 def crearcategoria(request):
-    formulario = CategoriaForm(request.POST or None, request.FILES or None)
+    formulario = CategoriaForm(request.POST or None)
     if formulario.is_valid():
         categoria = Categoria(
             nombre_categoria = formulario.cleaned_data['nombre_categoria']
@@ -145,6 +193,7 @@ def editarcategoria(request, id):
     categoria = Categoria.objects.get(id_categoria=id)
     formulario = CategoriaForm(request.POST or None, request.FILES or None, instance=categoria)
     return render(request,'categorias/editarcategoria.html', {'formulario': formulario})
+
 @login_required(login_url='signin')
 def eliminarcategoria(request, id):
     categoria = Categoria.objects.get(id_categoria=id)
@@ -290,11 +339,6 @@ def ver_pdf(request, id):
     file_path = document.file.path
     return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
 
-def tributar():
-    pass
-
-
-
 #Procesos Misionales
 #Docencia Calidad
 @login_required(login_url='signin')
@@ -406,6 +450,10 @@ login_required(login_url='signin')
 def aseguramientodelacalidadprocesos(request):
     return render(request, 'procesos/calidadintegral/aseguramientodelacalidadprocesos.html')
 #Procedimientos
+def creacionprogramas(request):
+    return render(request,'procesos/calidadintegral/procedimientos/creacionprogramas.html')
+def evaluacionycontrol(request):
+    return render(request,'procesos/calidadintegral/procedimientos/evaluacionycontrol.html')
 def modificacionprogramas(request):
     return render(request,'procesos/calidadintegral/procedimientos/modificacionprogramas.html')
 def preradicacion(request):

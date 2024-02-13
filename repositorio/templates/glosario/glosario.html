@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block titulo %}{% endblock titulo %}
+{% block contenido %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="get" action="{% url 'glosario' %}">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Buscar Terminos" name="q" value="{{ request.GET.q }}">
+            <button class="btn btn-outline-secondary" type="submit">Buscar  <i class="bi bi-search"></i></button>
+        </div>
+    </form>
+
+    <div class="mb-3">
+        <a class="btn btn-primary"  href="{% url 'nuevotermino' %}" role="button" > Agrega un nuevo Término <i class="bi bi-bookmark-plus"></i></a>
+    </div>
+
+     <!-- Mostrar la paginación -->
+     <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if terminos.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1" aria-label="Primera">
+                    <span aria-hidden="true">&laquo;&laquo; Primero</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ terminos.previous_page_number }}" aria-label="Anterior">
+                    <span aria-hidden="true">Anterior</span>
+                </a>
+            </li>
+            {% endif %}
+    
+            <li class="page-item disabled">
+                <span class="page-link">Página {{ terminos.number }} de {{ terminos.paginator.num_pages }}. Número de resultados:({{ terminos.paginator.count }})</span>
+            </li>
+    
+            {% if terminos.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ terminos.next_page_number }}" aria-label="Siguiente">
+                    <span aria-hidden="true">Siguiente</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ terminos.paginator.num_pages }}" aria-label="Última">
+                    <span aria-hidden="true">Ultimo &raquo;&raquo;</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <h4>Glosario<i class="bi bi-list-check"></i></h4>
+    <div class="table-responsive">
+        <table class="table table-hover mx-auto">
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 10%;">Id</th>
+                    <th scope="col" style="width: 15%;">Término</th>
+                    <th scope="col" style="width: 30%;">Definición</th>
+                    <th scope="col" style="width: 5%">Acciones</th>
+                
+                </tr>
+            </thead>
+            <tbody>
+                {% for glosario in terminos %}
+                <tr>
+                    <td>{{ glosario.id_termino }}</td>
+                    <td>{{ glosario.termino }}</td>
+                    <td>{{ glosario.definicion }}</td>
+                    <td>
+                        <a class="btn btn-success btn-sm" href="{% url 'editartermino' glosario.id_termino %}" role="button"><i class="bi bi-pencil-square"></i></a>
+                        <a class="btn btn-danger btn-sm" href="{% url 'eliminartermino' glosario.id_termino %}" role="alert"><i class="bi bi-trash"></i></a>
+                    </td>
+                    
+
+            </tbody>
+                {% endfor %}
+           
+        </table>
+    </div>
+</body>
+</html>
+{% block footer %}
+<!-- Contenido específico del pie de página para la página Ejemplo -->
+
+{% endblock %}
+{% endblock contenido %}

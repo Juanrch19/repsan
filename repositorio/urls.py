@@ -99,7 +99,11 @@ urlpatterns = [
     path('cadenavalor/calidadintegral/aseguramiento de la calidad academica',
           views.aseguramientodelacalidadacademica, name='aseguramientodelacalidadacademica'),
     #Procedimientos
-    path('cadenavalor/calidadintegral/procedimientos/Modificación de los programas academicos',
+    path('cadenavalor/calidadintegral/procedimientos/Creación de programas académicos',
+         views.creacionprogramas,name="creacionprogramas"),
+    path('cadenavalor/calidadintegral/procedimientos/Evaluación y control',
+         views.evaluacionycontrol,name='evaluacionycontrol'),
+    path('cadenavalor/calidadintegral/procedimientos/Modificación de los programas académicos',
          views.modificacionprogramas, name='modificacionprogramas'), 
     path('cadenavalor/calidadintegral/procedimientos/Pre-radicación de cumplimiento de condiciones de calidad institucional',
          views.preradicacion, name='preradicacion'), 
@@ -164,6 +168,11 @@ urlpatterns = [
           views.gestjuridica, name='gesjuridica'),
 
 
+    #CRUD Glosario
+    path('Glosario', views.glosario, name='glosario'),
+    path('nuevo_termino',views.nuevo_termino, name='nuevotermino'),
+    path('editartermino/<int:id>/', views.editar_termino, name='editartermino'),
+    path('eliminar_termino/<int:id>/', views.eliminar_termino, name='eliminartermino'),
     #CRUD Categorias
     path('categorias', views.categorias, name='categorias'),
     path('crearcategoria', views.crearcategoria, name='crearcategoria'),

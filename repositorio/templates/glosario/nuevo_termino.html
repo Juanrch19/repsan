@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block blockname %} Terminos {% endblock blockname %}
+
+{% block contenido %}
+ <div class="card">
+    <div class="card-header">
+      
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Ingresa un nuevo termino</h4>
+        {% include 'glosario/form.html' %}
+    </div>
+    <div class="card-footer text-muted">
+    
+    </div>
+ </div>
+{% endblock %}
