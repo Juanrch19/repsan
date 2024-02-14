@@ -99,6 +99,10 @@ urlpatterns = [
     path('cadenavalor/calidadintegral/aseguramiento de la calidad academica',
           views.aseguramientodelacalidadacademica, name='aseguramientodelacalidadacademica'),
     #Procedimientos
+    path('cadenavalor/calidadintegral/procediminetos/Autoevaluación Programas',
+         views.autoevaluacionprogramas,name="autoevaluacionprogramas"),
+    path('cadenavalor/calidadintegral/procedimientos/Servicio al Cliente PQRs',
+         views.servicioalclientepqr,name="servicioalclientepqr"),
     path('cadenavalor/calidadintegral/procedimientos/Creación de programas académicos',
          views.creacionprogramas,name="creacionprogramas"),
     path('cadenavalor/calidadintegral/procedimientos/Evaluación y control',
@@ -119,6 +123,11 @@ urlpatterns = [
          views.pastoral,name="pastoral"),
     path('cadenavalor/talentohumanobienestar/gestion y esarrollo humano',
          views.gestionydesarrollohumano,name="gestionydesarrollohumano"),
+   #Procedimientos
+    path('cadenavalor/talentohumanobienestar/procedimientos/Desarrollo e Implementación de Programas de Salud y Bienestar',
+         views.saludybienestar,name="saludybienestar"),
+    path('cadenavalor/talentohumanobienestar/procedimientos/Deteccion de plagio',
+         views.plagio,name="plagio"),
     path('procedimientos/seleccion y contratación',
          views.procedimientogth,name='procedimientogth'),
     path('procedimientos/Inducción a colaboradores',

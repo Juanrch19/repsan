@@ -458,6 +458,10 @@ def modificacionprogramas(request):
     return render(request,'procesos/calidadintegral/procedimientos/modificacionprogramas.html')
 def preradicacion(request):
     return render(request,'procesos/calidadintegral/procedimientos/preradicacion.html')
+def servicioalclientepqr(request):
+    return render(request,'procesos/calidadintegral/procedimientos/servicioalclientepqr.html')
+def autoevaluacionprogramas(request):
+    return render(request,'procesos/calidadintegral/procedimientos/autoevaluacionprogramas.html')
 #Talento humano y Bienestar
 @login_required(login_url='signin')
 def talentohumanobienestar(request):
@@ -474,6 +478,12 @@ def pastoral(request):
 @login_required(login_url='signin')
 def gestionydesarrollohumano(request):
     return render(request,'procesos/talentohumanobienestar/gestionydesarrollohumano.html')
+
+#Procedimientos
+def saludybienestar(request):
+    return render(request,'procesos/talentohumanobienestar/procedimientos/saludybienestar.html')
+def plagio(request):
+    return render(request,'procesos/talentohumanobienestar/procedimientos/plagio.html')
 @login_required(login_url='signin')
 def induccioncolaboradores(request):
     return render(request,'procesos/talentohumanobienestar/procedimientos/induccionacolaboradores.html')
