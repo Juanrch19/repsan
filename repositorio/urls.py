@@ -124,6 +124,8 @@ urlpatterns = [
     path('cadenavalor/talentohumanobienestar/gestion y esarrollo humano',
          views.gestionydesarrollohumano,name="gestionydesarrollohumano"),
    #Procedimientos
+   path('cadenavalor/talentohumanobienestar/procedimientos/Induccion a Estudiantes',
+         views.induccionestudiantes,name="induccionestudiantes"),
     path('cadenavalor/talentohumanobienestar/procedimientos/Desarrollo e Implementación de Programas de Salud y Bienestar',
          views.saludybienestar,name="saludybienestar"),
     path('cadenavalor/talentohumanobienestar/procedimientos/Deteccion de plagio',

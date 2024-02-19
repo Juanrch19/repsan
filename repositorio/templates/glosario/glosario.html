@@ -15,10 +15,11 @@
             <button class="btn btn-outline-secondary" type="submit">Buscar  <i class="bi bi-search"></i></button>
         </div>
     </form>
-
+    {% if user.is_authenticated and user.is_staff %}
     <div class="mb-3">
         <a class="btn btn-primary"  href="{% url 'nuevotermino' %}" role="button" > Agrega un nuevo Término <i class="bi bi-bookmark-plus"></i></a>
     </div>
+    {% endif %}
 
      <!-- Mostrar la paginación -->
      <nav aria-label="Page navigation">
@@ -62,7 +63,9 @@
                 <tr>
                     <th scope="col" style="width: 15%;">Término</th>
                     <th scope="col" style="width: 30%;">Definición</th>
+                    {% if user.is_authenticated and user.is_staff %}
                     <th scope="col" style="width: 5%">Acciones</th>
+                    {% endif %}
                 
                 </tr>
             </thead>
@@ -71,10 +74,12 @@
                 <tr>
                     <td>{{ glosario.termino }}</td>
                     <td>{{ glosario.definicion }}</td>
+                    {% if user.is_authenticated and user.is_staff %}
                     <td>
                         <a class="btn btn-success btn-sm" href="{% url 'editartermino' glosario.id_termino %}" role="button"><i class="bi bi-pencil-square"></i></a>
                         <a class="btn btn-danger btn-sm" href="{% url 'eliminartermino' glosario.id_termino %}" role="alert"><i class="bi bi-trash"></i></a>
                     </td>
+                    {% endif %}
                     
 
             </tbody>

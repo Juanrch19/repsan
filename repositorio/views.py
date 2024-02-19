@@ -135,7 +135,7 @@ def glosario(request):
             Q(definicion__icontains=query)
         )
 
-    paginator = Paginator (glosario_list, 20)
+    paginator = Paginator (glosario_list, 30)
     page = request.GET.get('page')
 
     try:
@@ -271,7 +271,6 @@ def editardocumento(request, id):
 
     return render(request, 'documentos/editardocumento.html', {'formulario': formulario})
 
-
 @login_required(login_url='signin')
 def eliminardocumento(request, id):
     try:
@@ -294,6 +293,13 @@ def download(request, pk):
         document.file.name)
     return response
 
+#Visualizar Documentos
+@login_required(login_url='signin')
+@xframe_options_exempt
+def ver_pdf(request, id):
+    document = get_object_or_404(Document, id_archivo=id)
+    file_path = document.file.path
+    return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
 #CRUD PROCESOS
 @login_required(login_url='signin')
 def procesos(request):
@@ -331,13 +337,6 @@ def eliminarproceso(request, id):
     return redirect('procesos')
 
 
-#Visualizar Documentos
-@login_required(login_url='signin')
-@xframe_options_exempt
-def ver_pdf(request, id):
-    document = get_object_or_404(Document, id_archivo=id)
-    file_path = document.file.path
-    return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
 
 #Procesos Misionales
 #Docencia Calidad
@@ -480,6 +479,8 @@ def gestionydesarrollohumano(request):
     return render(request,'procesos/talentohumanobienestar/gestionydesarrollohumano.html')
 
 #Procedimientos
+def induccionestudiantes(request):
+    return render(request,'procesos/talentohumanobienestar/procedimientos/induccionestudiantes.html')
 def saludybienestar(request):
     return render(request,'procesos/talentohumanobienestar/procedimientos/saludybienestar.html')
 def plagio(request):
