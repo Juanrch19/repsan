@@ -80,4 +80,3 @@ def delete_file_on_delete(sender, instance, **kwargs):
         file_path = instance.file.path
         default_storage.delete(file_path)
 
-   

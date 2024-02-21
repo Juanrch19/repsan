@@ -12,7 +12,6 @@ urlpatterns = [
    path('user-request/', views.user_request,name='user_request'),
    path('user-request-confirmation/', views.user_request_confirmation, name='user_request_confirmation'),
 
-   
    #Manueales
    path('manuales',views.manuales, name='manuales' ),
    path('manuales/politica de calidad integral',views.politica, name='politica' ),
@@ -186,11 +185,13 @@ urlpatterns = [
     path('nuevo_termino',views.nuevo_termino, name='nuevotermino'),
     path('editartermino/<int:id>/', views.editar_termino, name='editartermino'),
     path('eliminar_termino/<int:id>/', views.eliminar_termino, name='eliminartermino'),
+    
     #CRUD Categorias
     path('categorias', views.categorias, name='categorias'),
     path('crearcategoria', views.crearcategoria, name='crearcategoria'),
     path('editarcategoria/<int:id>/', views.editarcategoria, name='editarcategoria'),
     path('eliminarcategoria/<int:id>/', views.eliminarcategoria, name='eliminarcategoria'),
+    
     # CRUD PROCESOS
     path('procesos', views.procesos, name='procesos'),
     path('crearproceso', views.crearproceso, name='crearproceso'),
