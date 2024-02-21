@@ -2,53 +2,52 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}" />
     <style>
-        
-        *{
-        font-family: 'Open Sans', sans-serif;
+      * {
+        font-family: "Open Sans", sans-serif;
       }
-      body{
-        background-color: #FED3D3;
+      body {
+        background-color: #fed3d3;
       }
       .modal-text {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333;
-    text-align: justify;
-    margin-bottom: 20px;
-}
-
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+        text-align: justify;
+        margin-bottom: 20px;
+      }
     </style>
-</head>
-<body>
-    
+  </head>
+  <body>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <Script>  
-        Swal.fire({
-            icon:"warning",
-            title: "¡ Bienvenido {{ user.first_name }} {{ user.last_name }} al Repositorio UNISANPABLO !",
-            
-            html:"<p>En este espacio dedicado, almacenamos y gestionamos los procesos fundamentales que dan vida a nuestra institución. Explora nuestro Mapa de Procesos para comprender la sinergia de las áreas misionales, de apoyo y estratégicas para entender cómo trabajamos y cómo cada componente se entrelaza para construir el éxito de nuestra institución. </p> <br> <p>¡Descubre la esencia de UNISANPABLO! Bienvenido a nuestro viaje de eficiencia y excelencia. </p>",
-            confirmButtonText: '<a href ="{% url 'cadenavalor' %}" style="text-decoration:none; color:white;"> Ingresar </a>'
-
-        });
-    </Script>
-
     <script>
-        // Redirigir a otra página después de 5 segundos (5000 milisegundos)
-        setTimeout(function() {
-            window.location.href = "{% url 'cadenavalor' %}";
-        }, 18000); // 5000 milisegundos = 5 segundos
+      Swal.fire({
+          icon:"warning",
+          title: "¡ Bienvenido {{ user.first_name }} {{ user.last_name }} al Repositorio UNISANPABLO !",
+
+          html:"<p>En este espacio dedicado, almacenamos y gestionamos los procesos fundamentales que dan vida a nuestra institución. Explora nuestro Mapa de Procesos para comprender la sinergia de las áreas misionales, de apoyo y estratégicas para entender cómo trabajamos y cómo cada componente se entrelaza para construir el éxito de nuestra institución. </p> <br> <p>¡Descubre la esencia de UNISANPABLO! Bienvenido a nuestro viaje de eficiencia y excelencia. </p>",
+          confirmButtonText: '<a href ="{% url 'cadenavalor' %}" style="text-decoration:none; color:white;"> Ingresar </a>'
+
+      });
     </script>
 
-</body>
+    <script>
+      // Redirigir a otra página después de 5 segundos (5000 milisegundos)
+      setTimeout(function () {
+        window.location.href = "{% url 'cadenavalor' %}";
+      }, 18000); // 5000 milisegundos = 5 segundos
+    </script>
+  </body>
 </html>

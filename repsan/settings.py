@@ -35,7 +35,9 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'corsheaders',
     'pdfkit',
-    'repositorio',
+    
+    #Apps Propias 
+    'repositorio.apps.RepositorioConfig',
 ]
 
 MIDDLEWARE = [

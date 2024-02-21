@@ -1,37 +1,34 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block titulo %} Visualizar PDF {% endblock %} {%
+block contenido %}
+<h2>{{ document.titulo }}</h2>
 
-{% block titulo %} Visualizar PDF {% endblock %}
+<div id="pdf-container">
+  <canvas id="pdf-viewer"></canvas>
+</div>
 
-{% block contenido %}
-    <h2>{{ document.titulo }}</h2>
+<script src="{% static 'path/to/pdf.js' %}"></script>
+<script>
+  // Configura pdf.js con el archivo PDF a mostrar
+  var pdfPath = "{% url 'ver_pdf' document.id_archivo %}";
 
-    <div id="pdf-container">
-        <canvas id="pdf-viewer"></canvas>
-    </div>
+  // Carga el PDF y renderízalo en el contenedor
+  pdfjsLib.getDocument(pdfPath).promise.then(function (pdf) {
+    // Puedes ajustar la página que deseas mostrar aquí (en este caso, la página 1)
+    pdf.getPage(1).then(function (page) {
+      var canvas = document.getElementById("pdf-viewer");
+      var context = canvas.getContext("2d");
 
-    <script src="{% static 'path/to/pdf.js' %}"></script>
-    <script>
-        // Configura pdf.js con el archivo PDF a mostrar
-        var pdfPath = "{% url 'ver_pdf' document.id_archivo %}";
-        
-        // Carga el PDF y renderízalo en el contenedor
-        pdfjsLib.getDocument(pdfPath).promise.then(function(pdf) {
-            // Puedes ajustar la página que deseas mostrar aquí (en este caso, la página 1)
-            pdf.getPage(1).then(function(page) {
-                var canvas = document.getElementById('pdf-viewer');
-                var context = canvas.getContext('2d');
-                
-                var viewport = page.getViewport({ scale: 1.5 });
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-                
-                var renderContext = {
-                    canvasContext: context,
-                    viewport: viewport
-                };
-                
-                page.render(renderContext);
-            });
-        });
-    </script>
+      var viewport = page.getViewport({ scale: 1.5 });
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+
+      var renderContext = {
+        canvasContext: context,
+        viewport: viewport,
+      };
+
+      page.render(renderContext);
+    });
+  });
+</script>
 {% endblock %}

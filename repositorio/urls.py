@@ -99,6 +99,8 @@ urlpatterns = [
     path('cadenavalor/calidadintegral/aseguramiento de la calidad academica',
           views.aseguramientodelacalidadacademica, name='aseguramientodelacalidadacademica'),
     #Procedimientos
+    path('cadenavalor/calidadintegral/procedimientos/Renovación de Registro Calificado',
+         views.renovacionregistro,name="renovacionregistro"),
     path('cadenavalor/calidadintegral/procediminetos/Autoevaluación Programas',
          views.autoevaluacionprogramas,name="autoevaluacionprogramas"),
     path('cadenavalor/calidadintegral/procedimientos/Servicio al Cliente PQRs',

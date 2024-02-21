@@ -3,6 +3,10 @@ from .models import Document
 from django.contrib.auth.models import Permission
 from repositorio.models import Categoria,Document,Proceso,Glosario
 
+
+
+admin.site.site_header = "Administración Repositorio UNISANPABLO"
+admin.site.site_title = "Administración de UNISANPABLO"
 # Register your models here.
 class GlosarioAdmin(admin.ModelAdmin):
     search_fields = ['termino']

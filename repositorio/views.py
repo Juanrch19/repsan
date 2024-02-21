@@ -150,6 +150,7 @@ def glosario(request):
 
 login_required(login_url='signin')
 def nuevo_termino(request):
+    """ Función para agregar un nuevo termino al glosario"""
     formulario = GlosarioForm(request.POST or None )
     if formulario.is_valid():
         glosario = Glosario(
@@ -166,6 +167,7 @@ def editar_termino(request, id):
     formulario = GlosarioForm(request.POST or None, instance=termino)
     return render(request,'glosario/editartermino.html',{'formulario':formulario})
 
+login_required(login_url='signin')
 def eliminar_termino(request, id):
     termino = Glosario.objects.get(id_termino = id)
     termino.delete()
@@ -203,7 +205,7 @@ def eliminarcategoria(request, id):
 #CRUD DOCUMENTOS
 @login_required(login_url='signin')
 def documentos(request):
-    documentos_list = Document.objects.all()
+    documentos_list = Document.objects.all().order_by('id_archivo') 
 
     # Lógica de búsqueda
     query = request.GET.get('q')
@@ -303,7 +305,7 @@ def ver_pdf(request, id):
 #CRUD PROCESOS
 @login_required(login_url='signin')
 def procesos(request):
-    procesos = Proceso.objects.all()
+    procesos = Proceso.objects.all().order_by('id_proceso')
     return render(request,'procesos/procesos.html',{'procesos': procesos})
 
 @login_required(login_url='signin')
@@ -449,6 +451,8 @@ login_required(login_url='signin')
 def aseguramientodelacalidadprocesos(request):
     return render(request, 'procesos/calidadintegral/aseguramientodelacalidadprocesos.html')
 #Procedimientos
+def renovacionregistro(request):
+    return render(request,'procesos/calidadintegral/procedimientos/renovacionregistro.html')
 def creacionprogramas(request):
     return render(request,'procesos/calidadintegral/procedimientos/creacionprogramas.html')
 def evaluacionycontrol(request):
@@ -479,10 +483,13 @@ def gestionydesarrollohumano(request):
     return render(request,'procesos/talentohumanobienestar/gestionydesarrollohumano.html')
 
 #Procedimientos
+login_required(login_url='signin')
 def induccionestudiantes(request):
     return render(request,'procesos/talentohumanobienestar/procedimientos/induccionestudiantes.html')
+login_required(login_url='signin')
 def saludybienestar(request):
     return render(request,'procesos/talentohumanobienestar/procedimientos/saludybienestar.html')
+login_required(login_url='signin')
 def plagio(request):
     return render(request,'procesos/talentohumanobienestar/procedimientos/plagio.html')
 @login_required(login_url='signin')
@@ -491,8 +498,10 @@ def induccioncolaboradores(request):
 @login_required(login_url='signin')
 def procedimientogth(request):
     return render(request,'procesos/talentohumanobienestar/procedimientos/seleccionycontratacion.html')
+@login_required(login_url='signin')
 def desvinculacion(request):
     return render(request,'procesos/talentohumanobienestar/procedimientos/desvinculacion.html')
+@login_required(login_url='signin')
 def disciplinario(request):
     return render(request,'procesos/talentohumanobienestar/procedimientos/disciplinario.html')
 #Procesos de Apoyo

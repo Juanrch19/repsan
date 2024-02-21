@@ -14,7 +14,7 @@ class UserRequestForm(forms.Form):
     full_name = forms.CharField(label='Nombre completo', max_length=100)
     email = forms.EmailField(label='Correo electronico')
     reason = forms.CharField(label='Motivo de la solicitud',widget=forms.Textarea)
-
+    
     
 class CategoriaForm(forms.ModelForm):
 
@@ -49,7 +49,7 @@ class DocumentForm(forms.ModelForm):
 
         # Añade una lista desplegable con todos los procesos disponibles
         self.fields['proceso'] = forms.ModelChoiceField(
-            queryset=Proceso.objects.all(),
+            queryset=Proceso.objects.all().order_by('id_proceso'),
             widget=forms.Select(attrs={'class': 'form-control'}),
             label='Proceso'
         )
