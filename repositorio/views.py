@@ -219,7 +219,7 @@ def documentos(request):
         )
 
     # Configura el paginador, aquí se configura para mostrar 10 documentos por página
-    paginator = Paginator(documentos_list, 20)
+    paginator = Paginator(documentos_list, 5)
     page = request.GET.get('page')
 
     try:
