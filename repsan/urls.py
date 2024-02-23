@@ -21,7 +21,7 @@ from django.conf.urls import handler403
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.signin, name='signin'),  
+    path('', views.login, name='login'),  
     path('repositorio/', include('repositorio.urls'))
     
 ]

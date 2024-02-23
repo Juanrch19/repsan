@@ -2,6 +2,11 @@ from django import forms
 from .models import Categoria, Document, Proceso,Glosario
 from django.contrib.auth.forms import SetPasswordForm
 
+class LoginForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Usuario',
+                                                      'class':'login__input'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Contraseña',
+                                                                 'class':'login__input'}))
 
 class GlosarioForm(forms.ModelForm):
     class Meta:
