@@ -1,2 +1,2 @@
 Herramientas utilizadas:
-*Djnago (https://www.djangoproject.com)
+*Django (https://www.djangoproject.com)
