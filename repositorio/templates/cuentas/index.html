@@ -13,10 +13,12 @@
 
 {% csrf_token %}
 {{ error }}
+
 <div class="container">
 	<div class="screen">
 		<div class="screen__content">
 			<form class="login" method="post">
+				<img src="{% static 'img/logo_unisanpablo.ico' %}" alt="logo_unisanpablo">
 				{% csrf_token %}
 				<h2 class="form-title">&nbsp;&nbsp;&nbsp;Inicia Sesión</h2> 
 				
@@ -44,7 +46,6 @@
 					&nbsp;&nbsp;&nbsp;<a href="{% url 'reset_password' %}">¿Olvidaste tu contraseña?</a>
 				  </div>
 			</form>
-	
 		</div>
 		<div class="screen__background">
 			<span class="screen__background__shape screen__background__shape4"></span>
@@ -53,8 +54,6 @@
 			<span class="screen__background__shape screen__background__shape1"></span>
 		</div>		
 	</div>
-</div>
-<!-- partial -->
-  
+</div>  
 </body>
 </html>
