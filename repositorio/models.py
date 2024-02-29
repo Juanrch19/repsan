@@ -36,7 +36,7 @@ class Document(models.Model):
     categoria = models.ForeignKey(Categoria, null=True, blank=True, on_delete=models.SET_NULL, verbose_name="Categoría")
     id_archivo = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=100, verbose_name="Titulo")
-    file = models.FileField(upload_to='documents/', verbose_name="Archivo")
+    file = models.FileField( max_length=200,upload_to='documents/', verbose_name="Archivo")
     fecha_creacion = models.DateTimeField(default=datetime.datetime.now().replace(microsecond=0))
     numero_autoincrementable = models.IntegerField(null=True, blank=True)
 
