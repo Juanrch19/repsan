@@ -108,12 +108,16 @@
                             <td>{{ document.categoria.nombre_categoria }}</td>
                             <td>{{ document.fecha_creacion }}</td>
                             
-                            <td>
+                           
+                            <td>    
+                                {% if document.categoria.nombre_categoria != 'Diagrama'%}
                                 <a href="{% url 'ver_pdf' document.id_archivo %}" class="btn btn-success btn-sm rounded-pill"
                                    class="text-decoration-none text-info">
                                     <i class="bi bi-eye-fill"></i>
                                 </a>
+                                {% endif %}
                             </td>
+                           
                     
                             <td>
                                 <a class="btn btn-success btn-sm rounded-pill"

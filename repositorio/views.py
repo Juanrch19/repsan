@@ -453,18 +453,25 @@ login_required(login_url='login')
 def aseguramientodelacalidadprocesos(request):
     return render(request, 'procesos/calidadintegral/aseguramientodelacalidadprocesos.html')
 #Procedimientos
+login_required(login_url='login')
 def renovacionregistro(request):
     return render(request,'procesos/calidadintegral/procedimientos/renovacionregistro.html')
+login_required(login_url='login')
 def creacionprogramas(request):
     return render(request,'procesos/calidadintegral/procedimientos/creacionprogramas.html')
+login_required(login_url='login')
 def evaluacionycontrol(request):
     return render(request,'procesos/calidadintegral/procedimientos/evaluacionycontrol.html')
+login_required(login_url='login')
 def modificacionprogramas(request):
     return render(request,'procesos/calidadintegral/procedimientos/modificacionprogramas.html')
+login_required(login_url='login')
 def preradicacion(request):
     return render(request,'procesos/calidadintegral/procedimientos/preradicacion.html')
+login_required(login_url='login')
 def servicioalclientepqr(request):
     return render(request,'procesos/calidadintegral/procedimientos/servicioalclientepqr.html')
+login_required(login_url='login')
 def autoevaluacionprogramas(request):
     return render(request,'procesos/calidadintegral/procedimientos/autoevaluacionprogramas.html')
 #Talento humano y Bienestar
@@ -506,6 +513,7 @@ def desvinculacion(request):
 @login_required(login_url='login')
 def disciplinario(request):
     return render(request,'procesos/talentohumanobienestar/procedimientos/disciplinario.html')
+
 #Procesos de Apoyo
 #Gestion administrativa y financiera
 @login_required(login_url='login')
