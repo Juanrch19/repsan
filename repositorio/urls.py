@@ -150,7 +150,9 @@ urlpatterns = [
          views.infraestructurafisica, name='infraestructurafisica'),
     path('cadenavalor/gestiondeinfraestructura/gestion de la informacion bibliografica',
          views.informacionbibliografica, name='informacionbibliografica'),
-
+    #Procedimientos
+    path('cadenavalor/gestioninfraestructura/gestion de la infraestructura fisica/procedimientos/Asignación de la infraestructura fisica',
+         views.asignacioninfraestructura,name='asignacioninfraestructura'),
     # Gestión administrativa y financiera
     path('cadenavalor/Gestión administrativa y financiera',
          views.gestionadminfinan, name='gestionadminfinan'),

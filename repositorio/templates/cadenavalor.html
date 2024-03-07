@@ -51,7 +51,7 @@
                         <h6 class="card-title">{{ archivo.titulo }}</h6>
                         <p class="card-text small">Fecha de subida: {{ archivo.fecha_creacion|date:"F d, Y H:i" }}</p>
                         <p class="card-text">Categoría: {{ archivo.categoria.nombre_categoria }}</p>
-                        {% if archivo.categoria.nombre_categoria != 'Diagrama'%}
+                        {% if archivo.categoria.nombre_categoria != 'Diagrama' and archivo.categoria.nombre_categoria != 'Formato' %}
                         <a href="{% url 'ver_pdf' archivo.id_archivo %}" class="btn btn-success btn-sm rounded-pill text-decoration-none ">
                             <i class="bi bi-eye-fill"></i>
                         </a>

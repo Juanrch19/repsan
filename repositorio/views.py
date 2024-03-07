@@ -556,6 +556,10 @@ def infraestructurafisica(request):
 @login_required(login_url='login')
 def informacionbibliografica(request):
     return render(request,'procesos/gestiondeinfraestructura/informacionbibliografica.html')
+#Procedimientos
+@login_required(login_url='login')
+def asignacioninfraestructura(request):
+    return render(request,'procesos/gestiondeinfraestructura/procedimientos/asignacioninfraestructura.html')
 
 #Gestión juridica y contractual
 @login_required(login_url='login')
